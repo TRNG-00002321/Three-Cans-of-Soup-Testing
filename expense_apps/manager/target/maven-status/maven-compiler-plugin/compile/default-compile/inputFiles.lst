@@ -1,0 +1,14 @@
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/Main.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/api/AuthenticationMiddleware.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/api/ExpenseController.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/api/ReportController.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/Approval.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/ApprovalRepository.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/DatabaseConnection.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/Expense.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/ExpenseRepository.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/ExpenseWithUser.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/User.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/repository/UserRepository.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/service/AuthenticationService.java
+/home/user/rev/p1/expense_apps/manager/src/main/java/com/revature/service/ExpenseService.java
