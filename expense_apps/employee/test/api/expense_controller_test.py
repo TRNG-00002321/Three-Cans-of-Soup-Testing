@@ -1,7 +1,8 @@
 import pytest
 
 class Test_Expense_Controller():
-
+    
+    #functionname_input_expectedoutput
     def test_submit_expense(self):
         pass
 
