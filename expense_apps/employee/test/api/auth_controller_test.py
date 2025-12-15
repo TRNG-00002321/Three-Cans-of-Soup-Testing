@@ -1,7 +1,7 @@
 import pytest
 
 class Test_Auth_Controller():
-
+    
     def test_login(self):
         pass
     
