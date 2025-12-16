@@ -1,0 +1,6 @@
+target/
+myenv/
+**/.venv/
+
+**/__pycache__/
+**/expense_manager.db
