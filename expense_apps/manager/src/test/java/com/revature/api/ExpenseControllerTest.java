@@ -48,6 +48,7 @@ public class ExpenseControllerTest {
     @AfterEach
     public void teardown() {
         ctxMock = null;
+        validatorMock = null;
     }
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
