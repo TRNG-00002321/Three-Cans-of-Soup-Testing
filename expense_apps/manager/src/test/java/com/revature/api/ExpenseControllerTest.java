@@ -23,14 +23,16 @@ import com.revature.repository.ExpenseWithUser;
 import com.revature.repository.User;
 import com.revature.service.ExpenseService;
 
+import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
+import io.javalin.http.InternalServerErrorResponse;
 import io.javalin.validation.Validator;
 
 @ExtendWith(MockitoExtension.class)
 public class ExpenseControllerTest {
 
     Context ctxMock;
-
+    private Validator<Integer> validatorMock;
     @Mock
     private ExpenseService expenseService;
 
@@ -40,6 +42,7 @@ public class ExpenseControllerTest {
     @BeforeEach
     public void setup() {
         ctxMock = Mockito.mock(Context.class, Mockito.RETURNS_DEEP_STUBS);
+        validatorMock = Mockito.mock(Validator.class);
     }
 
     @AfterEach
@@ -47,7 +50,7 @@ public class ExpenseControllerTest {
         ctxMock = null;
     }
 
-    private List<ExpenseWithUser> getPendingExpensesStub() {
+    private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
             new ExpenseWithUser(new Expense(), new User(), new Approval()),
             new ExpenseWithUser(new Expense(), new User(), new Approval()),
@@ -59,7 +62,7 @@ public class ExpenseControllerTest {
     @Test
     public void getPendingExpenses_UpdatesContext() {
         // Arrange
-        List<ExpenseWithUser> expenses = getPendingExpensesStub();
+        List<ExpenseWithUser> expenses = getListOfExpensesWithUser();
         when(expenseService.getPendingExpenses()).thenReturn(expenses);
 
         // Act
@@ -75,21 +78,22 @@ public class ExpenseControllerTest {
     }
 
     @Test
-    public void getPendingExpenses_ThrowsError() {
+    public void getPendingExpenses_ThrowsInternalServerErrorResponse() {
         // Arrange
         when(expenseService.getPendingExpenses()).thenThrow(RuntimeException.class);
 
         // Assert
-        Assertions.assertThrows(RuntimeException.class, () -> expenseService.getPendingExpenses());
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.getPendingExpenses(ctxMock));
+        Assertions.assertTrue(iser.getMessage().contains("Failed to retrieve pending expenses"));
+        Mockito.verify(expenseService, times(1)).getPendingExpenses();
     }
 
     @Test
-    public void getPendingExpenseByEmployee_InvalidId_ReturnsEmptyList() {
+    public void getExpenseByEmployee_InvalidId_ReturnsEmptyList() {
         // Arrange
         int employeeId = 999;
         List<ExpenseWithUser> expenses = new ArrayList<>();
 
-        Validator<Integer> validatorMock = Mockito.mock(Validator.class);
         when(validatorMock.get()).thenReturn(employeeId);
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
         when(expenseService.getExpensesByEmployee(employeeId)).thenReturn(expenses);
@@ -110,12 +114,11 @@ public class ExpenseControllerTest {
     }
 
     @Test
-    public void getPendingExpenseByEmployee_ValidId_ReturnsNonEmptyList() {
+    public void getExpensesByEmployee_ValidId_ReturnsNonEmptyList() {
         // Arrange
         int employeeId = 999;
-        List<ExpenseWithUser> expenses = getPendingExpensesStub();
+        List<ExpenseWithUser> expenses = getListOfExpensesWithUser();
 
-        Validator<Integer> validatorMock = Mockito.mock(Validator.class);
         when(validatorMock.get()).thenReturn(employeeId);
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
         when(expenseService.getExpensesByEmployee(employeeId)).thenReturn(expenses);
@@ -136,7 +139,31 @@ public class ExpenseControllerTest {
     }
 
     @Test
-    public void getPendingExpenseByEmployee_ThrowsError() {
+    public void getExpenseByEmployee_ThrowsBadRequestResponse() {
+        // Arrange
+        when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
+        when(validatorMock.get()).thenThrow(NumberFormatException.class);
+
+        // Assert
+        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, () -> expenseController.getExpensesByEmployee(ctxMock));
+        Assertions.assertTrue(brr.getMessage().contains("Invalid employee ID format"));
+        Mockito.verify(ctxMock, times(1)).pathParamAsClass("employeeId", Integer.class);
+        Mockito.verify(validatorMock, times(1)).get();
+
+    }
+
+    @Test
+    public void getExpenseByEmployee_ThrowsInternalServerErrorResponse() {
+        // Arrange
+        int employeeId = 999;
+        when(validatorMock.get()).thenReturn(employeeId);
+        when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
+        when(expenseService.getExpensesByEmployee(employeeId)).thenThrow(new RuntimeException("Error finding expenses for user: " + employeeId));
+
+        // Assert
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.getExpensesByEmployee(ctxMock));
+        Assertions.assertTrue(iser.getMessage().contains("Error finding expenses for user: " + employeeId));
+        Mockito.verify(expenseService, Mockito.times(1)).getExpensesByEmployee(employeeId);
 
     }
 }
