@@ -1,14 +1,15 @@
 import pytest
 from contextlib import contextmanager
+from unittest.mock import Mock
 from repository import ExpenseRepository, DatabaseConnection
 
 @pytest.fixture
-def cursor(mocker):
-    return mocker.Mock()
+def cursor():
+    return Mock()
 
 @pytest.fixture
-def conn(mocker):
-    return mocker.MagicMock()
+def conn():
+    return Mock()
 
 @pytest.fixture
 def mock_get_connection(conn):
@@ -18,8 +19,13 @@ def mock_get_connection(conn):
     yield get_connection
 
 @pytest.fixture
-def db_connection(mocker):
-    return mocker.Mock(spec=DatabaseConnection)
+def db_connection():
+    return Mock(spec=DatabaseConnection)
+
+@pytest.fixture(autouse=True)
+def mock_database_setup(db_connection, mock_get_connection, conn, cursor):
+    db_connection.get_connection = mock_get_connection
+    conn.execute.return_value = cursor
 
 @pytest.fixture
 def expense_repository(db_connection):
