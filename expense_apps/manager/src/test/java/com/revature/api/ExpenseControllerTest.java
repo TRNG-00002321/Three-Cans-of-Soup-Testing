@@ -28,6 +28,15 @@ import io.javalin.http.Context;
 import io.javalin.http.InternalServerErrorResponse;
 import io.javalin.validation.Validator;
 
+/* 
+TODO: Implement ArgumentCaptor for Map Objects:
+    Mockito.verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "data", expenses,
+                "count", expenses.size()
+        ));
+ */
+
 @ExtendWith(MockitoExtension.class)
 public class ExpenseControllerTest {
 
@@ -166,5 +175,34 @@ public class ExpenseControllerTest {
         Assertions.assertTrue(iser.getMessage().contains("Error finding expenses for user: " + employeeId));
         Mockito.verify(expenseService, Mockito.times(1)).getExpensesByEmployee(employeeId);
 
+    }
+
+    @Test
+    public void getAllExpenses_UpdatesContext() {
+        // Arrange
+        List<ExpenseWithUser> expenses = getListOfExpensesWithUser();
+        when(expenseService.getAllExpenses()).thenReturn(expenses);
+
+        // Act
+        expenseController.getAllExpenses(ctxMock);
+
+        // Assert
+        Mockito.verify(expenseService, Mockito.times(1)).getAllExpenses();
+        Mockito.verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "data", expenses,
+                "count", expenses.size()
+        ));
+    }
+
+    @Test
+    public void getAllExpenses_ThrowsInternalServerErrorResponse() {
+        // Arrange
+        when(expenseService.getAllExpenses()).thenThrow(RuntimeException.class);
+
+        // Assert
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.getAllExpenses(ctxMock));
+        Assertions.assertTrue(iser.getMessage().contains("Failed to retrieve expenses"));
+        Mockito.verify(expenseService, times(1)).getAllExpenses();
     }
 }
