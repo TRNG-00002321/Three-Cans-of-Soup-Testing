@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
 
-from expense_apps.employee.repository.expense_repository import ExpenseRepository, Expense
+from expense_apps.employee.repository.expense_repository import ExpenseRepository
 
 class TestExpenseRepository:
     """
@@ -33,14 +33,14 @@ class TestExpenseRepository:
 
     @pytest.fixture
     def expense(self):
-        expense = MagicMock(spec=Expense)
+        expense = MagicMock()
         expense.user_id = 1
         expense.amount = 100
-        expense.description = "Test expense repository"
+        expense.description = "Test expense"
         expense.date = "2025/12/16"
         return expense
 
-    def test_create_expense_valid_expense(self, mock_db, mock_conn, mock_cursor, expense):
+    def test_create_expense(self, mock_db, mock_conn, mock_cursor, expense):
         repo = ExpenseRepository(mock_db)
         create = repo.create
         create(expense)
