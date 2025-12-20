@@ -108,7 +108,39 @@ public class ExpenseControllerTest {
     }
 
     @Test
-    public void getExpenseByEmployee_InvalidId_UpdatesContext() {
+    public void getAllExpenses_UpdatesContext() {
+        // Arrange
+        List<ExpenseWithUser> expenses = getListOfExpensesWithUser();
+        when(expenseService.getAllExpenses()).thenReturn(expenses);
+
+        // Act
+        expenseController.getAllExpenses(ctxMock);
+
+        // Assert
+        verify(expenseService, Mockito.times(1)).getAllExpenses();
+        verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "data", expenses,
+                "count", expenses.size()
+        ));
+    }
+
+    @Test
+    public void getAllExpenses_ThrowsInternalServerErrorResponse() {
+        // Arrange
+        when(expenseService.getAllExpenses()).thenThrow(RuntimeException.class);
+
+        // Act 
+        Executable action = () -> expenseController.getAllExpenses(ctxMock);
+
+        // Assert
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, action);
+        assertTrue(iser.getMessage().contains("Failed to retrieve expenses"));
+        verify(expenseService, times(1)).getAllExpenses();
+    }
+
+    @Test
+    public void getExpenseByEmployee_ValidEmpId_UpdatesContext() {
         // Arrange
         int employeeId = 2;
         List<ExpenseWithUser> expenses = new ArrayList<>();
@@ -149,7 +181,7 @@ public class ExpenseControllerTest {
     }
 
     @Test
-    public void getExpenseByEmployee_ThrowsBadRequestResponse() {
+    public void getExpenseByEmployee_MalformedCtx_ThrowsBadRequestResponse() {
         // Arrange
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
         when(validatorMock.get()).thenThrow(NumberFormatException.class);
@@ -166,8 +198,8 @@ public class ExpenseControllerTest {
 
     @Test
     public void getExpenseByEmployee_ThrowsInternalServerErrorResponse() {
-        // Arrange
-        int employeeId = 999;
+        // Arrange  
+        int employeeId = 2;
         when(validatorMock.get()).thenReturn(employeeId);
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
         when(expenseService.getExpensesByEmployee(employeeId)).thenThrow(new RuntimeException("Error finding expenses for user: " + employeeId));
@@ -178,39 +210,8 @@ public class ExpenseControllerTest {
         // Assert
         InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, action);
         assertTrue(iser.getMessage().contains("Error finding expenses for user: " + employeeId));
-        verify(expenseService, Mockito.times(1)).getExpensesByEmployee(employeeId);
+        verify(ctxMock, times(1)).pathParamAsClass("employeeId", Integer.class);
+        verify(expenseService, times(1)).getExpensesByEmployee(employeeId);
 
-    }
-
-    @Test
-    public void getAllExpenses_UpdatesContext() {
-        // Arrange
-        List<ExpenseWithUser> expenses = getListOfExpensesWithUser();
-        when(expenseService.getAllExpenses()).thenReturn(expenses);
-
-        // Act
-        expenseController.getAllExpenses(ctxMock);
-
-        // Assert
-        verify(expenseService, Mockito.times(1)).getAllExpenses();
-        verify(ctxMock, times(1)).json(Map.of(
-                "success", true,
-                "data", expenses,
-                "count", expenses.size()
-        ));
-    }
-
-    @Test
-    public void getAllExpenses_ThrowsInternalServerErrorResponse() {
-        // Arrange
-        when(expenseService.getAllExpenses()).thenThrow(RuntimeException.class);
-
-        // Act 
-        Executable action = () -> expenseController.getAllExpenses(ctxMock);
-
-        // Assert
-        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, action);
-        assertTrue(iser.getMessage().contains("Failed to retrieve expenses"));
-        verify(expenseService, times(1)).getAllExpenses();
     }
 }
