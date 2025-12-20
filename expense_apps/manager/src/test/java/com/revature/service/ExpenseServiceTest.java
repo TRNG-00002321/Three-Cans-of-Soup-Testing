@@ -46,6 +46,32 @@ public class ExpenseServiceTest {
         return Arrays.asList(expenses);
     }
 
+    @Test
+    public void getPendingExpenses_ReturnsExpenseList() {
+        // Arrange
+        when(expenseRepository.findPendingExpensesWithUsers()).thenReturn(getListOfExpensesWithUser());
+
+        // Act
+        expenseService.getPendingExpenses();
+
+        // Assert
+        verify(expenseRepository, times(1)).findPendingExpensesWithUsers();
+    }
+
+    @Test
+    public void getPendingExpenses_ThrowsRuntimeException() {
+        // Arrange
+        when(expenseRepository.findPendingExpensesWithUsers()).thenThrow(new RuntimeException("Error finding pending expenses: "));
+
+        // Act
+        Executable action = () -> expenseService.getPendingExpenses();
+
+        // Assert
+        RuntimeException rte = Assertions.assertThrows(RuntimeException.class, action);
+        assertTrue(rte.getMessage().contains("Error finding pending expenses"));
+        verify(expenseRepository, times(1)).findPendingExpensesWithUsers();
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 99, 453})
     public void getExpensesByEmployee_ReturnsExpenseList(int employeeId) {
