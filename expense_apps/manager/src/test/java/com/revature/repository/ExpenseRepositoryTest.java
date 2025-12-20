@@ -16,6 +16,7 @@ import org.junit.jupiter.api.function.Executable;
 import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -192,6 +193,85 @@ public class ExpenseRepositoryTest {
         RuntimeException rte = assertThrows(RuntimeException.class, action);
         assertTrue(rte.getCause() instanceof SQLException);
         assertTrue(rte.getMessage().contains("Error finding all expenses"));
+        verify(databaseConnection, times(1)).getConnection();
+    }
+
+    @Test
+    public void findExpensesByUsers_ValidUserId_ReturnsList() throws SQLException {
+        // Arrange
+        int userId = 2;
+        Connection mockConnection = mock(Connection.class);
+        PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
+        ResultSet mockResultSet = getMockResultSet();
+        when(databaseConnection.getConnection()).thenReturn(mockConnection);
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
+        doNothing().when(mockPreparedStatement).setInt(1, userId);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Act
+        List<ExpenseWithUser> result = expenseRepository.findExpensesByUser(userId);
+
+        // Assert
+        assertEquals(1, result.size());
+        Expense expense = result.get(0).getExpense();
+        User user = result.get(0).getUser();
+        Approval approval = result.get(0).getApproval();
+        assertAll(
+                () -> assertEquals(1, expense.getId()),
+                () -> assertEquals((Integer) userId, expense.getUserId()),
+                () -> assertEquals(100.0, expense.getAmount()),
+                () -> assertEquals("Test Description", expense.getDescription()),
+                () -> assertEquals("2023-10-15", expense.getDate()),
+                () -> assertEquals("testuser", user.getUsername()),
+                () -> assertEquals("employee", user.getRole()),
+                () -> assertEquals(1, approval.getId()),
+                () -> assertEquals("pending", approval.getStatus()),
+                () -> assertEquals(null, approval.getReviewer()),
+                () -> assertEquals(null, approval.getComment()),
+                () -> assertEquals(null, approval.getReviewDate())
+        );
+        verify(databaseConnection, times(1)).getConnection();
+        verify(mockPreparedStatement, times(1)).executeQuery();
+        verify(mockPreparedStatement, times(1)).setInt(1, userId);
+    }
+
+    @Test
+    public void findExpensesByUsers_InvalidUserId_ReturnsEmptyList() throws SQLException {
+        // Arrange
+        int userId = 999;
+        Connection mockConnection = mock(Connection.class);
+        PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
+        ResultSet mockResultSet = mock(ResultSet.class);
+        when(mockResultSet.next()).thenReturn(false);
+        when(databaseConnection.getConnection()).thenReturn(mockConnection);
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
+        doNothing().when(mockPreparedStatement).setInt(1, userId);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Act
+        List<ExpenseWithUser> result = expenseRepository.findExpensesByUser(userId);
+
+        // Assert
+        assertTrue(result.isEmpty());
+        verify(databaseConnection, times(1)).getConnection();
+        verify(mockPreparedStatement, times(1)).executeQuery();
+        verify(mockPreparedStatement, times(1)).setInt(1, userId);
+
+    }
+
+    @Test
+    public void findExpensesByUsers_ThrowsRuntimeException() throws SQLException {
+        // Arrange
+        int userId = 2;
+        when(databaseConnection.getConnection()).thenThrow(SQLException.class);
+
+        // Act
+        Executable action = () -> expenseRepository.findExpensesByUser(userId);
+
+        // Assert
+        RuntimeException rte = assertThrows(RuntimeException.class, action);
+        assertTrue(rte.getCause() instanceof SQLException);
+        assertTrue(rte.getMessage().contains("Error finding expenses for user: " + userId));
         verify(databaseConnection, times(1)).getConnection();
     }
 }
