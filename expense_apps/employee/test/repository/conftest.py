@@ -1,7 +1,7 @@
 import pytest
 from contextlib import contextmanager
 from unittest.mock import Mock
-from repository import ExpenseRepository, DatabaseConnection
+from repository.expense_repository import ExpenseRepository, DatabaseConnection
 
 @pytest.fixture
 def cursor():
