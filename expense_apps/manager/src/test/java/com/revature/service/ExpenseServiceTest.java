@@ -1,4 +1,4 @@
-package java.com.revature.service;
+package com.revature.service;
 
 public class ExpenseServiceTest {
 

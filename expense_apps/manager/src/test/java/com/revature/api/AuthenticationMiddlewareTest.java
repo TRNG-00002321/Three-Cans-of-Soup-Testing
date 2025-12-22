@@ -1,4 +1,4 @@
-package java.com.revature.api;
+package com.revature.api;
 
 public class AuthenticationMiddlewareTest {
 

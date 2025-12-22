@@ -3,6 +3,11 @@ package com.revature.api;
 import com.revature.api.*;
 import com.revature.repository.*;
 import com.revature.service.*;
+import io.javalin.http.BadRequestResponse;
+import io.javalin.http.Context;
+import io.javalin.http.InternalServerErrorResponse;
+import io.javalin.validation.Validator;
+
 import org.junit.jupiter.api.*;
 
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,236 +21,338 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class ReportControllerTest {
 
     @Mock //creates the mocked UserRepository
     private ExpenseService expenseService;
+    @Mock
+    private Context ctx;
+    @Mock
+    private Validator<Integer> employeeIdValidator;
     @InjectMocks
     private ReportController reportController;
 
-    private static List<ExpenseWithUser> allExpenses;
-    private static List<ExpenseWithUser> employee1Expenses;
-    private static String csvContent;
-    @BeforeAll
-    public static void setUp(){
-        Expense expense1 = new Expense(1,1,50, "test expense", "2025-12-17");
-        User user1 = new User(1,"Andrew", "Password123", "Employee");
-        Approval approval1 = new Approval(1,1,"approved", 2, "comment about expense", "2025-12-17");
+    private List<ExpenseWithUser> mockExpenses;
+    String mockCsv;
 
-        Expense expense2 = new Expense(2,1,100, "test expense number 2", "2025-12-10");
-        Approval approval2 = new Approval(2,2,"denied", 2, "comment about expense denial", "2025-12-16");
-        User user2 = new User(3,"John", "123Password", "Employee");
-        Expense expense3 = new Expense(3,3,25.50,"New user item", "2025-11-18");
-
-        allExpenses = new ArrayList<ExpenseWithUser>();
-        allExpenses.add(new ExpenseWithUser(expense1, user1, approval1));
-        allExpenses.add(new ExpenseWithUser(expense2, user1, approval2));
-        allExpenses.add(new ExpenseWithUser(expense3, user2, null));
-
-        employee1Expenses = new ArrayList<ExpenseWithUser>();
-        employee1Expenses.add(new ExpenseWithUser(expense1, user1, approval1));
-        employee1Expenses.add(new ExpenseWithUser(expense2, user1, approval2));
-        csvContent = """
-                Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date
-                """;
-
-    }
-
-    @Test
-    @DisplayName("Generate All Expenses Report When Null")
-    public void nullGenerateAllExpensesReportTest(){
-        Mockito.when(expenseService.getAllExpenses()).thenReturn(null);
-        Mockito.when(expenseService.generateCsvReport(allExpenses)).thenReturn("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n");
-
-        Assertions.assertNull(expenseService.getAllExpenses());
-        Assertions.assertEquals("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n",expenseService.generateCsvReport(allExpenses));
-
-    }
-    @Test
-    @DisplayName("Generate All Expenses Report When Empty")
-    public void emptyGenerateAllExpensesReportTest(){
-        Mockito.when(expenseService.getAllExpenses()).thenReturn(new ArrayList<ExpenseWithUser>());
-        Mockito.when(expenseService.generateCsvReport(allExpenses)).thenReturn("");
-
-        Assertions.assertEquals(new ArrayList<>(),expenseService.getAllExpenses());
-        Assertions.assertEquals("",expenseService.generateCsvReport(allExpenses));
-
-    }
-
-    @ParameterizedTest(name="{4} Report for {6}")
-    @DisplayName("Generate ALl Expenses Report")
-    @CsvSource({
-            "0,1,1,50,test expense,2025-12-17,Andrew,Password123,Employee,1,approved,2,comment about expense,2025-12-17",
-            "1,2,1,100,test expense number 2,2025-12-10,Andrew,Password123,Employee,2,denied,2,comment about expense denial,2025-12-16",
-            "2,3,3,25.50,New user item,2025-11-18,John,123Password,Employee,,,,,"
-    })
-    public void generateAllExpensesReportTest(int expenseNumber,int expenseId, int userId, double amount,String description, String expenseDate, String username, String password,String role, Integer appId,String status, Integer reviewer, String comment, String reviewDate){
-        Expense expense1 = new Expense(expenseId,userId,amount, description, expenseDate);
-        User user1 = new User(userId,username, password, role);
-        Approval approval1;
-        if(appId!=null)
-            approval1 = new Approval(appId,expenseId,status, reviewer, comment, reviewDate);
-        else
-            approval1 = null;
-        ExpenseWithUser expectedExpense = new ExpenseWithUser(expense1,user1,approval1);
-
-        String expectedCSV = """
-                Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date
-                1,Andrew,50,test expense,2025-12-17,approved,2,comment about expense,2025-12-17
-                2,Andrew,100,test expense number 2,2025-12-10,denied,2,comment about expense denial,2025-12-16
-                3,John,25.50,New user item,2025-11-18,pending,,,""";
-
-
-        Mockito.when(expenseService.getAllExpenses()).thenReturn(allExpenses);
-        Mockito.when(expenseService.generateCsvReport(allExpenses)).thenReturn(csvContent+"1,Andrew,50,test expense,2025-12-17,approved,2,comment about expense,2025-12-17\n" +
-                "2,Andrew,100,test expense number 2,2025-12-10,denied,2,comment about expense denial,2025-12-16\n" +
-                "3,John,25.50,New user item,2025-11-18,pending,,,");
-
-        Assertions.assertNotNull(expenseService.getAllExpenses());
-            Assertions.assertAll("Assert Expense is correct",
-                    () -> Assertions.assertEquals(expectedExpense.getExpense().getId(),
-                            expenseService.getAllExpenses().get(expenseNumber).getExpense().getId()),
-                    () -> Assertions.assertEquals(expectedExpense.getExpense().getUserId(),
-                            expenseService.getAllExpenses().get(expenseNumber).getExpense().getUserId()),
-                    () -> Assertions.assertEquals(expectedExpense.getExpense().getDescription(),
-                            expenseService.getAllExpenses().get(expenseNumber).getExpense().getDescription()),
-                    () -> Assertions.assertEquals(expectedExpense.getExpense().getDate(),
-                            expenseService.getAllExpenses().get(expenseNumber).getExpense().getDate())
-            );
-            Assertions.assertAll("Assert User is correct",
-                    () -> Assertions.assertEquals(expectedExpense.getUser().getId(),
-                            expenseService.getAllExpenses().get(expenseNumber).getUser().getId()),
-                    () -> Assertions.assertEquals(expectedExpense.getUser().getUsername(),
-                            expenseService.getAllExpenses().get(expenseNumber).getUser().getUsername()),
-                    () -> Assertions.assertEquals(expectedExpense.getUser().getPassword(),
-                            expenseService.getAllExpenses().get(expenseNumber).getUser().getPassword()),
-                    () -> Assertions.assertEquals(expectedExpense.getUser().getRole(),
-                            expenseService.getAllExpenses().get(expenseNumber).getUser().getRole())
-            );
-            if(expectedExpense.getApproval()!=null) {
-                Assertions.assertAll("Assert Approval is correct",
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getId(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getId()),
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getExpenseId(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getExpenseId()),
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getStatus(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getStatus()),
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getReviewer(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getReviewer()),
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getComment(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getComment()),
-                        () -> Assertions.assertEquals(expectedExpense.getApproval().getReviewDate(),
-                                expenseService.getAllExpenses().get(expenseNumber).getApproval().getReviewDate())
-                );
-            }
-            else
-                Assertions.assertNull(expenseService.getAllExpenses().get(expenseNumber).getApproval());
-
-        Assertions.assertEquals(expectedCSV,expenseService.generateCsvReport(allExpenses));
-        //need to verify that file is being created
-        //Mockito.verify(expenseService, Mockito.times(1)).generateCsvReport(expenses);
-    }
-
-
-    @Test
-    @DisplayName("Generate Employee Expenses Report when Null")
-    public void emptyGenerateEmployeeExpensesReportTest(){
-
-
-
-        Mockito.when(expenseService.getExpensesByEmployee(999)).thenReturn(null);
-        Mockito.when(expenseService.generateCsvReport(allExpenses)).thenReturn("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n");
-
-        Assertions.assertNull(expenseService.getExpensesByEmployee(999));
-        Assertions.assertEquals("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n",expenseService.generateCsvReport(allExpenses));
-
-
-    }
-
-    @Test
-    @DisplayName("Generate Employee Expenses Report when empty")
-    public void GenerateEmployeeExpensesReportTest(){
-        Mockito.when(expenseService.getExpensesByEmployee(999)).thenReturn(new ArrayList<>());
-        Mockito.when(expenseService.generateCsvReport(employee1Expenses)).thenReturn("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n");
-
-        Assertions.assertEquals(new ArrayList<ExpenseWithUser>(),expenseService.getExpensesByEmployee(999));
-        Assertions.assertEquals("Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n",expenseService.generateCsvReport(employee1Expenses));
-
-
-    }
-
-    @ParameterizedTest(name="{4} Report for {6}")
-    @DisplayName("Generate Employee Expenses Report")
-    @CsvSource({
-            "0,1,1,50,test expense,2025-12-17,Andrew,Password123,Employee,1,approved,2,comment about expense,2025-12-17",
-            "1,2,1,100,test expense number 2,2025-12-10,Andrew,Password123,Employee,2,denied,2,comment about expense denial,2025-12-16"
-    })
-    public void GenerateEmployeeExpensesTest(int expenseNumber,int expenseId, int userId, double amount,String description, String expenseDate, String username, String password,String role, Integer appId,String status, Integer reviewer, String comment, String reviewDate){
-
-        Expense expense1 = new Expense(expenseId,userId,amount, description, expenseDate);
-        User user1 = new User(userId,username, password, role);
-        Approval approval1;
-        if(appId!=null)
-            approval1 = new Approval(appId,expenseId,status, reviewer, comment, reviewDate);
-        else
-            approval1 = null;
-        ExpenseWithUser expectedExpense = new ExpenseWithUser(expense1,user1,approval1);
-
-
-
-        String expectedCSV = """
-                Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date
-                1,Andrew,50,test expense,2025-12-17,approved,2,comment about expense,2025-12-17
-                2,Andrew,100,test expense number 2,2025-12-10,denied,2,comment about expense denial,2025-12-16""";
-
-        Mockito.when(expenseService.getExpensesByEmployee(1)).thenReturn(employee1Expenses);
-        Mockito.when(expenseService.generateCsvReport(employee1Expenses)).thenReturn(csvContent+"1,Andrew,50,test expense,2025-12-17,approved,2,comment about expense,2025-12-17\n" +
-                "2,Andrew,100,test expense number 2,2025-12-10,denied,2,comment about expense denial,2025-12-16");
-
-        Assertions.assertNotNull(expenseService.getAllExpenses());
-        Assertions.assertAll("Assert Expense is correct",
-                () -> Assertions.assertEquals(expectedExpense.getExpense().getId(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getExpense().getId()),
-                () -> Assertions.assertEquals(expectedExpense.getExpense().getUserId(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getExpense().getUserId()),
-                () -> Assertions.assertEquals(expectedExpense.getExpense().getDescription(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getExpense().getDescription()),
-                () -> Assertions.assertEquals(expectedExpense.getExpense().getDate(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getExpense().getDate())
+    @BeforeEach
+    public void setup() {
+        mockExpenses = List.of(
+                new ExpenseWithUser(),
+                new ExpenseWithUser()
         );
-        Assertions.assertAll("Assert User is correct",
-                () -> Assertions.assertEquals(expectedExpense.getUser().getId(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getUser().getId()),
-                () -> Assertions.assertEquals(expectedExpense.getUser().getUsername(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getUser().getUsername()),
-                () -> Assertions.assertEquals(expectedExpense.getUser().getPassword(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getUser().getPassword()),
-                () -> Assertions.assertEquals(expectedExpense.getUser().getRole(),
-                        expenseService.getExpensesByEmployee(1).get(expenseNumber).getUser().getRole())
+
+         mockCsv = "id,amount,user\n1,100,Alice";
+    }
+
+
+    @Test
+    @DisplayName("Generate All Expenses Report Success")
+    public void generateAllExpensesReportTestHappy(){
+
+
+        when(expenseService.getAllExpenses()).thenReturn(mockExpenses);
+        when(expenseService.generateCsvReport(mockExpenses)).thenReturn(mockCsv);
+
+        // Act
+        reportController.generateAllExpensesReport(ctx);
+
+        // Assert
+        verify(expenseService).getAllExpenses();
+        verify(expenseService).generateCsvReport(mockExpenses);
+
+        verify(ctx).contentType("text/csv");
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"all_expenses_report.csv\""
         );
-        if(expectedExpense.getApproval()!=null) {
-            Assertions.assertAll("Assert Approval is correct",
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getId(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getId()),
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getExpenseId(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getExpenseId()),
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getStatus(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getStatus()),
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getReviewer(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getReviewer()),
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getComment(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getComment()),
-                    () -> Assertions.assertEquals(expectedExpense.getApproval().getReviewDate(),
-                            expenseService.getExpensesByEmployee(1).get(expenseNumber).getApproval().getReviewDate())
-            );
-        }
-        else
-            Assertions.assertNull(expenseService.getAllExpenses().get(expenseNumber).getApproval());
+        verify(ctx).result(mockCsv);
+    }
+
+    @Test
+    @DisplayName("Generate All Expenses Report Exception")
+    public void generateAllExpensesReportTestException(){
+        when(expenseService.getAllExpenses()).thenThrow(new InternalServerErrorResponse());
+
+        assertThrows(InternalServerErrorResponse.class, () -> reportController.generateAllExpensesReport(ctx));
+
+        verify(expenseService).getAllExpenses();
+        verifyNoMoreInteractions(ctx);
+    }
 
 
-        Assertions.assertEquals(expectedCSV,expenseService.generateCsvReport(employee1Expenses));
+    @Test
+    @DisplayName("Generate Employee Expenses Report Success")
+    public void generateEmployeeExpensesReportTestHappy(){
+        int employeeId =1;
+
+
+        when(ctx.pathParamAsClass("employeeId", Integer.class))
+                .thenReturn(employeeIdValidator);
+        when(employeeIdValidator.get()).thenReturn(employeeId);
+
+        when(expenseService.getExpensesByEmployee(employeeId))
+                .thenReturn(mockExpenses);
+        when(expenseService.generateCsvReport(mockExpenses))
+                .thenReturn(mockCsv);
+
+        // Act
+        reportController.generateEmployeeExpensesReport(ctx);
+
+        // Assert
+
+        verify(ctx).contentType("text/csv");
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"employee_" + employeeId + "_expenses_report.csv\""
+        );
+        verify(ctx).result(mockCsv);
+        verify(expenseService).getExpensesByEmployee(employeeId);
+        verify(expenseService).generateCsvReport(mockExpenses);
+    }
+
+    @Test
+    @DisplayName("Generate Employee Expenses Report Bad Request Exception")
+    public void generateEmployeeExpensesReportTestBadRequestException(){
+        when(ctx.pathParamAsClass("employeeId", Integer.class))
+                .thenThrow(new NumberFormatException("Invalid number"));
+
+        // Act + Assert
+        assertThrows(
+                BadRequestResponse.class,
+                () -> reportController.generateEmployeeExpensesReport(ctx)
+        );
+
+        verifyNoInteractions(expenseService);
 
     }
 
+    @Test
+    @DisplayName("Generate Employee Expenses Report Internal Server Error")
+    public void generateEmployeeExpensesReportTestInternalServerErrorException(){
+        int employeeId = 10;
+
+        when(ctx.pathParamAsClass("employeeId", Integer.class))
+                .thenReturn(employeeIdValidator);
+        when(employeeIdValidator.get()).thenReturn(employeeId);
+
+        when(expenseService.getExpensesByEmployee(employeeId))
+                .thenThrow(new RuntimeException("Database down"));
+
+        // Act + Assert
+        assertThrows(
+                InternalServerErrorResponse.class,
+                () -> reportController.generateEmployeeExpensesReport(ctx)
+        );
+    }
+
+    @Test
+    @DisplayName("Generate Category Expenses Report Success")
+    public void generateCategoryExpensesReportTestHappy(){
+        String category ="food";
+
+
+        when(ctx.pathParam("category"))
+                .thenReturn(category);
+
+        when(expenseService.getExpensesByCategory(category))
+                .thenReturn(mockExpenses);
+        when(expenseService.generateCsvReport(mockExpenses))
+                .thenReturn(mockCsv);
+
+        // Act
+        reportController.generateCategoryExpensesReport(ctx);
+
+
+        verify(ctx).contentType("text/csv");
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"category_" + category + "_expenses_report.csv\""
+        );
+        verify(ctx).result(mockCsv);
+        verify(expenseService).getExpensesByCategory(category);
+        verify(expenseService).generateCsvReport(mockExpenses);
+    }
+
+    @Test
+    void generateCategoryExpensesReportTestCleanFilename() {
+        // Arrange
+        String category = "food & drinks!";
+        String safeCategory = "food___drinks_";
+
+        when(ctx.pathParam("category")).thenReturn(category);
+        when(expenseService.getExpensesByCategory(category))
+                .thenReturn(List.of());
+        when(expenseService.generateCsvReport(any()))
+                .thenReturn("");
+
+        // Act
+        reportController.generateCategoryExpensesReport(ctx);
+
+        // Assert
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"category_" + safeCategory + "_expenses_report.csv\""
+        );
+    }
+
+    @Test
+    @DisplayName("Generate Category Expenses Report Bad Request Exception")
+    public void generateCategoryExpensesReportTestBadRequestException(){
+        when(ctx.pathParam("category")).thenReturn("   ");
+        // Act + Assert
+        assertThrows(
+                BadRequestResponse.class,
+                () -> reportController.generateCategoryExpensesReport(ctx)
+        );
+
+        verifyNoInteractions(expenseService);
+
+    }
+
+    @Test
+    @DisplayName("Generate Category Expenses Report Internal Server Error")
+    public void generateCategoryExpensesReportTestInternalServerErrorException(){
+        String category = "bad category";
+
+        when(ctx.pathParam("category"))
+                .thenReturn(category);
+        when(expenseService.getExpensesByCategory(category)).thenThrow(new RuntimeException("Database error"));
+
+
+
+        // Act + Assert
+        assertThrows(
+                InternalServerErrorResponse.class,
+                () -> reportController.generateCategoryExpensesReport(ctx)
+        );
+    }
+
+    @Test
+    void generateDateRangeExpensesReport_success() {
+        // Arrange
+        String startDate = "2024-01-01";
+        String endDate = "2024-01-31";
+
+
+
+        when(ctx.queryParam("startDate")).thenReturn(startDate);
+        when(ctx.queryParam("endDate")).thenReturn(endDate);
+
+        when(expenseService.getExpensesByDateRange(startDate, endDate))
+                .thenReturn(mockExpenses);
+        when(expenseService.generateCsvReport(mockExpenses))
+                .thenReturn(mockCsv);
+
+        // Act
+        reportController.generateDateRangeExpensesReport(ctx);
+
+        // Assert
+        verify(ctx).contentType("text/csv");
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"expenses_" + startDate + "_to_" + endDate + "_report.csv\""
+        );
+        verify(ctx).result(mockCsv);
+
+        verify(expenseService).getExpensesByDateRange(startDate, endDate);
+        verify(expenseService).generateCsvReport(mockExpenses);
+    }
+
+    @Test
+    void generateDateRangeExpensesReport_missingQueryParams_throwsBadRequest() {
+        // Arrange
+        when(ctx.queryParam("startDate")).thenReturn(null);
+        when(ctx.queryParam("endDate")).thenReturn(null);
+
+        // Act + Assert
+        assertThrows(
+                BadRequestResponse.class,
+                () -> reportController.generateDateRangeExpensesReport(ctx)
+        );
+
+        verifyNoInteractions(expenseService);
+    }
+
+    @Test
+    void generateDateRangeExpensesReport_invalidDateFormat_throwsBadRequest() {
+        // Arrange
+        when(ctx.queryParam("startDate")).thenReturn("01-01-2024");
+        when(ctx.queryParam("endDate")).thenReturn("2024/01/31");
+
+        // Act + Assert
+        assertThrows(
+                BadRequestResponse.class,
+                () -> reportController.generateDateRangeExpensesReport(ctx)
+        );
+
+        verifyNoInteractions(expenseService);
+    }
+
+    @Test
+    void generateDateRangeExpensesReport_serviceFailure_throwsInternalServerError() {
+        // Arrange
+        String startDate = "2024-02-01";
+        String endDate = "2024-02-28";
+
+        when(ctx.queryParam("startDate")).thenReturn(startDate);
+        when(ctx.queryParam("endDate")).thenReturn(endDate);
+
+        when(expenseService.getExpensesByDateRange(startDate, endDate))
+                .thenThrow(new RuntimeException("Database down"));
+
+        // Act + Assert
+        assertThrows(
+                InternalServerErrorResponse.class,
+                () -> reportController.generateDateRangeExpensesReport(ctx)
+        );
+    }
+
+    @Test
+    void generatePendingExpensesReport_success() {
+        // Arrange
+        List<ExpenseWithUser> mockExpenses = List.of(
+                new ExpenseWithUser(),
+                new ExpenseWithUser()
+        );
+
+        String mockCsv = "id,amount,user,status\n1,100,Alice,PENDING";
+
+        when(expenseService.getPendingExpenses()).thenReturn(mockExpenses);
+        when(expenseService.generateCsvReport(mockExpenses)).thenReturn(mockCsv);
+
+        // Act
+        reportController.generatePendingExpensesReport(ctx);
+
+        // Assert
+        verify(expenseService).getPendingExpenses();
+        verify(expenseService).generateCsvReport(mockExpenses);
+
+        verify(ctx).contentType("text/csv");
+        verify(ctx).header(
+                "Content-Disposition",
+                "attachment; filename=\"pending_expenses_report.csv\""
+        );
+        verify(ctx).result(mockCsv);
+    }
+
+    @Test
+    void generatePendingExpensesReport_serviceFailure_throwsInternalServerError() {
+        // Arrange
+        when(expenseService.getPendingExpenses())
+                .thenThrow(new RuntimeException("DB error"));
+
+        // Act + Assert
+        assertThrows(
+                InternalServerErrorResponse.class,
+                () -> reportController.generatePendingExpensesReport(ctx)
+        );
+
+        verify(expenseService).getPendingExpenses();
+        verifyNoInteractions(ctx);
+    }
 }
