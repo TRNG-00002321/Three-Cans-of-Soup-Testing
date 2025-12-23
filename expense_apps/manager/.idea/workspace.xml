@@ -7,13 +7,9 @@
     <list default="true" id="3acdd08a-9432-40ad-af2a-779e6228aed5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../employee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/api/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/api/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/AuthenticationMiddlewareTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/AuthenticationMiddlewareTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/ExpenseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ExpenseControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/repository/ApprovalRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/repository/ApprovalRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/service/ExpenseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/service/ExpenseServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../expense_manager.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.ExpenseServiceTest.executor": "Run",
     "JUnit.ReportControllerTest.GenerateEmployeeExpensesReportTest.executor": "Run",
     "JUnit.ReportControllerTest.GenerateEmployeeExpensesTest (1).executor": "Run",
     "JUnit.ReportControllerTest.GenerateEmployeeExpensesTest.executor": "Run",
@@ -62,6 +59,7 @@
     "JUnit.ReportControllerTest.generateEmployeeExpensesReportTestInternalServerErrorException.executor": "Run",
     "JUnit.ReportControllerTest.generateEmptyAllExpensesReportFalseTest.executor": "Run",
     "JUnit.ReportControllerTest.generateEmptyAllExpensesReportTest.executor": "Run",
+    "JUnit.ReportControllerTest.generatePendingExpensesReport_serviceFailure_throwsInternalServerError.executor": "Run",
     "JUnit.ReportControllerTest.testFunc.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -81,19 +79,31 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportControllerTest.generateCategoryExpensesReport_sanitizesCategoryForFilename">
-    <configuration name="ReportControllerTest.generateCategoryExpensesReportTestBadRequestException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.revature.Main" />
       <module name="manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.revature.api.*" />
+          <option name="PATTERN" value="com.revature.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.revature.api" />
-      <option name="MAIN_CLASS_NAME" value="com.revature.api.ReportControllerTest" />
-      <option name="METHOD_NAME" value="generateCategoryExpensesReportTestBadRequestException" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpenseServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.revature.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.revature.service" />
+      <option name="MAIN_CLASS_NAME" value="com.revature.service.ExpenseServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,22 +119,6 @@
       <option name="PACKAGE_NAME" value="com.revature.api" />
       <option name="MAIN_CLASS_NAME" value="com.revature.api.ReportControllerTest" />
       <option name="METHOD_NAME" value="generateCategoryExpensesReportTestHappy" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportControllerTest.generateCategoryExpensesReportTestInternalServerErrorException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.revature.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.revature.api" />
-      <option name="MAIN_CLASS_NAME" value="com.revature.api.ReportControllerTest" />
-      <option name="METHOD_NAME" value="generateCategoryExpensesReportTestInternalServerErrorException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportControllerTest.generateEmployeeExpensesReportTestBadRequestException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportControllerTest.generatePendingExpensesReport_serviceFailure_throwsInternalServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="manager" />
       <extension name="coverage">
         <pattern>
@@ -156,7 +150,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.revature.api" />
       <option name="MAIN_CLASS_NAME" value="com.revature.api.ReportControllerTest" />
-      <option name="METHOD_NAME" value="generateEmployeeExpensesReportTestBadRequestException" />
+      <option name="METHOD_NAME" value="generatePendingExpensesReport_serviceFailure_throwsInternalServerError" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ExpenseServiceTest" />
+        <item itemvalue="JUnit.ReportControllerTest.generatePendingExpensesReport_serviceFailure_throwsInternalServerError" />
         <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReport_sanitizesCategoryForFilename" />
         <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReportTestHappy" />
-        <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReportTestBadRequestException" />
-        <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReportTestInternalServerErrorException" />
-        <item itemvalue="JUnit.ReportControllerTest.generateEmployeeExpensesReportTestBadRequestException" />
       </list>
     </recent_temporary>
   </component>
