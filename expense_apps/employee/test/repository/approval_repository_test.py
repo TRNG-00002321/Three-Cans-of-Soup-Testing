@@ -44,7 +44,8 @@ class Test_Expense_Controller():
         assert approval.status == 'denied'
         assert approval.comment == 'Test Comment 1'
         assert approval.review_date == '2024-01-19'
-        
+    
+    #Look over _ fuinctionality
     def test_find_expenses_with_status_empty_result(self, approval_repository, mock_db_connection):
         _, mock_context = mock_db_connection
         mock_cursor = MagicMock()
