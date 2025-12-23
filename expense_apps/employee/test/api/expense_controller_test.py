@@ -105,4 +105,25 @@ class Test_Expense_Controller():
             assert expense_json['status'] == expected_approval.status
             assert expense_json['comment'] == expected_approval.comment
             assert expense_json['review_date'] == expected_approval.review_date
-         
+
+    def test_get_expenses_service_exception(self, client, app, monkeypatch):
+        mock_user = User(1, "test_user", "test_pass", "Employee")
+        
+        monkeypatch.setattr(
+            expense_controller,
+            "get_current_user",
+            lambda: mock_user
+        )
+        
+        mock_service = MagicMock()
+        mock_service.get_expense_history.side_effect = Exception("Database connection error")
+        app.expense_service = mock_service
+        
+        response = client.get("/api/expenses?status=approved")
+        
+        mock_service.get_expense_history.assert_called_once_with(
+            user_id=1,
+            status_filter="approved"
+        )
+        
+        assert response.status_code == 500
