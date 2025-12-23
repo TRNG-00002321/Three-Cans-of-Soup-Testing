@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acdd08a-9432-40ad-af2a-779e6228aed5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../employee/test/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employee/test/service/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employee/test/service/expense_service_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/service/ExpenseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/service/ExpenseServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../expense_manager.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +69,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "EMS-5",
+    "git-widget-placeholder": "EMS-16",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager",
     "project.structure.last.edited": "Modules",

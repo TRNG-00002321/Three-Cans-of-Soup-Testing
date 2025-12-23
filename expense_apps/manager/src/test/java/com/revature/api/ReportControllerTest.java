@@ -175,6 +175,7 @@ public class ReportControllerTest {
     }
 
     @Test
+    @DisplayName("Generate Category Expenses Report Clean Name")
     void generateCategoryExpensesReportTestCleanFilename() {
         // Arrange
         String category = "food & drinks!";
@@ -229,6 +230,7 @@ public class ReportControllerTest {
     }
 
     @Test
+    @DisplayName("Generate By Date Expenses Report Success")
     void generateDateRangeExpensesReport_success() {
         // Arrange
         String startDate = "2024-01-01";
@@ -260,7 +262,8 @@ public class ReportControllerTest {
     }
 
     @Test
-    void generateDateRangeExpensesReport_missingQueryParams_throwsBadRequest() {
+    @DisplayName("Generate By Date Expenses Report Bad Request (Empty)")
+    void generateDateRangeExpensesReportEmptyDateFormatThrowsBadRequest() {
         // Arrange
         when(ctx.queryParam("startDate")).thenReturn(null);
         when(ctx.queryParam("endDate")).thenReturn(null);
@@ -275,7 +278,8 @@ public class ReportControllerTest {
     }
 
     @Test
-    void generateDateRangeExpensesReport_invalidDateFormat_throwsBadRequest() {
+    @DisplayName("Generate By Date Expenses Report Bad Request (Invalid Format)")
+    void generateDateRangeExpensesReportInvalidDateFormatThrowsBadRequest() {
         // Arrange
         when(ctx.queryParam("startDate")).thenReturn("01-01-2024");
         when(ctx.queryParam("endDate")).thenReturn("2024/01/31");
@@ -290,7 +294,8 @@ public class ReportControllerTest {
     }
 
     @Test
-    void generateDateRangeExpensesReport_serviceFailure_throwsInternalServerError() {
+    @DisplayName("Generate By Date Expenses Report Internal Server Error")
+    void generateDateRangeExpensesReportThrowsInternalServerError() {
         // Arrange
         String startDate = "2024-02-01";
         String endDate = "2024-02-28";
@@ -309,6 +314,7 @@ public class ReportControllerTest {
     }
 
     @Test
+    @DisplayName("Generate Pending Expenses Report Success")
     void generatePendingExpensesReport_success() {
         // Arrange
         List<ExpenseWithUser> mockExpenses = List.of(
@@ -337,7 +343,8 @@ public class ReportControllerTest {
     }
 
     @Test
-    void generatePendingExpensesReport_serviceFailure_throwsInternalServerError() {
+    @DisplayName("Generate Pending Expenses Report Internal Server Error")
+    void generatePendingExpensesReportThrowsInternalServerError() {
         // Arrange
         when(expenseService.getPendingExpenses())
                 .thenThrow(new RuntimeException("DB error"));
