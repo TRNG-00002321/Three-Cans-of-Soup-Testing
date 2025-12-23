@@ -36,7 +36,7 @@ class TestExpenseService:
         expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
 
         expense_repository.create.assert_called_once()
-        #get what create on expense repository was called with
+        #get what create on expense repository_test was called with
         submitted_expense = expense_repository.create.call_args.args[0]
 
         assert isinstance(submitted_expense, Expense)
@@ -59,12 +59,14 @@ class TestExpenseService:
 
         with pytest.raises(ValueError, match="Amount must be greater than 0"):
             expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
+        expense_repository.create.assert_not_called()
 
     def test_submit_expense_valid_invalid_amount_negative(self, expense, expense_repository,expense_service):
         expense.amount = -100
 
         with pytest.raises(ValueError, match="Amount must be greater than 0"):
             expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
+        expense_repository.create.assert_not_called()
 
     @pytest.mark.parametrize("description", ["", "   ", "\n", "  \n"])
     def test_submit_expense_valid_invalid_description(self, expense, expense_repository,expense_service, description):
@@ -72,3 +74,4 @@ class TestExpenseService:
 
         with pytest.raises(ValueError, match= "Description is required"):
             expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
+        expense_repository.create.assert_not_called()
