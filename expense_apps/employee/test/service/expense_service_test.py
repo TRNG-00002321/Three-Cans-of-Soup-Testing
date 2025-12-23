@@ -10,8 +10,6 @@ class TestExpenseService():
     def test_expense_repo_mock(self,expense_repository):
         assert expense_repository.find_by_id(0) is not None
         assert expense_repository.find_by_id(-1) is None
-        assert expense_repository.delete(0) == True
-        assert expense_repository.delete(-1) == False
 
     @pytest.mark.parametrize(
             "status",
@@ -19,14 +17,19 @@ class TestExpenseService():
                 'approved',
                 'denied'
             ],)
-    def test_delete_reviewed_expense_rasies_error(self, status, expense_service: ExpenseService, expense, approval):
+    def test_delete_reviewed_expense_rasies_error(self, status,
+                                                  expense_service: ExpenseService, expense_repository, expense, approval):
+        expense_repository.delete.side_effect = lambda expense_id: expense_id >= 0
         expense.user_id = 0
         approval.status = status
+        expense_id = 0
+        user_id = 0 
 
         with pytest.raises(ValueError) as context:
-            expense_service.delete_expense(0,0)
+            expense_service.delete_expense(expense_id, user_id)
         
         assert 'Cannot delete expense that has been reviewed' == str(context.value)
+        expense_repository.delete.assert_not_called()
 
     @pytest.mark.parametrize(
             "expense_id,user_id,expected",
@@ -36,10 +39,18 @@ class TestExpenseService():
                 (-1,  0, False),
                 (-1, -1, False)
             ],)
-    def test_delete_expense_parameterized(self, expense_id, user_id, expected, expense_service: ExpenseService, expense, approval):
+    def test_delete_expense_parameterized(self, expense_id, user_id, expected,
+                                          expense_service: ExpenseService, expense_repository ,expense, approval):
+        expense_repository.delete.side_effect = lambda expense_id: expense_id >= 0
         expense.user_id = 0
         approval.status = 'pending'
 
         result = expense_service.delete_expense(expense_id, user_id)
 
-        assert expected == result
+        if expected:
+            assert result
+            expense_repository.delete.assert_called_once_with(expense_id)
+        else:
+            assert not result
+            expense_repository.delete.assert_not_called()
+

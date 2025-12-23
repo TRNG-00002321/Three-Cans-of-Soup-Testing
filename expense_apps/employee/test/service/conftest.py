@@ -25,7 +25,6 @@ def expense_repository_setup(expense_repository, expense):
             return expense
         return None
     expense_repository.find_by_id.side_effect = side_effect
-    expense_repository.delete.side_effect = lambda expense_id: expense_id >= 0
 
 @pytest.fixture(autouse=True)
 def approval_repository_setup(approval_repository, approval):
