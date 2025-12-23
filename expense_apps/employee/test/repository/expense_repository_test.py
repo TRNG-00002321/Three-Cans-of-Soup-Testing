@@ -2,7 +2,7 @@
 Unit tests for ExpenseRepository Class
 """
 import pytest
-from repository import ExpenseRepository, DatabaseConnection
+from repository.expense_repository import ExpenseRepository, DatabaseConnection
 
 
 class TestExpenseRepository():
