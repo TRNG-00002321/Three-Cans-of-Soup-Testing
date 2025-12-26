@@ -4,7 +4,6 @@ from flask import Flask, jsonify
 from api.auth import require_employee_auth
 
 def test_require_employee_auth_no_token(app, client):
-    # Setup a route specifically for this test
     @app.route('/test-auth')
     @require_employee_auth
     def protected_view():
