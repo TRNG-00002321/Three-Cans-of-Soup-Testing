@@ -1,6 +1,6 @@
 target/
 myenv/
 **/.venv/
-
+**/.vscode
 **/__pycache__/
 **/expense_manager.db
