@@ -28,6 +28,7 @@ def test_require_employee_auth_invalid_token(app, client):
     response = client.get('/test-auth-invalid')
 
     assert response.status_code == 403
+    assert response.json == {'error': 'Access denied'}
 
     
 def test_require_employee_auth_wrong_role(app, client):

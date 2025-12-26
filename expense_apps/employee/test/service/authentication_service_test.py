@@ -68,6 +68,13 @@ def test_validate_jwt_token_valid(auth_service, sample_user):
     assert payload is not None
     assert payload['user_id'] == sample_user.id
 
+def test_validate_jwt_token_invalid(auth_service, sample_user):
+    token = auth_service.generate_jwt_token("invalid.token")
+    
+    result = auth_service.validate_jwt_token(token)
+    
+    assert result is None
+
 def test_validate_jwt_token_expired(auth_service, sample_user):
     payload = {
         'user_id': sample_user.id,
@@ -86,7 +93,7 @@ def test_validate_jwt_token_invalid(auth_service):
     result = auth_service.validate_jwt_token("invalid.token.string")
     assert result is None
 
-def test_get_user_from_token_success(auth_service, mock_user_repository, sample_user):
+def test_get_user_from_token_valid(auth_service, mock_user_repository, sample_user):
     token = auth_service.generate_jwt_token(sample_user)
     mock_user_repository.find_by_id.return_value = sample_user
     
@@ -95,6 +102,6 @@ def test_get_user_from_token_success(auth_service, mock_user_repository, sample_
     assert user == sample_user
     mock_user_repository.find_by_id.assert_called_once_with(sample_user.id)
 
-def test_get_user_from_token_failure(auth_service):
+def test_get_user_from_token_invalid(auth_service):
     user = auth_service.get_user_from_token("invalid.token")
     assert user is None
