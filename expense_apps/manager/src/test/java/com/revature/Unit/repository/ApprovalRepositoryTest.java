@@ -1,4 +1,7 @@
-package com.revature.repository;
+package com.revature.Unit.repository;
+
+import com.revature.repository.ApprovalRepository;
+import com.revature.repository.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

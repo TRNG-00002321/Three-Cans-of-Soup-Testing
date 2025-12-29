@@ -1,4 +1,6 @@
-package com.revature.api;
+package com.revature.Unit.api;
+
+import com.revature.api.AuthenticationMiddleware;
 
 import java.util.Optional;
 

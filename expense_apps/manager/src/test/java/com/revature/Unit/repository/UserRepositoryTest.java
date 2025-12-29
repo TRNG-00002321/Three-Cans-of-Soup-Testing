@@ -1,4 +1,8 @@
-package com.revature.repository;
+package com.revature.Unit.repository;
+
+import com.revature.repository.DatabaseConnection;
+import com.revature.repository.User;
+import com.revature.repository.UserRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

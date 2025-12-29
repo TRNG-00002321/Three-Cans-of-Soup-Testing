@@ -1,10 +1,12 @@
-package com.revature.service;
+package com.revature.Unit.service;
 
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+
 import com.revature.repository.User;
 import com.revature.repository.UserRepository;
+import com.revature.service.AuthenticationService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
