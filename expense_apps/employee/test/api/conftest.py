@@ -12,7 +12,7 @@ from repository.approval_model import Approval
 from repository.expense_model import Expense
 
 @pytest.fixture
-def app(monkeypatch):
+def mock_app(monkeypatch):
     def identity_decorator(fn):
         return fn
 
@@ -29,5 +29,5 @@ def app(monkeypatch):
     return app
 
 @pytest.fixture
-def client(app):
-    return app.test_client()
+def mock_client(mock_app):
+    return mock_app.test_client()

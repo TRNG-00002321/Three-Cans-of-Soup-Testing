@@ -17,7 +17,7 @@ class Test_Expense_Controller():
         "approved",
         "denied"
     ])
-    def test_get_expenses_valid_status(self, client, app, monkeypatch, status):
+    def test_get_expenses_valid_status(self, mock_client, mock_app, monkeypatch, status):
         mock_user = User(1, "test_user", "test_pass", "Employee")
         mock_expenses = [
             (
@@ -38,9 +38,9 @@ class Test_Expense_Controller():
         
         mock_service = MagicMock()
         mock_service.get_expense_history.return_value = mock_expenses
-        app.expense_service = mock_service
+        mock_app.expense_service = mock_service
         
-        response = client.get(f"/api/expenses?status={status}")
+        response = mock_client.get(f"/api/expenses?status={status}")
         data_json = response.get_json()
         
         mock_service.get_expense_history.assert_called_once_with(
@@ -62,7 +62,7 @@ class Test_Expense_Controller():
             assert expense_json['comment'] == expected_approval.comment
             assert expense_json['review_date'] == expected_approval.review_date
             
-    def test_get_expenses_no_status(self, client, app, monkeypatch):
+    def test_get_expenses_no_status(self, mock_client, mock_app, monkeypatch):
         mock_user = User(1, "test_user", "test_pass", "Employee")
         mock_expenses = [
             (
@@ -83,9 +83,9 @@ class Test_Expense_Controller():
         
         mock_service = MagicMock()
         mock_service.get_expense_history.return_value = mock_expenses
-        app.expense_service = mock_service
+        mock_app.expense_service = mock_service
         
-        response = client.get(f"/api/expenses")
+        response = mock_client.get(f"/api/expenses")
         data_json = response.get_json()
         
         mock_service.get_expense_history.assert_called_once_with(
@@ -107,7 +107,7 @@ class Test_Expense_Controller():
             assert expense_json['comment'] == expected_approval.comment
             assert expense_json['review_date'] == expected_approval.review_date
 
-    def test_get_expenses_service_exception(self, client, app, monkeypatch):
+    def test_get_expenses_service_exception(self, mock_client, mock_app, monkeypatch):
         mock_user = User(1, "test_user", "test_pass", "Employee")
         
         monkeypatch.setattr(
@@ -118,9 +118,9 @@ class Test_Expense_Controller():
         
         mock_service = MagicMock()
         mock_service.get_expense_history.side_effect = Exception("Database connection error")
-        app.expense_service = mock_service
+        mock_app.expense_service = mock_service
         
-        response = client.get("/api/expenses?status=approved")
+        response = mock_client.get("/api/expenses?status=approved")
         
         mock_service.get_expense_history.assert_called_once_with(
             user_id=1,
