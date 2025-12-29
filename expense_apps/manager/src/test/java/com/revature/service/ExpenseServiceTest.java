@@ -6,8 +6,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
@@ -34,7 +35,6 @@ public class ExpenseServiceTest {
     // @InjectMocks
     // private ExpenseService expenseService;
     // // class that contains generateCsvReport()
-
     @Mock
     private ExpenseWithUser expenseWithUser;
 
@@ -47,8 +47,6 @@ public class ExpenseServiceTest {
     @Mock
     private Approval approval;
 
-
-
     @Mock
     private ExpenseRepository expenseRepository;
 
@@ -60,9 +58,9 @@ public class ExpenseServiceTest {
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
-                new ExpenseWithUser(new Expense(), new User(), new Approval()),
-                new ExpenseWithUser(new Expense(), new User(), new Approval()),
-                new ExpenseWithUser(new Expense(), new User(), new Approval())
+            new ExpenseWithUser(new Expense(), new User(), new Approval()),
+            new ExpenseWithUser(new Expense(), new User(), new Approval()),
+            new ExpenseWithUser(new Expense(), new User(), new Approval())
         };
         return Arrays.asList(expenses);
     }
@@ -95,7 +93,7 @@ public class ExpenseServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 3, 99, 453 })
+    @ValueSource(ints = {1, 2, 3, 99, 453})
     public void getExpensesByEmployee_ReturnsExpenseList(int employeeId) {
 
         // Arrange
@@ -175,8 +173,8 @@ public class ExpenseServiceTest {
         String result = expenseService.generateCsvReport(expenses);
 
         // Assert
-        String expected = "Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n" +
-                "1,john_doe,123.45,Taxi ride,2025-01-01,APPROVED,10,Looks good,2025-01-02\n";
+        String expected = "Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n"
+                + "1,john_doe,123.45,Taxi ride,2025-01-01,APPROVED,10,Looks good,2025-01-02\n";
 
         assertEquals(expected, result);
     }
@@ -205,9 +203,77 @@ public class ExpenseServiceTest {
         String result = expenseService.generateCsvReport(expenses);
 
         // Assert
-        String expected = "Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n" +
-                "2,alice,50.0,Lunch,2025-01-03,PENDING,,,\n";
+        String expected = "Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date\n"
+                + "2,alice,50.0,Lunch,2025-01-03,PENDING,,,\n";
 
         assertEquals(expected, result);
+    }
+
+    @Test
+    void approveExpense_SuccessfulApproval_ReturnsTrue() {
+        when(approvalRepository.updateApprovalStatus(123, "approved", 456, "Looks good"))
+                .thenReturn(true);
+
+        boolean result = expenseService.approveExpense(123, 456, "Looks good");
+
+        assertTrue(result);
+        verify(approvalRepository).updateApprovalStatus(123, "approved", 456, "Looks good");
+    }
+
+    @Test
+    void approveExpense_FailedApproval_ReturnsFalse() {
+        when(approvalRepository.updateApprovalStatus(999, "approved", 456, "Test"))
+                .thenReturn(false);
+
+        boolean result = expenseService.approveExpense(999, 456, "Test");
+
+        assertFalse(result);
+        verify(approvalRepository).updateApprovalStatus(999, "approved", 456, "Test");
+    }
+
+    @Test
+    void approveExpense_DatabaseError_ThrowsRuntimeException() {
+        when(approvalRepository.updateApprovalStatus(999, "approved", 100, "Approved"))
+                .thenThrow(new RuntimeException("Database connection failed"));
+
+        assertThrows(RuntimeException.class,
+                () -> expenseService.approveExpense(999, 100, "Approved")
+        );
+
+        verify(approvalRepository).updateApprovalStatus(999, "approved", 100, "Approved");
+    }
+
+    @Test
+    void denyExpense_SuccessfulDenial_ReturnsTrue() {
+        when(approvalRepository.updateApprovalStatus(123, "denied", 456, "Insufficient docs"))
+                .thenReturn(true);
+
+        boolean result = expenseService.denyExpense(123, 456, "Insufficient docs");
+
+        assertTrue(result);
+        verify(approvalRepository).updateApprovalStatus(123, "denied", 456, "Insufficient docs");
+    }
+
+    @Test
+    void denyExpense_FailedDenial_ReturnsFalse() {
+        when(approvalRepository.updateApprovalStatus(999, "denied", 456, "Test"))
+                .thenReturn(false);
+
+        boolean result = expenseService.denyExpense(999, 456, "Test");
+
+        assertFalse(result);
+        verify(approvalRepository).updateApprovalStatus(999, "denied", 456, "Test");
+    }
+
+    @Test
+    void denyExpense_DatabaseError_ThrowsRuntimeException() {
+        when(approvalRepository.updateApprovalStatus(999, "denied", 100, "Denied"))
+                .thenThrow(new RuntimeException("Database connection failed"));
+
+        assertThrows(RuntimeException.class,
+                () -> expenseService.denyExpense(999, 100, "Denied")
+        );
+
+        verify(approvalRepository).updateApprovalStatus(999, "denied", 100, "Denied");
     }
 }

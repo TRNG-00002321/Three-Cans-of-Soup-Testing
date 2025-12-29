@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -42,12 +43,13 @@ TODO: Implement ArgumentCaptor for Map Objects:
                 "count", expenses.size()
         ));
  */
-
 @ExtendWith(MockitoExtension.class)
 public class ExpenseControllerTest {
 
     Context ctxMock;
     private Validator<Integer> validatorMock;
+    private MockedStatic<AuthenticationMiddleware> authMiddlewareMock;
+    private User mockManager;
 
     @Mock
     private ExpenseService expenseService;
@@ -59,19 +61,28 @@ public class ExpenseControllerTest {
     public void setup() {
         ctxMock = mock(Context.class, Mockito.RETURNS_DEEP_STUBS);
         validatorMock = mock(Validator.class);
+
+        authMiddlewareMock = Mockito.mockStatic(AuthenticationMiddleware.class);
+        mockManager = new User();
+        mockManager.setId(10);
+        authMiddlewareMock.when(() -> AuthenticationMiddleware.getAuthenticatedManager(ctxMock))
+                .thenReturn(mockManager);
     }
 
     @AfterEach
     public void teardown() {
         ctxMock = null;
         validatorMock = null;
+        if (authMiddlewareMock != null) {
+            authMiddlewareMock.close();
+        }
     }
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
-                new ExpenseWithUser(new Expense(), new User(), new Approval()),
-                new ExpenseWithUser(new Expense(), new User(), new Approval()),
-                new ExpenseWithUser(new Expense(), new User(), new Approval())
+            new ExpenseWithUser(new Expense(), new User(), new Approval()),
+            new ExpenseWithUser(new Expense(), new User(), new Approval()),
+            new ExpenseWithUser(new Expense(), new User(), new Approval())
         };
         return Arrays.asList(expenses);
     }
@@ -212,5 +223,171 @@ public class ExpenseControllerTest {
         verify(ctxMock, times(1)).pathParamAsClass("employeeId", Integer.class);
         verify(expenseService, times(1)).getExpensesByEmployee(employeeId);
 
+    }
+
+    @Test
+    public void approveExpense_ValidExpenseId_UpdatesContext() {
+        int expenseId = 1;
+        String comment = "Approved for processing";
+        Map<String, Object> requestBody = Map.of("comment", comment);
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenReturn(requestBody);
+        when(expenseService.approveExpense(expenseId, mockManager.getId(), comment)).thenReturn(true);
+
+        expenseController.approveExpense(ctxMock);
+
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+        verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), comment);
+        verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "message", "Expense approved successfully"));
+    }
+
+    @Test
+    public void approveExpense_ValidExpenseIdNoComment_UpdatesContext() {
+        int expenseId = 1;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.approveExpense(expenseId, mockManager.getId(), null)).thenReturn(true);
+
+        expenseController.approveExpense(ctxMock);
+
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+        verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), null);
+        verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "message", "Expense approved successfully"));
+    }
+
+    @Test
+    public void approveExpense_MalformedExpenseId_ThrowsBadRequestResponse() {
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(validatorMock.get()).thenThrow(NumberFormatException.class);
+
+        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, () -> expenseController.approveExpense(ctxMock));
+
+        assertTrue(brr.getMessage().contains("Invalid expense ID format"));
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+    }
+
+    @Test
+    public void approveExpense_ServiceReturnsFalse_ThrowsNotFoundResponse() {
+        int expenseId = 999;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.approveExpense(expenseId, mockManager.getId(), null)).thenReturn(false);
+
+        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class, () -> expenseController.approveExpense(ctxMock));
+
+        assertTrue(nfr.getMessage().contains("Expense not found or could not be approved"));
+        verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), null);
+    }
+
+    @Test
+    public void approveExpense_ServiceThrowsException_ThrowsInternalServerErrorResponse() {
+        int expenseId = 1;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.approveExpense(expenseId, mockManager.getId(), null))
+                .thenThrow(new RuntimeException("Database error"));
+
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.approveExpense(ctxMock));
+
+        assertTrue(iser.getMessage().contains("Failed to approve expense"));
+        verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), null);
+    }
+
+    @Test
+    public void denyExpense_ValidExpenseId_UpdatesContext() {
+        int expenseId = 1;
+        String comment = "Does not meet policy requirements";
+        Map<String, Object> requestBody = Map.of("comment", comment);
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenReturn(requestBody);
+        when(expenseService.denyExpense(expenseId, mockManager.getId(), comment)).thenReturn(true);
+
+        expenseController.denyExpense(ctxMock);
+
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+        verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), comment);
+        verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "message", "Expense denied successfully"));
+    }
+
+    @Test
+    public void denyExpense_ValidExpenseIdNoComment_UpdatesContext() {
+        int expenseId = 1;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.denyExpense(expenseId, mockManager.getId(), null)).thenReturn(true);
+
+        expenseController.denyExpense(ctxMock);
+
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+        verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), null);
+        verify(ctxMock, times(1)).json(Map.of(
+                "success", true,
+                "message", "Expense denied successfully"));
+    }
+
+    @Test
+    public void denyExpense_MalformedExpenseId_ThrowsBadRequestResponse() {
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(validatorMock.get()).thenThrow(NumberFormatException.class);
+
+        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, () -> expenseController.denyExpense(ctxMock));
+
+        assertTrue(brr.getMessage().contains("Invalid expense ID format"));
+        verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
+        verify(validatorMock, times(1)).get();
+    }
+
+    @Test
+    public void denyExpense_ServiceReturnsFalse_ThrowsNotFoundResponse() {
+        int expenseId = 999;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.denyExpense(expenseId, mockManager.getId(), null)).thenReturn(false);
+
+        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class, () -> expenseController.denyExpense(ctxMock));
+
+        assertTrue(nfr.getMessage().contains("Expense not found or could not be denied"));
+        verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), null);
+    }
+
+    @Test
+    public void denyExpense_ServiceThrowsException_ThrowsInternalServerErrorResponse() {
+        int expenseId = 1;
+
+        when(validatorMock.get()).thenReturn(expenseId);
+        when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
+        when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
+        when(expenseService.denyExpense(expenseId, mockManager.getId(), null))
+                .thenThrow(new RuntimeException("Database error"));
+
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.denyExpense(ctxMock));
+
+        assertTrue(iser.getMessage().contains("Failed to deny expense"));
+        verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), null);
     }
 }
