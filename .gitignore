@@ -4,3 +4,5 @@ myenv/
 **/.vscode
 **/__pycache__/
 **/expense_manager.db
+**/allure-results
+**/allure-report
