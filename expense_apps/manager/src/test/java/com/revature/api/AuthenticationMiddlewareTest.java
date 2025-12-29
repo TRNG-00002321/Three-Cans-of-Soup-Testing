@@ -1,21 +1,28 @@
 package com.revature.api;
 
-import com.revature.repository.User;
-import io.javalin.http.Context;
-import com.revature.service.AuthenticationService;
-import io.javalin.http.ForbiddenResponse;
-import io.javalin.http.Handler;
-import io.javalin.http.UnauthorizedResponse;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import org.mockito.Mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
+import com.revature.repository.User;
+import com.revature.service.AuthenticationService;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import io.javalin.http.Context;
+import io.javalin.http.ForbiddenResponse;
+import io.javalin.http.Handler;
+import io.javalin.http.UnauthorizedResponse;
 
 @ExtendWith(MockitoExtension.class)
 class AuthenticationMiddlewareTest {
@@ -35,7 +42,6 @@ class AuthenticationMiddlewareTest {
         authenticationMiddleware = new AuthenticationMiddleware(authenticationService);
     }
 
-
     @Test
     void validateManagerSuccessTest() {
         String jwtToken = "jwtToken";
@@ -43,12 +49,12 @@ class AuthenticationMiddlewareTest {
         when(authenticationService.validateManagerAuthentication(jwtToken)).thenReturn(Optional.of(user));
         Handler handler = authenticationMiddleware.validateManager();
 
-        assertDoesNotThrow(()->handler.handle(ctx));
+        assertDoesNotThrow(() -> handler.handle(ctx));
 
         verify(ctx).cookie("jwt");
         verify(authenticationService).validateManagerAuthentication(jwtToken);
         verify(authenticationService, never()).validateJwtToken(any());
-        //validate token should only work if managerOpt is empty
+        // validate token should only work if managerOpt is empty
         // so it should not be called in this test
         verify(ctx).attribute("manager", user);
     }

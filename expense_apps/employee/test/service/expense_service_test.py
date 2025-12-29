@@ -3,8 +3,24 @@ from datetime import datetime
 import pytest
 from unittest.mock import MagicMock
 
-from repository import ExpenseRepository, Expense, ApprovalRepository
+from repository import ExpenseRepository, Expense, ApprovalRepository, Approval
+
 from service.expense_service import ExpenseService
+
+
+@pytest.fixture
+def expense_repo(mocker):
+    return mocker.Mock()
+
+
+@pytest.fixture
+def approval_repo(mocker):
+    return mocker.Mock()
+
+
+@pytest.fixture
+def service(expense_repo, approval_repo):
+    return ExpenseService(expense_repo, approval_repo)
 
 
 class TestExpenseService:
@@ -30,6 +46,19 @@ class TestExpenseService:
     @pytest.fixture
     def expense_service(self, expense_repository, approval_repository ):
         return ExpenseService(expense_repository, approval_repository)
+    
+    def test_get_user_expenses_with_status(self, service, approval_repo):
+        expense = Expense(id=1, user_id=10, amount=100, description="Taxi", date="2025-01-01")
+        approval = Approval(id=1, expense_id=1, status="pending", reviewer=None, comment=None, review_date=None)
+
+        approval_repo.find_expenses_with_status_for_user.return_value = [
+            (expense, approval)
+        ]
+
+        result = service.get_user_expenses_with_status(user_id=10)
+
+        assert result == [(expense, approval)]
+        approval_repo.find_expenses_with_status_for_user.assert_called_once_with(10)    
 
     def test_submit_expense_valid_expense_with_date(self, expense, expense_repository,expense_service):
         expense_repository.create.return_value =  expense
@@ -201,6 +230,3 @@ class TestExpenseService:
         else:
             assert not result
             expense_repository.delete.assert_not_called()
-
-
-

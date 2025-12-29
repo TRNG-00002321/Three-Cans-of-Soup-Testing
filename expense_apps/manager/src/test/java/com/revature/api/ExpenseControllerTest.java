@@ -42,6 +42,7 @@ TODO: Implement ArgumentCaptor for Map Objects:
                 "count", expenses.size()
         ));
  */
+
 @ExtendWith(MockitoExtension.class)
 public class ExpenseControllerTest {
 
@@ -68,9 +69,9 @@ public class ExpenseControllerTest {
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval())
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval())
         };
         return Arrays.asList(expenses);
     }
@@ -89,8 +90,7 @@ public class ExpenseControllerTest {
         verify(ctxMock, times(1)).json(Map.of(
                 "success", true,
                 "data", expenses,
-                "count", expenses.size()
-        ));
+                "count", expenses.size()));
     }
 
     @Test
@@ -121,8 +121,7 @@ public class ExpenseControllerTest {
         verify(ctxMock, times(1)).json(Map.of(
                 "success", true,
                 "data", expenses,
-                "count", expenses.size()
-        ));
+                "count", expenses.size()));
     }
 
     @Test
@@ -130,7 +129,7 @@ public class ExpenseControllerTest {
         // Arrange
         when(expenseService.getAllExpenses()).thenThrow(RuntimeException.class);
 
-        // Act 
+        // Act
         Executable action = () -> expenseController.getAllExpenses(ctxMock);
 
         // Assert
@@ -160,8 +159,7 @@ public class ExpenseControllerTest {
                 "success", true,
                 "data", expenses,
                 "count", expenses.size(),
-                "employeeId", employeeId
-        ));
+                "employeeId", employeeId));
     }
 
     @Disabled("BUG: Incorrect status code mapping; returns 500 instead of 404 on missing resource (EMS-35)")
@@ -186,7 +184,7 @@ public class ExpenseControllerTest {
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
         when(validatorMock.get()).thenThrow(NumberFormatException.class);
 
-        // Act 
+        // Act
         Executable action = () -> expenseController.getExpensesByEmployee(ctxMock);
         // Assert
         BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, action);
@@ -198,13 +196,14 @@ public class ExpenseControllerTest {
 
     @Test
     public void getExpenseByEmployee_ThrowsInternalServerErrorResponse() {
-        // Arrange  
+        // Arrange
         int employeeId = 2;
         when(validatorMock.get()).thenReturn(employeeId);
         when(ctxMock.pathParamAsClass("employeeId", Integer.class)).thenReturn(validatorMock);
-        when(expenseService.getExpensesByEmployee(employeeId)).thenThrow(new RuntimeException("Error finding expenses for user: " + employeeId));
+        when(expenseService.getExpensesByEmployee(employeeId))
+                .thenThrow(new RuntimeException("Error finding expenses for user: " + employeeId));
 
-        // Act 
+        // Act
         Executable action = () -> expenseController.getExpensesByEmployee(ctxMock);
 
         // Assert
