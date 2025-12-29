@@ -21,7 +21,7 @@ def sample_user():
 
 class Test_Authentication_Service():
 
-    def test_authenticate_user_success(auth_service, mock_user_repository, sample_user):
+    def test_authenticate_user_success(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_username.return_value = sample_user
         
         user = auth_service.authenticate_user('testuser', 'password')
@@ -29,7 +29,7 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_username.assert_called_once_with('testuser')
 
-    def test_authenticate_user_failure_wrong_password(auth_service, mock_user_repository, sample_user):
+    def test_authenticate_user_failure_wrong_password(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_username.return_value = sample_user
         
         user = auth_service.authenticate_user('testuser', 'wrongpassword')
@@ -37,7 +37,7 @@ class Test_Authentication_Service():
         assert user is None
         mock_user_repository.find_by_username.assert_called_once_with('testuser')
 
-    def test_authenticate_user_failure_user_not_found(auth_service, mock_user_repository):
+    def test_authenticate_user_failure_user_not_found(self, auth_service, mock_user_repository):
         mock_user_repository.find_by_username.return_value = None
         
         user = auth_service.authenticate_user('nonexistent', 'password')
@@ -45,7 +45,7 @@ class Test_Authentication_Service():
         assert user is None
         mock_user_repository.find_by_username.assert_called_once_with('nonexistent')
 
-    def test_get_user_by_id(auth_service, mock_user_repository, sample_user):
+    def test_get_user_by_id(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_id.return_value = sample_user
         
         user = auth_service.get_user_by_id(1)
@@ -53,7 +53,7 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_id.assert_called_once_with(1)
 
-    def test_generate_jwt_token(auth_service, sample_user):
+    def test_generate_jwt_token(self, auth_service, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
         
         assert isinstance(token, str)
@@ -62,7 +62,7 @@ class Test_Authentication_Service():
         assert decoded['username'] == sample_user.username
         assert decoded['role'] == sample_user.role
 
-    def test_validate_jwt_token_valid(auth_service, sample_user):
+    def test_validate_jwt_token_valid(self, auth_service, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
         
         payload = auth_service.validate_jwt_token(token)
@@ -70,14 +70,14 @@ class Test_Authentication_Service():
         assert payload is not None
         assert payload['user_id'] == sample_user.id
 
-    def test_validate_jwt_token_invalid(auth_service, sample_user):
+    def test_validate_jwt_token_invalid(self, auth_service, sample_user):
         token = auth_service.generate_jwt_token("invalid.token")
         
         result = auth_service.validate_jwt_token(token)
         
         assert result is None
 
-    def test_validate_jwt_token_expired(auth_service, sample_user):
+    def test_validate_jwt_token_expired(self, auth_service, sample_user):
         payload = {
             'user_id': sample_user.id,
             'username': sample_user.username,
@@ -91,11 +91,11 @@ class Test_Authentication_Service():
         
         assert result is None
 
-    def test_validate_jwt_token_invalid(auth_service):
+    def test_validate_jwt_token_invalid(self, auth_service):
         result = auth_service.validate_jwt_token("invalid.token.string")
         assert result is None
 
-    def test_get_user_from_token_valid(auth_service, mock_user_repository, sample_user):
+    def test_get_user_from_token_valid(self, auth_service, mock_user_repository, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
         mock_user_repository.find_by_id.return_value = sample_user
         
@@ -104,6 +104,6 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_id.assert_called_once_with(sample_user.id)
 
-    def test_get_user_from_token_invalid(auth_service):
+    def test_get_user_from_token_invalid(self, auth_service):
         user = auth_service.get_user_from_token("invalid.token")
         assert user is None
