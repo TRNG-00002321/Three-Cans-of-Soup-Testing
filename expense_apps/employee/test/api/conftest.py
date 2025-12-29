@@ -10,7 +10,7 @@ from api import auth
 from repository.user_model import User
 from repository.approval_model import Approval
 from repository.expense_model import Expense
-
+from api.auth_controller import auth_bp
 @pytest.fixture
 def app(monkeypatch):
     def identity_decorator(fn):
@@ -26,8 +26,27 @@ def app(monkeypatch):
     app.testing = True
     app.register_blueprint(expense_controller_module.expense_bp)
 
+    app.auth_service = MagicMock()
+    app.register_blueprint(auth_bp)
+
     return app
 
 @pytest.fixture
 def client(app):
     return app.test_client()
+
+@pytest.fixture
+def mock_employee():
+    user = MagicMock()
+    user.id = 1
+    user.username = "employee1"
+    user.role = "employee"
+    return user
+
+@pytest.fixture
+def mock_manager():
+    user = MagicMock()
+    user.id = 2
+    user.useranme = "manager1" 
+    user.role = "manager"
+    return user
