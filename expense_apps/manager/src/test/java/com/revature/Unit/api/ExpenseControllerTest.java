@@ -1,4 +1,4 @@
-package com.revature.api;
+package com.revature.Unit.api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +23,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.revature.api.AuthenticationMiddleware;
+import com.revature.api.ExpenseController;
 import com.revature.repository.Approval;
 import com.revature.repository.Expense;
 import com.revature.repository.ExpenseWithUser;
@@ -80,9 +82,9 @@ public class ExpenseControllerTest {
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval())
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval())
         };
         return Arrays.asList(expenses);
     }
@@ -270,7 +272,8 @@ public class ExpenseControllerTest {
         when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
         when(validatorMock.get()).thenThrow(NumberFormatException.class);
 
-        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, () -> expenseController.approveExpense(ctxMock));
+        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class,
+                () -> expenseController.approveExpense(ctxMock));
 
         assertTrue(brr.getMessage().contains("Invalid expense ID format"));
         verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
@@ -286,7 +289,8 @@ public class ExpenseControllerTest {
         when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
         when(expenseService.approveExpense(expenseId, mockManager.getId(), null)).thenReturn(false);
 
-        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class, () -> expenseController.approveExpense(ctxMock));
+        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class,
+                () -> expenseController.approveExpense(ctxMock));
 
         assertTrue(nfr.getMessage().contains("Expense not found or could not be approved"));
         verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), null);
@@ -302,7 +306,8 @@ public class ExpenseControllerTest {
         when(expenseService.approveExpense(expenseId, mockManager.getId(), null))
                 .thenThrow(new RuntimeException("Database error"));
 
-        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.approveExpense(ctxMock));
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class,
+                () -> expenseController.approveExpense(ctxMock));
 
         assertTrue(iser.getMessage().contains("Failed to approve expense"));
         verify(expenseService, times(1)).approveExpense(expenseId, mockManager.getId(), null);
@@ -353,7 +358,8 @@ public class ExpenseControllerTest {
         when(ctxMock.pathParamAsClass("expenseId", Integer.class)).thenReturn(validatorMock);
         when(validatorMock.get()).thenThrow(NumberFormatException.class);
 
-        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class, () -> expenseController.denyExpense(ctxMock));
+        BadRequestResponse brr = Assertions.assertThrows(BadRequestResponse.class,
+                () -> expenseController.denyExpense(ctxMock));
 
         assertTrue(brr.getMessage().contains("Invalid expense ID format"));
         verify(ctxMock, times(1)).pathParamAsClass("expenseId", Integer.class);
@@ -369,7 +375,8 @@ public class ExpenseControllerTest {
         when(ctxMock.bodyAsClass(Map.class)).thenThrow(new RuntimeException("No body"));
         when(expenseService.denyExpense(expenseId, mockManager.getId(), null)).thenReturn(false);
 
-        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class, () -> expenseController.denyExpense(ctxMock));
+        NotFoundResponse nfr = Assertions.assertThrows(NotFoundResponse.class,
+                () -> expenseController.denyExpense(ctxMock));
 
         assertTrue(nfr.getMessage().contains("Expense not found or could not be denied"));
         verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), null);
@@ -385,7 +392,8 @@ public class ExpenseControllerTest {
         when(expenseService.denyExpense(expenseId, mockManager.getId(), null))
                 .thenThrow(new RuntimeException("Database error"));
 
-        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class, () -> expenseController.denyExpense(ctxMock));
+        InternalServerErrorResponse iser = Assertions.assertThrows(InternalServerErrorResponse.class,
+                () -> expenseController.denyExpense(ctxMock));
 
         assertTrue(iser.getMessage().contains("Failed to deny expense"));
         verify(expenseService, times(1)).denyExpense(expenseId, mockManager.getId(), null);
