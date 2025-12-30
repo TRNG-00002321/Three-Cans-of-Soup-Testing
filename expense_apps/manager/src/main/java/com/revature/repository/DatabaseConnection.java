@@ -14,7 +14,7 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         // Use environment variable or default path
         String dbPath = System.getProperty("user.dir").replace("manager", "employee\\expense_manager.db");
-        if (System.getProperty("testMode") == "false") {
+        if (System.getProperty("testMode") == "false" || System.getProperty("databasePath") == null) {
             System.setProperty("databasePath", dbPath);
         }
         this.databasePath = System.getenv("DATABASE_PATH") != null
