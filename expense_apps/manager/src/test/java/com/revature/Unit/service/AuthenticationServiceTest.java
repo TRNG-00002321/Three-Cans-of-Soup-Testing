@@ -29,6 +29,7 @@ import com.revature.service.AuthenticationService;
 
 @ExtendWith(MockitoExtension.class)
 class AuthenticationServiceTest {
+
     @Mock
     UserRepository userRepository;
 
@@ -80,7 +81,7 @@ class AuthenticationServiceTest {
 
     @ParameterizedTest
     @NullSource
-    @ValueSource(strings = { "", "  ", "\n", "   \n" })
+    @ValueSource(strings = {"", "  ", "\n", "   \n"})
     void validateJwtTokenNoTokenTest(String strings) {
         Optional<User> userOptional = authenticationService.validateJwtToken(strings);
         assertFalse(userOptional.isPresent());
@@ -110,7 +111,7 @@ class AuthenticationServiceTest {
 
     @ParameterizedTest
     @NullSource
-    @ValueSource(strings = { "NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer " })
+    @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
     void validateAuthenticationInvalidBearerTest(String strings) {
         Optional<User> newUser = authenticationService.validateAuthentication(strings);
         assertFalse(newUser.isPresent());
@@ -184,7 +185,7 @@ class AuthenticationServiceTest {
 
     @ParameterizedTest
     @NullSource
-    @ValueSource(strings = { "NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer " })
+    @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
     void validateManagerAuthenticationLegacyInvalidBearerTest(String bearer) {
         Optional<User> userOptional = authenticationService.validateManagerAuthenticationLegacy(bearer);
         assertFalse(userOptional.isPresent());
@@ -226,13 +227,11 @@ class AuthenticationServiceTest {
         verify(userRepository).findById(anyInt());
     }
 
-    // @Test
-    // void getUserByIdExceptionTest() {
-    // when(userRepository.findById(anyInt())).thenThrow(new RuntimeException());
-    // assertThrows(RuntimeException.class, () ->
-    // authenticationService.getUserById(1));
-    // }
-
+//    @Test
+//     void getUserByIdExceptionTest() {
+//        when(userRepository.findById(anyInt())).thenThrow(new RuntimeException());
+//        assertThrows(RuntimeException.class, () -> authenticationService.getUserById(1));
+//    }
     @Test
     void authenticateUserSuccessTest() {
         user.setUsername("username");

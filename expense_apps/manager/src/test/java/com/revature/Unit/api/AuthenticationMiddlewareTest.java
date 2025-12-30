@@ -27,6 +27,7 @@ import io.javalin.http.UnauthorizedResponse;
 
 @ExtendWith(MockitoExtension.class)
 class AuthenticationMiddlewareTest {
+
     @Mock
     AuthenticationService authenticationService;
 
