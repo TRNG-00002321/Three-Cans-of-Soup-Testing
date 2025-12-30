@@ -3,4 +3,5 @@ myenv/
 **/.venv/
 **/.vscode
 **/__pycache__/
-**/expense_manager.db
+**/.env
+.env
