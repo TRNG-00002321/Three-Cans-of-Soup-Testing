@@ -1,3 +1,4 @@
+import os
 from unittest.mock import Mock
 import pytest
 
@@ -13,59 +14,23 @@ from api import auth_bp, expense_bp
 from contextlib import contextmanager
 import sqlite3
 
-@pytest.fixture
-def database():
-    with sqlite3.connect(':memory:') as conn:
+TEMP_DATABASE = 'tmp_database.db'
+
+@pytest.fixture(scope='session', autouse=True)
+def database_setup():
+    database = DatabaseConnection()
+    conn = sqlite3.connect(TEMP_DATABASE)
+    with database.get_connection() as data:
         # Create users table
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL,
-                role TEXT NOT NULL
-            )
-        ''')
-        
-        # Create expenses table
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS expenses (
-                id INTEGER PRIMARY KEY,
-                user_id INTEGER NOT NULL,
-                amount REAL NOT NULL,
-                description TEXT NOT NULL,
-                date TEXT NOT NULL,
-                FOREIGN KEY (user_id) REFERENCES users (id)
-            )
-        ''')
-        
-        # Create approvals table
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS approvals (
-                id INTEGER PRIMARY KEY,
-                expense_id INTEGER NOT NULL,
-                status TEXT NOT NULL DEFAULT 'pending',
-                reviewer INTEGER,
-                comment TEXT,
-                review_date TEXT,
-                FOREIGN KEY (expense_id) REFERENCES expenses (id),
-                FOREIGN KEY (reviewer) REFERENCES users (id)
-            )
-        ''')
-        
-        conn.commit()
-
-        yield conn
+        data.backup(conn)
+    conn.close()
+    yield 
+    os.remove(TEMP_DATABASE)
 
 
 @pytest.fixture
-def db_connection(database):
-    @contextmanager
-    def get_connection():
-        yield database
-    db_connection =  Mock(spec=DatabaseConnection)
-
-    db_connection.get_connection = get_connection
-    return db_connection
+def db_connection():
+    return DatabaseConnection(TEMP_DATABASE)
 
 @pytest.fixture
 def user_repository(db_connection):
