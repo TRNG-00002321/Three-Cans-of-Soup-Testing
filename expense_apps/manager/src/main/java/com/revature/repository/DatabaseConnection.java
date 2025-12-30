@@ -10,13 +10,16 @@ import java.sql.SQLException;
  */
 public class DatabaseConnection {
     private final String databasePath;
-    
+
     public DatabaseConnection() {
         // Use environment variable or default path
-        System.setProperty("databasePath", "/Users/andrew/Desktop/Revature/Project_1/expense_manager.db");
+        String dbPath = System.getProperty("user.dir").replace("manager", "employee\\expense_manager.db");
+        if (System.getProperty("testMode") == "false") {
+            System.setProperty("databasePath", dbPath);
+        }
         this.databasePath = System.getenv("DATABASE_PATH") != null
-            ? System.getenv("DATABASE_PATH")
-            : System.getProperty("databasePath");
+                ? System.getenv("DATABASE_PATH")
+                : System.getProperty("databasePath");
     }
     
     public DatabaseConnection(String databasePath) {
