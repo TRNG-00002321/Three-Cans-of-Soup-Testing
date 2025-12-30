@@ -1,4 +1,4 @@
-package com.revature.repository;
+package com.revature.Unit.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +17,9 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.revature.repository.ApprovalRepository;
+import com.revature.repository.DatabaseConnection;
 
 @ExtendWith(MockitoExtension.class)
 public class ApprovalRepositoryTest {

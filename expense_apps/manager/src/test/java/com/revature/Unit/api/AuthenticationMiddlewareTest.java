@@ -1,4 +1,4 @@
-package com.revature.api;
+package com.revature.Unit.api;
 
 import java.util.Optional;
 
@@ -16,6 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.revature.api.AuthenticationMiddleware;
 import com.revature.repository.User;
 import com.revature.service.AuthenticationService;
 
@@ -26,6 +27,7 @@ import io.javalin.http.UnauthorizedResponse;
 
 @ExtendWith(MockitoExtension.class)
 class AuthenticationMiddlewareTest {
+
     @Mock
     AuthenticationService authenticationService;
 

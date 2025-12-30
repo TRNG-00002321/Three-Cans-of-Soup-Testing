@@ -1,24 +1,29 @@
-package com.revature.api;
+package com.revature.Unit.api;
 
-import com.revature.repository.*;
-import com.revature.service.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.revature.api.ReportController;
+import com.revature.repository.ExpenseWithUser;
+import com.revature.service.ExpenseService;
+
 import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.InternalServerErrorResponse;
 import io.javalin.validation.Validator;
-
-import org.junit.jupiter.api.*;
-
-import org.junit.jupiter.api.extension.ExtendWith;
-
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ReportControllerTest {
@@ -42,14 +47,12 @@ public class ReportControllerTest {
                 new ExpenseWithUser()
         );
 
-         mockCsv = "id,amount,user\n1,100,Alice";
+        mockCsv = "id,amount,user\n1,100,Alice";
     }
-
 
     @Test
     @DisplayName("Generate All Expenses Report Success")
-    public void generateAllExpensesReportTestHappy(){
-
+    public void generateAllExpensesReportTestHappy() {
 
         when(expenseService.getAllExpenses()).thenReturn(mockExpenses);
         when(expenseService.generateCsvReport(mockExpenses)).thenReturn(mockCsv);
@@ -71,7 +74,7 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate All Expenses Report Exception")
-    public void generateAllExpensesReportTestException(){
+    public void generateAllExpensesReportTestException() {
         when(expenseService.getAllExpenses()).thenThrow(new InternalServerErrorResponse());
 
         assertThrows(InternalServerErrorResponse.class, () -> reportController.generateAllExpensesReport(ctx));
@@ -80,12 +83,10 @@ public class ReportControllerTest {
         verifyNoMoreInteractions(ctx);
     }
 
-
     @Test
     @DisplayName("Generate Employee Expenses Report Success")
-    public void generateEmployeeExpensesReportTestHappy(){
-        int employeeId =1;
-
+    public void generateEmployeeExpensesReportTestHappy() {
+        int employeeId = 1;
 
         when(ctx.pathParamAsClass("employeeId", Integer.class))
                 .thenReturn(employeeIdValidator);
@@ -100,7 +101,6 @@ public class ReportControllerTest {
         reportController.generateEmployeeExpensesReport(ctx);
 
         // Assert
-
         verify(ctx).contentType("text/csv");
         verify(ctx).header(
                 "Content-Disposition",
@@ -113,7 +113,7 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Employee Expenses Report Bad Request Exception")
-    public void generateEmployeeExpensesReportTestBadRequestException(){
+    public void generateEmployeeExpensesReportTestBadRequestException() {
         when(ctx.pathParamAsClass("employeeId", Integer.class))
                 .thenThrow(new NumberFormatException("Invalid number"));
 
@@ -129,7 +129,7 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Employee Expenses Report Internal Server Error")
-    public void generateEmployeeExpensesReportTestInternalServerErrorException(){
+    public void generateEmployeeExpensesReportTestInternalServerErrorException() {
         int employeeId = 10;
 
         when(ctx.pathParamAsClass("employeeId", Integer.class))
@@ -148,9 +148,8 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Success")
-    public void generateCategoryExpensesReportTestHappy(){
-        String category ="food";
-
+    public void generateCategoryExpensesReportTestHappy() {
+        String category = "food";
 
         when(ctx.pathParam("category"))
                 .thenReturn(category);
@@ -162,7 +161,6 @@ public class ReportControllerTest {
 
         // Act
         reportController.generateCategoryExpensesReport(ctx);
-
 
         verify(ctx).contentType("text/csv");
         verify(ctx).header(
@@ -199,7 +197,7 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Bad Request Exception")
-    public void generateCategoryExpensesReportTestBadRequestException(){
+    public void generateCategoryExpensesReportTestBadRequestException() {
         when(ctx.pathParam("category")).thenReturn("   ");
         // Act + Assert
         assertThrows(
@@ -213,14 +211,12 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Internal Server Error")
-    public void generateCategoryExpensesReportTestInternalServerErrorException(){
+    public void generateCategoryExpensesReportTestInternalServerErrorException() {
         String category = "bad category";
 
         when(ctx.pathParam("category"))
                 .thenReturn(category);
         when(expenseService.getExpensesByCategory(category)).thenThrow(new RuntimeException("Database error"));
-
-
 
         // Act + Assert
         assertThrows(
@@ -235,8 +231,6 @@ public class ReportControllerTest {
         // Arrange
         String startDate = "2024-01-01";
         String endDate = "2024-01-31";
-
-
 
         when(ctx.queryParam("startDate")).thenReturn(startDate);
         when(ctx.queryParam("endDate")).thenReturn(endDate);

@@ -1,19 +1,29 @@
-package com.revature.repository;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+package com.revature.Unit.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.argThat;
+import org.mockito.Mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.revature.repository.DatabaseConnection;
+import com.revature.repository.User;
+import com.revature.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class UserRepositoryTest {
@@ -67,7 +77,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    void findByIdConnectionFailTest(){
+    void findByIdConnectionFailTest() {
         assertThrows(RuntimeException.class, () -> userRepo.findById(1));
     }
 
@@ -97,7 +107,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    void findByUsernameConnectionFailTest(){
+    void findByUsernameConnectionFailTest() {
         assertThrows(RuntimeException.class, () -> userRepo.findByUsername("username"));
     }
 
