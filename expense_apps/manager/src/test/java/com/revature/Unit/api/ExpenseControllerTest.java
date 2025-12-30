@@ -1,4 +1,4 @@
-package com.revature.api;
+package com.revature.Unit.api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +23,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.revature.api.AuthenticationMiddleware;
+import com.revature.api.ExpenseController;
 import com.revature.repository.Approval;
 import com.revature.repository.Expense;
 import com.revature.repository.ExpenseWithUser;

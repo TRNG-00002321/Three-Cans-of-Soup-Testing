@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.revature.Unit.service;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,6 +28,7 @@ import com.revature.repository.Expense;
 import com.revature.repository.ExpenseRepository;
 import com.revature.repository.ExpenseWithUser;
 import com.revature.repository.User;
+import com.revature.service.ExpenseService;
 
 @ExtendWith(MockitoExtension.class)
 public class ExpenseServiceTest {
