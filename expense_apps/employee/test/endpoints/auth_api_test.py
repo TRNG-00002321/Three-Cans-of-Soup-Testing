@@ -33,6 +33,13 @@ class TestAuthApi:
         assert response.status_code == 400
         assert data["error"] == "Username and password required"
 
+    def test_login_missing_json(self, base_url):
+        response = requests.post(f"{base_url}/api/auth/login", json={})
+        data = response.json()
+
+        assert response.status_code == 400
+        assert data["error"] == "JSON data required"
+
 
     def test_logout(self, base_url):
         session = requests.Session()
