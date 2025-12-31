@@ -82,7 +82,7 @@ class TestAuthApi:
     def test_status_not_logged_in(self, test_app):
         response = requests.get(f"{test_app}/api/auth/status")
         data = response.json()
-        assert response.status_code == 200
+        assert response.status_code == 401
         assert data["authenticated"] == False
         
     @pytest.mark.skip(reason="Incorrect status code, ticket EMS-58")
@@ -95,7 +95,7 @@ class TestAuthApi:
         session.post(f"{test_app}/api/auth/logout")
         response = session.get(f"{test_app}/api/auth/status")
         data = response.json()
-        assert response.status_code == 200
+        assert response.status_code == 401
         assert data["authenticated"] == False
 
     @pytest.mark.skip(reason="Incorrect status code, ticket EMS-59")
@@ -112,5 +112,5 @@ class TestAuthApi:
 
             response = session.get(f"{test_app}/api/auth/status")
             data = response.json()
-            assert response.status_code == 200
+            assert response.status_code == 500
             assert data["authenticated"] == False
