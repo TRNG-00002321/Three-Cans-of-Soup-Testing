@@ -14,7 +14,7 @@
         <allure.version>2.25.0</allure.version>
         <aspectj.version>1.9.21</aspectj.version>
         <junit.version>5.11.0</junit.version>
-        <mockito.version>5.14.0</mockito.version>
+        <mockito.version>5.20.0</mockito.version>
     </properties>
 
     <dependencyManagement>
