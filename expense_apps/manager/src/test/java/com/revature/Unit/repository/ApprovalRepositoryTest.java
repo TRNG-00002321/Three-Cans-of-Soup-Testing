@@ -60,9 +60,8 @@ public class ApprovalRepositoryTest {
     @Test
     void updateApprovalStatus_SQLException_ThrowsRuntimeException() throws SQLException {
         when(preparedStatement.executeUpdate()).thenThrow(new SQLException("DB error"));
-        RuntimeException exception = assertThrows(RuntimeException.class, ()
-                -> approvalRepository.updateApprovalStatus(123, "approved", 456, "test")
-        );
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> approvalRepository.updateApprovalStatus(123, "approved", 456, "test"));
         assertTrue(exception.getMessage().contains("Error updating approval for expense: 123"));
 
         verify(preparedStatement).setString(1, "approved");

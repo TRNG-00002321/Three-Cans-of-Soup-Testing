@@ -71,7 +71,8 @@ public class UserRepositoryTest {
         assertEquals(user.getRole(), newUser.get().getRole());
 
         verify(mockDbConnection, times(1)).getConnection();
-        verify(mockConnection).prepareStatement(argThat(arg -> arg.contains("WHERE id")));;
+        verify(mockConnection).prepareStatement(argThat(arg -> arg.contains("WHERE id")));
+        ;
         verify(mockStatement, times(1)).executeQuery();
         verify(mockResultSet, times(1)).next();
     }
@@ -101,7 +102,8 @@ public class UserRepositoryTest {
         assertEquals(user.getRole(), newUser.get().getRole());
 
         verify(mockDbConnection, times(1)).getConnection();
-        verify(mockConnection).prepareStatement(argThat(arg -> arg.contains("WHERE username")));;
+        verify(mockConnection).prepareStatement(argThat(arg -> arg.contains("WHERE username")));
+        ;
         verify(mockStatement, times(1)).executeQuery();
         verify(mockResultSet, times(1)).next();
     }

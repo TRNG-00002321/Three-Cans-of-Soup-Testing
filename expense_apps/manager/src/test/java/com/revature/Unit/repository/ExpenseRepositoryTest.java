@@ -89,8 +89,7 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
     }
@@ -161,8 +160,7 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
     }
@@ -235,8 +233,7 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
         verify(mockPreparedStatement, times(1)).setInt(1, userId);

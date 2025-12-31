@@ -50,3 +50,50 @@ class TestExpenseController:
         response = requests.get(f'{test_app}/api/expenses',cookies={'jwt_token': jwt_token})
         assert response.status_code == 401
         assert response.json() is not None
+
+    @pytest.mark.parametrize("payload, expected_status", [
+        ({"description": "Lunch"}, 400),
+        ({"amount": 100}, 400),
+        ({"amount": "invalid", "description": "Lunch"}, 400)
+    ])
+    def test_submit_expense_invalid_payload_fail(self, test_app, payload, expected_status):
+        jwt_token = requests.post(f'{test_app}/api/auth/login', json={
+            'username': 'employee1',
+            'password': 'password123'
+        }).cookies.get('jwt_token')
+        
+        response = requests.post(f'{test_app}/api/expenses', json=payload, cookies={'jwt_token': jwt_token})
+        assert response.status_code == expected_status
+        assert response.json().get('error') is not None
+        
+    def test_submit_expense_success(self, test_app):
+        jwt_token = requests.post(f'{test_app}/api/auth/login', json={
+            'username': 'employee1',
+            'password': 'password123'
+        }).cookies.get('jwt_token')
+        
+        payload = {"amount": 50.0, "description": "Taxi", "date": "2024-12-01"}
+        response = requests.post(f'{test_app}/api/expenses', json=payload, cookies={'jwt_token': jwt_token})
+        
+        assert response.status_code == 201
+        assert response.headers['Content-Type'] == 'application/json'
+        
+        data = response.json()
+        assert data.get('message') == 'Expense submitted successfully'
+        assert data.get('expense') is not None
+        assert data['expense']['status'] == 'pending'
+        assert data['expense']['amount'] == 50.0
+        
+    @pytest.mark.parametrize("token, expected_status", [
+        (None, 401),
+        ("invalid_token", 403)
+    ])
+    def test_submit_expense_security_fail(self, test_app, token, expected_status):
+        cookies = {}
+        if token:
+            cookies['jwt_token'] = token
+            
+        payload = {"amount": 50.0, "description": "Taxi"}
+        response = requests.post(f'{test_app}/api/expenses', json=payload, cookies=cookies)
+        
+        assert response.status_code == expected_status
