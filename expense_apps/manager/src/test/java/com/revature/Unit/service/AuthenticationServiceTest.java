@@ -1,32 +1,35 @@
-package com.revature.service;
+package com.revature.Unit.service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.revature.repository.User;
-import com.revature.repository.UserRepository;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.revature.repository.User;
+import com.revature.repository.UserRepository;
+import com.revature.service.AuthenticationService;
 
 @ExtendWith(MockitoExtension.class)
- class AuthenticationServiceTest {
+class AuthenticationServiceTest {
+
     @Mock
     UserRepository userRepository;
 
@@ -35,13 +38,13 @@ import static org.mockito.Mockito.when;
     AuthenticationService authenticationService;
 
     @BeforeEach
-     void setup() {
+    void setup() {
         user = new User();
         authenticationService = new AuthenticationService(userRepository);
     }
 
     @Test
-     void createJwtTokenSuccessTest() {
+    void createJwtTokenSuccessTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
@@ -62,7 +65,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void validateJwtTokenSuccessTest() {
+    void validateJwtTokenSuccessTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
@@ -79,19 +82,19 @@ import static org.mockito.Mockito.when;
     @ParameterizedTest
     //@NullSource
     @ValueSource(strings = {"", "  ", "\n", "   \n"})
-     void validateJwtTokenNoTokenTest(String strings) {
+    void validateJwtTokenNoTokenTest(String strings) {
         Optional<User> userOptional = authenticationService.validateJwtToken(strings);
         assertFalse(userOptional.isPresent());
     }
 
     @Test
-     void validateJwtTokenInvalidTokenTest() {
+    void validateJwtTokenInvalidTokenTest() {
         Optional<User> userOptional = authenticationService.validateJwtToken("fake token");
         assertFalse(userOptional.isPresent());
     }
 
     @Test
-     void validateJwtTokenInvalidIDTest() {
+    void validateJwtTokenInvalidIDTest() {
         when(userRepository.findById(anyInt())).thenThrow(NumberFormatException.class);
 
         String token = authenticationService.createJwtToken(user);
@@ -100,7 +103,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void validateAuthenticationSuccessTest() {
+    void validateAuthenticationSuccessTest() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(user));
         Optional<User> newUser = authenticationService.validateAuthentication("Bearer 1");
         assertTrue(newUser.isPresent());
@@ -109,26 +112,26 @@ import static org.mockito.Mockito.when;
     @ParameterizedTest
     //@NullSource
     @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
-     void validateAuthenticationInvalidBearerTest(String strings) {
+    void validateAuthenticationInvalidBearerTest(String strings) {
         Optional<User> newUser = authenticationService.validateAuthentication(strings);
         assertFalse(newUser.isPresent());
     }
 
     @Test
-     void isManagerTrueTest() {
+    void isManagerTrueTest() {
         user.setRole("manager");
         assertTrue(authenticationService.isManager(user));
     }
 
     @Test
-     void isManagerFalseTest() {
+    void isManagerFalseTest() {
         user.setRole("employee");
         assertFalse(authenticationService.isManager(user));
         assertFalse(authenticationService.isManager(null));
     }
 
     @Test
-     void validateManagerAuthenticationSuccessTest() {
+    void validateManagerAuthenticationSuccessTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
@@ -141,7 +144,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void validateManagerAuthenticationInvalidTokenTest() {
+    void validateManagerAuthenticationInvalidTokenTest() {
         Optional<User> userOptional = authenticationService.validateManagerAuthentication("token");
         assertFalse(userOptional.isPresent());
 
@@ -156,7 +159,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void validateManagerAuthenticationNotManagerTest() {
+    void validateManagerAuthenticationNotManagerTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("employee");
@@ -167,8 +170,9 @@ import static org.mockito.Mockito.when;
         assertFalse(userOptional.isPresent());
         verify(userRepository).findById(anyInt());
     }
+
     @Test
-     void validateManagerAuthenticationLegacySuccessTest() {
+    void validateManagerAuthenticationLegacySuccessTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
@@ -182,13 +186,13 @@ import static org.mockito.Mockito.when;
     @ParameterizedTest
     //@NullSource
     @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
-     void validateManagerAuthenticationLegacyInvalidBearerTest(String bearer) {
+    void validateManagerAuthenticationLegacyInvalidBearerTest(String bearer) {
         Optional<User> userOptional = authenticationService.validateManagerAuthenticationLegacy(bearer);
         assertFalse(userOptional.isPresent());
     }
 
     @Test
-     void validateManagerAuthenticationLegacyRepositoryFailsTest() {
+    void validateManagerAuthenticationLegacyRepositoryFailsTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
@@ -198,7 +202,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void validateManagerAuthenticationLegacyNotManagerTest() {
+    void validateManagerAuthenticationLegacyNotManagerTest() {
         user.setId(1);
         user.setUsername("username");
         user.setRole("employee");
@@ -210,14 +214,14 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void getUserByIdSuccessTest() {
+    void getUserByIdSuccessTest() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(user));
         assertTrue(authenticationService.getUserById(1).isPresent());
         verify(userRepository).findById(anyInt());
     }
 
     @Test
-     void getUserByIdFailTest() {
+    void getUserByIdFailTest() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.empty());
         assertFalse(authenticationService.getUserById(1).isPresent());
         verify(userRepository).findById(anyInt());
@@ -228,9 +232,8 @@ import static org.mockito.Mockito.when;
 //        when(userRepository.findById(anyInt())).thenThrow(new RuntimeException());
 //        assertThrows(RuntimeException.class, () -> authenticationService.getUserById(1));
 //    }
-
     @Test
-     void authenticateUserSuccessTest() {
+    void authenticateUserSuccessTest() {
         user.setUsername("username");
         user.setPassword("password");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(user));
@@ -238,7 +241,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void authenticateUserIncorrectPasswordTest() {
+    void authenticateUserIncorrectPasswordTest() {
         user.setUsername("username");
         user.setPassword("password");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(user));
@@ -246,13 +249,13 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void authenticateUserIncorrectUsernameTest() {
+    void authenticateUserIncorrectUsernameTest() {
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
         assertFalse(authenticationService.authenticateUser("username", "password").isPresent());
     }
 
     @Test
-     void authenticateMangerSuccessTest() {
+    void authenticateMangerSuccessTest() {
         user.setUsername("username");
         user.setPassword("password");
         user.setRole("manager");
@@ -261,7 +264,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void authenticateManagerIncorrectPasswordTest() {
+    void authenticateManagerIncorrectPasswordTest() {
         user.setUsername("username");
         user.setPassword("password");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(user));
@@ -269,13 +272,13 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void authenticateManagerIncorrectUsernameTest() {
+    void authenticateManagerIncorrectUsernameTest() {
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
         assertFalse(authenticationService.authenticateManager("username", "password").isPresent());
     }
 
     @Test
-     void authenticateMangerNotManagerTest() {
+    void authenticateMangerNotManagerTest() {
         user.setUsername("username");
         user.setPassword("password");
         user.setRole("employee");

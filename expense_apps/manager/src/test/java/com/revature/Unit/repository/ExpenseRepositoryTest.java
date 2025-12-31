@@ -1,4 +1,4 @@
-package com.revature.repository;
+package com.revature.Unit.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +22,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.revature.repository.Approval;
+import com.revature.repository.DatabaseConnection;
+import com.revature.repository.Expense;
+import com.revature.repository.ExpenseRepository;
+import com.revature.repository.ExpenseWithUser;
+import com.revature.repository.User;
 
 @ExtendWith(MockitoExtension.class)
 public class ExpenseRepositoryTest {
