@@ -1,0 +1,911 @@
+Index: src/main/java/com/revature/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.revature;\r\n\r\nimport com.revature.api.AuthenticationMiddleware;\r\nimport com.revature.api.ExpenseController;\r\nimport com.revature.api.ReportController;\r\nimport com.revature.repository.DatabaseConnection;\r\nimport com.revature.repository.UserRepository;\r\nimport com.revature.repository.ExpenseRepository;\r\nimport com.revature.repository.User;\r\nimport com.revature.repository.ApprovalRepository;\r\nimport com.revature.service.AuthenticationService;\r\nimport com.revature.service.ExpenseService;\r\n\r\nimport io.javalin.Javalin;\r\nimport io.javalin.http.staticfiles.Location;\r\n\r\nimport java.util.Map;\r\n\r\n/**\r\n * Main application class for the Revature Expense Manager (Manager App).\r\n * Sets up dependency injection and configures Javalin web server with REST endpoints.\r\n */\r\npublic class Main {\r\n    private static final int PORT = 5001;\r\n    \r\n    public static void main(String[] args) {\r\n        // Initialize dependencies using constructor dependency injection\r\n        DatabaseConnection databaseConnection = new DatabaseConnection();\r\n        \r\n        // Repository layer\r\n        UserRepository userRepository = new UserRepository(databaseConnection);\r\n        ExpenseRepository expenseRepository = new ExpenseRepository(databaseConnection);\r\n        ApprovalRepository approvalRepository = new ApprovalRepository(databaseConnection);\r\n        \r\n        // Service layer\r\n        AuthenticationService authenticationService = new AuthenticationService(userRepository);\r\n        ExpenseService expenseService = new ExpenseService(expenseRepository, approvalRepository);\r\n        \r\n        // API layer\r\n        AuthenticationMiddleware authMiddleware = new AuthenticationMiddleware(authenticationService);\r\n        ExpenseController expenseController = new ExpenseController(expenseService);\r\n        ReportController reportController = new ReportController(expenseService);\r\n        \r\n        // Configure and start Javalin application\r\n        Javalin app = Javalin.create(config -> {\r\n            // Enable CORS for cross-origin requests from frontend\r\n            config.bundledPlugins.enableCors(cors -> {\r\n                cors.addRule(it -> {\r\n                    it.allowHost(\"http://127.0.0.1:5000\");\r\n                    it.allowHost(\"http://localhost:5000\");\r\n                    it.allowCredentials = true;\r\n                });\r\n            });\r\n            \r\n            // Enable static file serving from resources\r\n            config.staticFiles.add(staticFiles -> {\r\n                staticFiles.hostedPath = \"/\";\r\n                staticFiles.directory = \"/\";\r\n                staticFiles.location = Location.CLASSPATH;\r\n            });\r\n            \r\n            // Enable request logging\r\n            config.bundledPlugins.enableDevLogging();\r\n        });\r\n        \r\n        // Global exception handling\r\n        app.exception(Exception.class, (e, ctx) -> {\r\n            ctx.status(500);\r\n            ctx.json(java.util.Map.of(\r\n                \"success\", false,\r\n                \"error\", \"Internal server error\",\r\n                \"message\", e.getMessage()\r\n            ));\r\n        });\r\n        \r\n        // Root redirect to manager dashboard\r\n        app.get(\"/\", ctx -> ctx.redirect(\"/manager.html\"));\r\n        \r\n        // Authentication status endpoint (no auth required)\r\n        app.get(\"/api/auth/status\", ctx -> {\r\n            String jwtToken = ctx.cookie(\"jwt\");\r\n            \r\n            java.util.Optional<com.revature.repository.User> managerOpt = authenticationService.validateManagerAuthentication(jwtToken);\r\n            \r\n            if (managerOpt.isPresent()) {\r\n                com.revature.repository.User manager = managerOpt.get();\r\n                ctx.json(java.util.Map.of(\r\n                    \"authenticated\", true,\r\n                    \"user\", java.util.Map.of(\r\n                        \"id\", manager.getId(),\r\n                        \"username\", manager.getUsername(),\r\n                        \"role\", manager.getRole()\r\n                    )\r\n                ));\r\n            } else {\r\n                ctx.json(java.util.Map.of(\"authenticated\", false));\r\n            }\r\n        });\r\n        \r\n        // Manager login endpoint (no auth required)\r\n        app.post(\"/api/auth/login\", ctx -> {\r\n            try {\r\n                // Parse login request\r\n                // @SuppressWarnings(\"unchecked\")\r\n                User loginData = ctx.bodyAsClass(User.class);\r\n                System.out.println(\"Login attempt for user: \" + loginData.getUsername());\r\n                String username = loginData.getUsername();\r\n                String password = loginData.getPassword();\r\n\r\n                if (username == null || password == null) {\r\n                    ctx.status(400);\r\n                    ctx.json(Map.of(\r\n                        \"success\", false,\r\n                        \"error\", \"Username and password are required\"\r\n                    ));\r\n                    return;\r\n                }\r\n                \r\n                // Authenticate manager\r\n                System.out.println(\"Attempting authentication for user: \" + username);\r\n                java.util.Optional<com.revature.repository.User> managerOpt = authenticationService.authenticateManager(username, password);\r\n                \r\n                if (managerOpt.isPresent()) {\r\n                    System.out.println(\"Authentication successful for user: \" + username);\r\n                    com.revature.repository.User manager = managerOpt.get();\r\n                    \r\n                    // Create JWT token\r\n                    String jwtToken = authenticationService.createJwtToken(manager);\r\n                    \r\n                    // Set JWT as HTTP-only cookie\r\n                    ctx.cookie(\"jwt\", jwtToken, 24 * 60 * 60); // 24 hours expiry\r\n                    \r\n                    ctx.status(200);\r\n                    ctx.json(Map.of(\r\n                        \"success\", true,\r\n                        \"message\", \"Login successful\",\r\n                        \"user\", Map.of(\r\n                            \"id\", manager.getId(),\r\n                            \"username\", manager.getUsername(),\r\n                            \"role\", manager.getRole()\r\n                        )\r\n                    ));\r\n                } else {\r\n                    ctx.status(401);\r\n                    ctx.json(Map.of(\r\n                        \"success\", false,\r\n                        \"error\", \"Invalid credentials or user is not a manager\"\r\n                    ));\r\n                }\r\n            } catch (Exception e) {\r\n                ctx.status(400);\r\n                ctx.json(Map.of(\r\n                    \"success\", false,\r\n                    \"error\", \"Invalid request format\"\r\n                ));\r\n            }\r\n        });\r\n        \r\n        // Manager logout endpoint (no auth required)\r\n        app.post(\"/api/auth/logout\", ctx -> {\r\n            // Clear the JWT cookie\r\n            ctx.removeCookie(\"jwt\");\r\n            ctx.json(Map.of(\r\n                \"success\", true,\r\n                \"message\", \"Logged out successfully\"\r\n            ));\r\n        });\r\n        \r\n        // Protected routes - require manager authentication\r\n        app.before(\"/api/expenses/*\", authMiddleware.validateManager());\r\n        app.before(\"/api/reports/*\", authMiddleware.validateManager());\r\n        \r\n        // Expense management endpoints\r\n        app.get(\"/api/expenses\", expenseController::getAllExpenses);\r\n        app.get(\"/api/expenses/pending\", expenseController::getPendingExpenses);\r\n        app.get(\"/api/expenses/employee/{employeeId}\", expenseController::getExpensesByEmployee);\r\n        app.post(\"/api/expenses/{expenseId}/approve\", expenseController::approveExpense);\r\n        app.post(\"/api/expenses/{expenseId}/deny\", expenseController::denyExpense);\r\n        \r\n        // Report generation endpoints\r\n        app.get(\"/api/reports/expenses/csv\", reportController::generateAllExpensesReport);\r\n        app.get(\"/api/reports/expenses/pending/csv\", reportController::generatePendingExpensesReport);\r\n        app.get(\"/api/reports/expenses/employee/{employeeId}/csv\", reportController::generateEmployeeExpensesReport);\r\n        app.get(\"/api/reports/expenses/category/{category}/csv\", reportController::generateCategoryExpensesReport);\r\n        app.get(\"/api/reports/expenses/daterange/csv\", reportController::generateDateRangeExpensesReport);\r\n        \r\n        // Root route - serve manager dashboard\r\n        \r\n        // Health check endpoint\r\n        app.get(\"/health\", ctx -> ctx.json(java.util.Map.of(\r\n            \"status\", \"healthy\",\r\n            \"service\", \"expense-manager-api\",\r\n            \"version\", \"1.0.0\"\r\n        )));\r\n        \r\n        // Start the server\r\n        app.start(PORT);\r\n        \r\n        System.out.println(\"   Expense Manager API (Manager App) started successfully!\");\r\n        System.out.println(\"   Server running on: http://localhost:\" + PORT);\r\n        System.out.println(\"   Health check: http://localhost:\" + PORT + \"/health\");\r\n        System.out.println(\"   API Documentation:\");\r\n        System.out.println(\"   Authentication Status: GET /api/auth/status\");\r\n        System.out.println(\"   Pending Expenses: GET /api/expenses/pending\");\r\n        System.out.println(\"   All Expenses: GET /api/expenses\");\r\n        System.out.println(\"   Employee Expenses: GET /api/expenses/employee/{employeeId}\");\r\n        System.out.println(\"   Approve Expense: POST /api/expenses/{expenseId}/approve\");\r\n        System.out.println(\"   Deny Expense: POST /api/expenses/{expenseId}/deny\");\r\n        System.out.println(\"   CSV Reports: GET /api/reports/expenses/csv\");\r\n        System.out.println(\"   More reports available at /api/reports/expenses/...\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/revature/Main.java b/src/main/java/com/revature/Main.java
+--- a/src/main/java/com/revature/Main.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/main/java/com/revature/Main.java	(date 1767140770807)
+@@ -1,8 +1,8 @@
+ package com.revature;
+ 
+-import com.revature.api.AuthenticationMiddleware;
+-import com.revature.api.ExpenseController;
+-import com.revature.api.ReportController;
++import com.revature.Api.AuthenticationMiddleware;
++import com.revature.Api.ExpenseController;
++import com.revature.Api.ReportController;
+ import com.revature.repository.DatabaseConnection;
+ import com.revature.repository.UserRepository;
+ import com.revature.repository.ExpenseRepository;
+Index: src/main/java/com/revature/repository/DatabaseConnection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.revature.repository;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n\r\n/**\r\n * Database connection utility for SQLite database.\r\n * Handles connection management for the shared expense manager database.\r\n */\r\npublic class DatabaseConnection {\r\n    private final String databasePath;\r\n    \r\n    public DatabaseConnection() {\r\n        // Use environment variable or default path\r\n        System.setProperty(\"databasePath\", \"/Users/andrew/Desktop/Revature/Project_1/expense_manager.db\");\r\n        this.databasePath = System.getenv(\"DATABASE_PATH\") != null\r\n            ? System.getenv(\"DATABASE_PATH\")\r\n            : System.getProperty(\"databasePath\");\r\n    }\r\n    \r\n    public DatabaseConnection(String databasePath) {\r\n        this.databasePath = databasePath;\r\n    }\r\n    \r\n    /**\r\n     * Get a database connection.\r\n     * @return SQLite database connection\r\n     * @throws SQLException if connection fails\r\n     */\r\n    public Connection getConnection() throws SQLException {\r\n        String url = \"jdbc:sqlite:\" + databasePath;\r\n        return DriverManager.getConnection(url);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/revature/repository/DatabaseConnection.java b/src/main/java/com/revature/repository/DatabaseConnection.java
+--- a/src/main/java/com/revature/repository/DatabaseConnection.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/main/java/com/revature/repository/DatabaseConnection.java	(date 1767140694103)
+@@ -4,32 +4,57 @@
+ import java.sql.DriverManager;
+ import java.sql.SQLException;
+ 
++import io.github.cdimascio.dotenv.Dotenv;
++
+ /**
+- * Database connection utility for SQLite database.
+- * Handles connection management for the shared expense manager database.
++ * Database connection utility for SQLite database. Handles connection
++ * management for the shared expense manager database.
+  */
+ public class DatabaseConnection {
++
+     private final String databasePath;
+-    
++    private boolean testMode;
++    private final String testDatabasePath;
++
+     public DatabaseConnection() {
+-        // Use environment variable or default path
+-        System.setProperty("databasePath", "/Users/andrew/Desktop/Revature/Project_1/expense_manager.db");
+-        this.databasePath = System.getenv("DATABASE_PATH") != null
+-            ? System.getenv("DATABASE_PATH")
+-            : System.getProperty("databasePath");
++        //for local testing
++        Dotenv dotenv = Dotenv.load();
++        testMode = dotenv.get("TEST_MODE", "false").equals("true");
++        databasePath = System.getenv("DATABASE_PATH") != null ? System.getenv("DATABASE_PATH") : dotenv.get("DATABASE_PATH", "./expense_manager.db");
++        testDatabasePath = System.getenv("TEST_DATABASE_PATH") != null ? System.getenv("TEST_DATABASE_PATH") : dotenv.get("TEST_DATABASE_PATH", "./test.db");
+     }
+-    
+-    public DatabaseConnection(String databasePath) {
++
++    public DatabaseConnection(String databasePath, String testDatabasePath) {
+         this.databasePath = databasePath;
++        this.testDatabasePath = testDatabasePath;
+     }
+-    
++
+     /**
+      * Get a database connection.
++     *
+      * @return SQLite database connection
+      * @throws SQLException if connection fails
+      */
+     public Connection getConnection() throws SQLException {
+-        String url = "jdbc:sqlite:" + databasePath;
+-        return DriverManager.getConnection(url);
++        if (testMode) {
++            // Use file-based test database instead of in-memory
++            String testDbPath = "jdbc:sqlite:" + testDatabasePath;
++            return DriverManager.getConnection(testDbPath);
++        } else {
++            String url = "jdbc:sqlite:" + databasePath;
++            return DriverManager.getConnection(url);
++        }
+     }
++
++    public String getDatabasePath() {
++        return databasePath;
++    }
++
++    public String getTestDatabasePath() {
++        return testDatabasePath;
++    }
++
++    public boolean isTestMode() {
++        return testMode;
++    }
+ }
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.revature</groupId>\r\n    <artifactId>manager</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <!-- https://mvnrepository.com/artifact/io.javalin/javalin -->\r\n        <dependency>\r\n            <groupId>io.javalin</groupId>\r\n            <artifactId>javalin</artifactId>\r\n            <version>6.7.0</version>\r\n        </dependency>\r\n        \r\n        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->\r\n        <dependency>\r\n            <groupId>org.xerial</groupId>\r\n            <artifactId>sqlite-jdbc</artifactId>\r\n            <version>3.50.3.0</version>\r\n        </dependency>\r\n        \r\n        <!-- Jackson for JSON handling -->\r\n        <dependency>\r\n            <groupId>com.fasterxml.jackson.core</groupId>\r\n            <artifactId>jackson-databind</artifactId>\r\n            <version>2.18.2</version>\r\n        </dependency>\r\n        \r\n        <!-- SLF4J Simple for logging -->\r\n        <dependency>\r\n            <groupId>org.slf4j</groupId>\r\n            <artifactId>slf4j-simple</artifactId>\r\n            <version>2.0.16</version>\r\n        </dependency>\r\n\r\n        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->\r\n        <dependency>\r\n            <groupId>org.apache.maven.plugins</groupId>\r\n            <artifactId>maven-surefire-plugin</artifactId>\r\n            <version>3.5.4</version>\r\n        </dependency>\r\n\r\n        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->\r\n        <dependency>\r\n            <groupId>com.auth0</groupId>\r\n            <artifactId>java-jwt</artifactId>\r\n            <version>4.5.0</version>\r\n        </dependency>\r\n\r\n        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter</artifactId>\r\n            <version>6.0.1</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n\r\n        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-core</artifactId>\r\n            <version>5.21.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-junit-jupiter</artifactId>\r\n            <version>5.21.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/pom.xml	(date 1767140694102)
+@@ -11,9 +11,39 @@
+     <properties>
+         <maven.compiler.source>17</maven.compiler.source>
+         <maven.compiler.target>17</maven.compiler.target>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <allure.version>2.29.0</allure.version>
++        <aspectj.version>1.9.22</aspectj.version>
+     </properties>
+ 
++    <dependencyManagement>
++        <dependencies>
++            <dependency>
++
++
++                <groupId>io.qameta.allure</groupId>
++                <artifactId>allure-bom</artifactId>
++                <version>${allure.version}</version>
++                <type>pom</type>
++                <scope>import</scope>
++            </dependency>
++            <dependency>
++                <groupId>org.junit</groupId>
++                <artifactId>junit-bom</artifactId>
++                <version>5.11.3</version>
++                <type>pom</type>
++                <scope>import</scope>
++            </dependency>
++        </dependencies>
++    </dependencyManagement>
++
+     <dependencies>
++        <dependency>
++            <groupId>io.qameta.allure</groupId>
++            <artifactId>allure-junit5</artifactId>
++            <scope>test</scope>
++        </dependency>
++
+         <!-- https://mvnrepository.com/artifact/io.javalin/javalin -->
+         <dependency>
+             <groupId>io.javalin</groupId>
+@@ -27,7 +57,14 @@
+             <artifactId>sqlite-jdbc</artifactId>
+             <version>3.50.3.0</version>
+         </dependency>
+-        
++
++        <!-- https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv -->
++        <dependency>
++            <groupId>io.github.cdimascio</groupId>
++            <artifactId>java-dotenv</artifactId>
++            <version>5.2.2</version>
++        </dependency>
++
+         <!-- Jackson for JSON handling -->
+         <dependency>
+             <groupId>com.fasterxml.jackson.core</groupId>
+@@ -78,6 +115,83 @@
+             <version>5.21.0</version>
+             <scope>test</scope>
+         </dependency>
++
++        <dependency>
++            <groupId>io.qameta.allure</groupId>
++            <artifactId>allure-bom</artifactId>
++            <version>${allure.version}</version>
++            <type>pom</type>
++            <scope>import</scope>
++        </dependency>
++
++        <dependency>
++            <groupId>io.rest-assured</groupId>
++            <artifactId>rest-assured</artifactId>
++            <version>5.5.6</version>
++            <scope>test</scope>
++        </dependency>
++
++        <!-- JSON Schema Validation (optional but recommended) -->
++        <dependency>
++            <groupId>io.rest-assured</groupId>
++            <artifactId>json-schema-validator</artifactId>
++            <version>5.4.0</version>
++            <scope>test</scope>
++        </dependency>
++
++        <!-- JSON Path (included with rest-assured, but useful standalone) -->
++        <dependency>
++            <groupId>io.rest-assured</groupId>
++            <artifactId>json-path</artifactId>
++            <version>5.4.0</version>
++            <scope>test</scope>
++        </dependency>
++
++        <!-- Hamcrest Matchers (for assertions) -->
++        <dependency>
++            <groupId>org.hamcrest</groupId>
++            <artifactId>hamcrest</artifactId>
++            <version>2.2</version>
++            <scope>test</scope>
++        </dependency>
++
++        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
++        <dependency>
++            <groupId>com.google.code.gson</groupId>
++            <artifactId>gson</artifactId>
++            <version>2.13.2</version>
++        </dependency>
++
++        <dependency>
++            <groupId>com.fasterxml.jackson.core</groupId>
++            <artifactId>jackson-databind</artifactId>
++            <version>2.15.2</version>
++        </dependency>
++
+     </dependencies>
+ 
++    <build>
++        <plugins>
++
++            <plugin>
++                <groupId>io.qameta.allure</groupId>
++                <artifactId>allure-maven</artifactId>
++                <version>2.15.0</version>
++                <configuration>
++                    <reportVersion>${allure.version}</reportVersion>
++                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
++                </configuration>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <version>3.13.0</version>
++                <configuration>
++                    <encoding>${project.build.sourceEncoding}</encoding>
++                    <release>21</release>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
++
+ </project>
+Index: src/main/java/com/revature/api/AuthenticationMiddleware.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.revature.api;\r\n\r\nimport com.revature.repository.User;\r\nimport com.revature.service.AuthenticationService;\r\nimport io.javalin.http.Context;\r\nimport io.javalin.http.Handler;\r\nimport io.javalin.http.UnauthorizedResponse;\r\nimport io.javalin.http.ForbiddenResponse;\r\n\r\nimport java.util.Optional;\r\n\r\n/**\r\n * Authentication middleware for validating manager access.\r\n * Ensures only authenticated managers can access protected endpoints.\r\n */\r\npublic class AuthenticationMiddleware {\r\n    private final AuthenticationService authenticationService;\r\n    \r\n    public AuthenticationMiddleware(AuthenticationService authenticationService) {\r\n        this.authenticationService = authenticationService;\r\n    }\r\n    \r\n    /**\r\n     * Handler to validate manager authentication before processing requests.\r\n     * Uses JWT tokens from HTTP-only cookies.\r\n     * @return Javalin Handler for authentication middleware\r\n     */\r\n    public Handler validateManager() {\r\n        return ctx -> {\r\n            String jwtToken = ctx.cookie(\"jwt\");\r\n            \r\n            Optional<User> managerOpt = authenticationService.validateManagerAuthentication(jwtToken);\r\n            \r\n            if (managerOpt.isEmpty()) {\r\n                // Check if user is authenticated but not a manager\r\n                Optional<User> userOpt = authenticationService.validateJwtToken(jwtToken);\r\n                if (userOpt.isPresent()) {\r\n                    throw new ForbiddenResponse(\"Access denied - managers only\");\r\n                } else {\r\n                    throw new UnauthorizedResponse(\"Authentication required\");\r\n                }\r\n            }\r\n            \r\n            // Store the authenticated manager in the context for use in handlers\r\n            ctx.attribute(\"manager\", managerOpt.get());\r\n        };\r\n    }\r\n    \r\n    /**\r\n     * Get the authenticated manager from the context.\r\n     * @param ctx Javalin context\r\n     * @return the authenticated manager user\r\n     */\r\n    public static User getAuthenticatedManager(Context ctx) {\r\n        return ctx.attribute(\"manager\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/revature/api/AuthenticationMiddleware.java b/src/main/java/com/revature/Api/AuthenticationMiddleware.java
+rename from src/main/java/com/revature/api/AuthenticationMiddleware.java
+rename to src/main/java/com/revature/Api/AuthenticationMiddleware.java
+--- a/src/main/java/com/revature/api/AuthenticationMiddleware.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/main/java/com/revature/Api/AuthenticationMiddleware.java	(date 1767140770757)
+@@ -1,4 +1,4 @@
+-package com.revature.api;
++package com.revature.Api;
+ 
+ import com.revature.repository.User;
+ import com.revature.service.AuthenticationService;
+Index: src/test/java/com/revature/api/ReportControllerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/api/ReportControllerTest.java b/src/test/java/com/revature/Unit/api/ReportControllerTest.java
+rename from src/test/java/com/revature/api/ReportControllerTest.java
+rename to src/test/java/com/revature/Unit/api/ReportControllerTest.java
+--- a/src/test/java/com/revature/api/ReportControllerTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/api/ReportControllerTest.java	(date 1767140770815)
+@@ -1,5 +1,6 @@
+-package com.revature.api;
++package com.revature.Unit.api;
+ 
++import com.revature.Api.ReportController;
+ import com.revature.repository.*;
+ import com.revature.service.*;
+ import io.javalin.http.BadRequestResponse;
+Index: src/test/java/com/revature/api/ExpenseControllerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/api/ExpenseControllerTest.java b/src/test/java/com/revature/Unit/api/ExpenseControllerTest.java
+rename from src/test/java/com/revature/api/ExpenseControllerTest.java
+rename to src/test/java/com/revature/Unit/api/ExpenseControllerTest.java
+--- a/src/test/java/com/revature/api/ExpenseControllerTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/api/ExpenseControllerTest.java	(date 1767140770798)
+@@ -1,10 +1,12 @@
+-package com.revature.api;
++package com.revature.Unit.api;
+ 
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.List;
+ import java.util.Map;
+ 
++import com.revature.Api.AuthenticationMiddleware;
++import com.revature.Api.ExpenseController;
+ import org.junit.jupiter.api.AfterEach;
+ import org.junit.jupiter.api.Assertions;
+ import static org.junit.jupiter.api.Assertions.assertTrue;
+Index: src/test/java/com/revature/api/AuthenticationMiddlewareTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/api/AuthenticationMiddlewareTest.java b/src/test/java/com/revature/Unit/api/AuthenticationMiddlewareTest.java
+rename from src/test/java/com/revature/api/AuthenticationMiddlewareTest.java
+rename to src/test/java/com/revature/Unit/api/AuthenticationMiddlewareTest.java
+--- a/src/test/java/com/revature/api/AuthenticationMiddlewareTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/api/AuthenticationMiddlewareTest.java	(date 1767140770795)
+@@ -1,10 +1,12 @@
+-package com.revature.api;
++package com.revature.Unit.api;
+ 
+ import java.util.Optional;
+ 
+ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertThrows;
++
++import com.revature.Api.AuthenticationMiddleware;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
+Index: src/main/java/com/revature/api/ExpenseController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.revature.api;\r\n\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport com.revature.repository.ExpenseWithUser;\r\nimport com.revature.repository.User;\r\nimport com.revature.service.ExpenseService;\r\n\r\nimport io.javalin.http.BadRequestResponse;\r\nimport io.javalin.http.Context;\r\nimport io.javalin.http.InternalServerErrorResponse;\r\nimport io.javalin.http.NotFoundResponse;\r\n\r\n/**\r\n * REST controller for expense management operations. Handles expense approval,\r\n * denial, and viewing operations for managers.\r\n */\r\npublic class ExpenseController {\r\n\r\n    private final ExpenseService expenseService;\r\n\r\n    public ExpenseController(ExpenseService expenseService) {\r\n        this.expenseService = expenseService;\r\n    }\r\n\r\n    /**\r\n     * Get all pending expenses for manager review. GET /api/expenses/pending\r\n     */\r\n    public void getPendingExpenses(Context ctx) {\r\n        try {\r\n            List<ExpenseWithUser> pendingExpenses = expenseService.getPendingExpenses();\r\n            ctx.json(Map.of(\r\n                    \"success\", true,\r\n                    \"data\", pendingExpenses,\r\n                    \"count\", pendingExpenses.size()\r\n            ));\r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to retrieve pending expenses: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Approve an expense. POST /api/expenses/{expenseId}/approve Request body:\r\n     * { \"comment\": \"optional comment\" }\r\n     */\r\n    public void approveExpense(Context ctx) {\r\n        try {\r\n            int expenseId = ctx.pathParamAsClass(\"expenseId\", Integer.class).get();\r\n            User manager = AuthenticationMiddleware.getAuthenticatedManager(ctx);\r\n\r\n            // Get optional comment from request body\r\n            String comment = null;\r\n            try {\r\n                Map<String, Object> requestBody = ctx.bodyAsClass(Map.class);\r\n                comment = (String) requestBody.get(\"comment\");\r\n            } catch (Exception e) {\r\n                // Ignore - comment is optional\r\n            }\r\n\r\n            boolean success = expenseService.approveExpense(expenseId, manager.getId(), comment);\r\n\r\n            if (success) {\r\n                ctx.json(Map.of(\r\n                        \"success\", true,\r\n                        \"message\", \"Expense approved successfully\"\r\n                ));\r\n            } else {\r\n                throw new NotFoundResponse(\"Expense not found or could not be approved\");\r\n            }\r\n\r\n        } catch (NumberFormatException e) {\r\n            throw new BadRequestResponse(\"Invalid expense ID format\");\r\n        } catch (Exception e) {\r\n            if (e instanceof NotFoundResponse) {\r\n                throw e;\r\n            }\r\n            throw new InternalServerErrorResponse(\"Failed to approve expense: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Deny an expense. POST /api/expenses/{expenseId}/deny Request body: {\r\n     * \"comment\": \"optional comment\" }\r\n     */\r\n    public void denyExpense(Context ctx) {\r\n        try {\r\n            int expenseId = ctx.pathParamAsClass(\"expenseId\", Integer.class).get();\r\n            User manager = AuthenticationMiddleware.getAuthenticatedManager(ctx);\r\n\r\n            // Get optional comment from request body\r\n            String comment = null;\r\n            try {\r\n                Map<String, Object> requestBody = ctx.bodyAsClass(Map.class);\r\n                comment = (String) requestBody.get(\"comment\");\r\n            } catch (Exception e) {\r\n                // Ignore - comment is optional\r\n            }\r\n\r\n            boolean success = expenseService.denyExpense(expenseId, manager.getId(), comment);\r\n\r\n            if (success) {\r\n                ctx.json(Map.of(\r\n                        \"success\", true,\r\n                        \"message\", \"Expense denied successfully\"\r\n                ));\r\n            } else {\r\n                throw new NotFoundResponse(\"Expense not found or could not be denied\");\r\n            }\r\n\r\n        } catch (NumberFormatException e) {\r\n            throw new BadRequestResponse(\"Invalid expense ID format\");\r\n        } catch (Exception e) {\r\n            if (e instanceof NotFoundResponse) {\r\n                throw e;\r\n            }\r\n            throw new InternalServerErrorResponse(\"Failed to deny expense: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Get all expenses (for general viewing). GET /api/expenses\r\n     */\r\n    public void getAllExpenses(Context ctx) {\r\n        try {\r\n            List<ExpenseWithUser> allExpenses = expenseService.getAllExpenses();\r\n            ctx.json(Map.of(\r\n                    \"success\", true,\r\n                    \"data\", allExpenses,\r\n                    \"count\", allExpenses.size()\r\n            ));\r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to retrieve expenses: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Get expenses for a specific employee. GET\r\n     * /api/expenses/employee/{employeeId}\r\n     */\r\n    public void getExpensesByEmployee(Context ctx) {\r\n        try {\r\n            int employeeId = ctx.pathParamAsClass(\"employeeId\", Integer.class).get();\r\n            List<ExpenseWithUser> expenses = expenseService.getExpensesByEmployee(employeeId);\r\n\r\n            ctx.json(Map.of(\r\n                    \"success\", true,\r\n                    \"data\", expenses,\r\n                    \"count\", expenses.size(),\r\n                    \"employeeId\", employeeId\r\n            ));\r\n\r\n        } catch (NumberFormatException e) {\r\n            throw new BadRequestResponse(\"Invalid employee ID format\");\r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to retrieve expenses for employee: \" + e.getMessage());\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/revature/api/ExpenseController.java b/src/main/java/com/revature/Api/ExpenseController.java
+rename from src/main/java/com/revature/api/ExpenseController.java
+rename to src/main/java/com/revature/Api/ExpenseController.java
+--- a/src/main/java/com/revature/api/ExpenseController.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/main/java/com/revature/Api/ExpenseController.java	(date 1767140770731)
+@@ -1,4 +1,4 @@
+-package com.revature.api;
++package com.revature.Api;
+ 
+ import java.util.List;
+ import java.util.Map;
+Index: src/main/java/com/revature/api/ReportController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.revature.api;\r\n\r\nimport com.revature.repository.ExpenseWithUser;\r\nimport com.revature.service.ExpenseService;\r\nimport io.javalin.http.Context;\r\nimport io.javalin.http.BadRequestResponse;\r\nimport io.javalin.http.InternalServerErrorResponse;\r\n\r\nimport java.time.LocalDate;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.time.format.DateTimeParseException;\r\nimport java.util.List;\r\n\r\n/**\r\n * REST controller for expense reporting operations.\r\n * Handles CSV report generation by various criteria.\r\n */\r\npublic class ReportController {\r\n    private final ExpenseService expenseService;\r\n    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(\"yyyy-MM-dd\");\r\n    \r\n    public ReportController(ExpenseService expenseService) {\r\n        this.expenseService = expenseService;\r\n    }\r\n    \r\n    /**\r\n     * Generate CSV report of all expenses.\r\n     * GET /api/reports/expenses/csv\r\n     */\r\n    public void generateAllExpensesReport(Context ctx) {\r\n        try {\r\n            List<ExpenseWithUser> expenses = expenseService.getAllExpenses();\r\n            String csvContent = expenseService.generateCsvReport(expenses);\r\n            \r\n            ctx.contentType(\"text/csv\");\r\n            ctx.header(\"Content-Disposition\", \"attachment; filename=\\\"all_expenses_report.csv\\\"\");\r\n            ctx.result(csvContent);\r\n            \r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to generate expenses report: \" + e.getMessage());\r\n        }\r\n    }\r\n    \r\n    /**\r\n     * Generate CSV report of expenses by employee.\r\n     * GET /api/reports/expenses/employee/{employeeId}/csv\r\n     */\r\n    public void generateEmployeeExpensesReport(Context ctx) {\r\n        try {\r\n            int employeeId = ctx.pathParamAsClass(\"employeeId\", Integer.class).get();\r\n            List<ExpenseWithUser> expenses = expenseService.getExpensesByEmployee(employeeId);\r\n            String csvContent = expenseService.generateCsvReport(expenses);\r\n            \r\n            ctx.contentType(\"text/csv\");\r\n            ctx.header(\"Content-Disposition\", \"attachment; filename=\\\"employee_\" + employeeId + \"_expenses_report.csv\\\"\");\r\n            ctx.result(csvContent);\r\n            \r\n        } catch (NumberFormatException e) {\r\n            throw new BadRequestResponse(\"Invalid employee ID format\");\r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to generate employee expenses report: \" + e.getMessage());\r\n        }\r\n    }\r\n    \r\n    /**\r\n     * Generate CSV report of expenses by category.\r\n     * GET /api/reports/expenses/category/{category}/csv\r\n     */\r\n    public void generateCategoryExpensesReport(Context ctx) {\r\n        try {\r\n            String category = ctx.pathParam(\"category\");\r\n            \r\n            if (category == null || category.trim().isEmpty()) {\r\n                throw new BadRequestResponse(\"Category parameter is required\");\r\n            }\r\n            \r\n            List<ExpenseWithUser> expenses = expenseService.getExpensesByCategory(category);\r\n            String csvContent = expenseService.generateCsvReport(expenses);\r\n            \r\n            String safeCategory = category.replaceAll(\"[^a-zA-Z0-9_-]\", \"_\");\r\n            ctx.contentType(\"text/csv\");\r\n            ctx.header(\"Content-Disposition\", \"attachment; filename=\\\"category_\" + safeCategory + \"_expenses_report.csv\\\"\");\r\n            ctx.result(csvContent);\r\n            \r\n        } catch (Exception e) {\r\n            if (e instanceof BadRequestResponse) {\r\n                throw e;\r\n            }\r\n            throw new InternalServerErrorResponse(\"Failed to generate category expenses report: \" + e.getMessage());\r\n        }\r\n    }\r\n    \r\n    /**\r\n     * Generate CSV report of expenses by date range.\r\n     * GET /api/reports/expenses/daterange/csv?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD\r\n     */\r\n    public void generateDateRangeExpensesReport(Context ctx) {\r\n        try {\r\n            String startDateStr = ctx.queryParam(\"startDate\");\r\n            String endDateStr = ctx.queryParam(\"endDate\");\r\n            \r\n            if (startDateStr == null || endDateStr == null) {\r\n                throw new BadRequestResponse(\"Both startDate and endDate query parameters are required (format: YYYY-MM-DD)\");\r\n            }\r\n            \r\n            // Validate date format\r\n            try {\r\n                LocalDate.parse(startDateStr, DATE_FORMATTER);\r\n                LocalDate.parse(endDateStr, DATE_FORMATTER);\r\n            } catch (DateTimeParseException e) {\r\n                throw new BadRequestResponse(\"Invalid date format. Use YYYY-MM-DD format\");\r\n            }\r\n            \r\n            List<ExpenseWithUser> expenses = expenseService.getExpensesByDateRange(startDateStr, endDateStr);\r\n            String csvContent = expenseService.generateCsvReport(expenses);\r\n            \r\n            ctx.contentType(\"text/csv\");\r\n            ctx.header(\"Content-Disposition\", \"attachment; filename=\\\"expenses_\" + startDateStr + \"_to_\" + endDateStr + \"_report.csv\\\"\");\r\n            ctx.result(csvContent);\r\n            \r\n        } catch (Exception e) {\r\n            if (e instanceof BadRequestResponse) {\r\n                throw e;\r\n            }\r\n            throw new InternalServerErrorResponse(\"Failed to generate date range expenses report: \" + e.getMessage());\r\n        }\r\n    }\r\n    \r\n    /**\r\n     * Generate CSV report of pending expenses only.\r\n     * GET /api/reports/expenses/pending/csv\r\n     */\r\n    public void generatePendingExpensesReport(Context ctx) {\r\n        try {\r\n            List<ExpenseWithUser> expenses = expenseService.getPendingExpenses();\r\n            String csvContent = expenseService.generateCsvReport(expenses);\r\n            \r\n            ctx.contentType(\"text/csv\");\r\n            ctx.header(\"Content-Disposition\", \"attachment; filename=\\\"pending_expenses_report.csv\\\"\");\r\n            ctx.result(csvContent);\r\n            \r\n        } catch (Exception e) {\r\n            throw new InternalServerErrorResponse(\"Failed to generate pending expenses report: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/revature/api/ReportController.java b/src/main/java/com/revature/Api/ReportController.java
+rename from src/main/java/com/revature/api/ReportController.java
+rename to src/main/java/com/revature/Api/ReportController.java
+--- a/src/main/java/com/revature/api/ReportController.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/main/java/com/revature/Api/ReportController.java	(date 1767140770810)
+@@ -1,4 +1,4 @@
+-package com.revature.api;
++package com.revature.Api;
+ 
+ import com.revature.repository.ExpenseWithUser;
+ import com.revature.service.ExpenseService;
+Index: src/test/java/com/revature/Api/TestDatabaseSetup.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/Api/TestDatabaseSetup.java b/src/test/java/com/revature/Api/TestDatabaseSetup.java
+new file mode 100644
+--- /dev/null	(date 1767140770761)
++++ b/src/test/java/com/revature/Api/TestDatabaseSetup.java	(date 1767140770761)
+@@ -0,0 +1,150 @@
++package com.revature.Api;
++
++import com.revature.repository.DatabaseConnection;
++import java.io.BufferedReader;
++import java.io.IOException;
++import java.io.InputStream;
++import java.io.InputStreamReader;
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.sql.Connection;
++import java.sql.SQLException;
++import java.sql.Statement;
++import java.util.stream.Collectors;
++
++/**
++ * Test Database Setup Helper for Integration Tests
++ *
++ *
++ * Provides setup and teardown utilities for integration tests
++ * using a separate test database.
++ */
++public class TestDatabaseSetup {
++
++    private static final String TEST_DB_NAME = "test_expense_manager.db";
++    private static Path testDbPath;
++    private static DatabaseConnection testDbConnection;
++
++    /**
++     * Initialize the test database with schema and seed data.
++     * Creates a fresh test database in a temp directory.
++     */
++    public static DatabaseConnection initializeTestDatabase() throws SQLException, IOException {
++        // Create temp directory for test database
++        Path tempDir = Files.createTempDirectory("expense_integration_test");
++        testDbPath = tempDir.resolve(TEST_DB_NAME);
++        System.setProperty("DATABASE_PATH", ":memory:");
++
++        // Create database connection with test path
++        testDbConnection = new DatabaseConnection(testDbPath.toString());
++
++        // Create tables
++        createTables();
++
++        // Load and execute seed data
++        seedDatabase();
++        return testDbConnection;
++    }
++
++    /**
++     * Create database tables matching the production schema.
++     */
++    private static void createTables() throws SQLException {
++        String createUsersTable = """
++                CREATE TABLE IF NOT EXISTS users (
++                    id INTEGER PRIMARY KEY AUTOINCREMENT,
++                    username TEXT UNIQUE NOT NULL,
++                    password TEXT NOT NULL,
++                    role TEXT NOT NULL
++                )
++                """;
++
++        String createExpensesTable = """
++                CREATE TABLE IF NOT EXISTS expenses (
++                    id INTEGER PRIMARY KEY AUTOINCREMENT,
++                    user_id INTEGER NOT NULL,
++                    amount REAL NOT NULL,
++                    description TEXT NOT NULL,
++                    date TEXT NOT NULL,
++                    FOREIGN KEY (user_id) REFERENCES users (id)
++                )
++                """;
++
++        String createApprovalsTable = """
++                CREATE TABLE IF NOT EXISTS approvals (
++                    id INTEGER PRIMARY KEY AUTOINCREMENT,
++                    expense_id INTEGER NOT NULL,
++                    status TEXT NOT NULL DEFAULT 'pending',
++                    reviewer INTEGER,
++                    comment TEXT,
++                    review_date TEXT,
++                    FOREIGN KEY (expense_id) REFERENCES expenses (id),
++                    FOREIGN KEY (reviewer) REFERENCES users (id)
++                )
++                """;
++
++        try (Connection conn = testDbConnection.getConnection();
++             Statement stmt = conn.createStatement()) {
++            stmt.execute(createUsersTable);
++            stmt.execute(createExpensesTable);
++            stmt.execute(createApprovalsTable);
++        }
++    }
++
++    /**
++     * Load and execute seed SQL from resources.
++     */
++    private static void seedDatabase() throws SQLException, IOException {
++        // Read seed SQL from resources
++        String seedSql;
++        try (InputStream is = TestDatabaseSetup.class.getResourceAsStream(
++                "/seed_data_20241229.sql")) {
++            if (is == null) {
++                throw new IOException("Could not find seed_data_20241229.sql in resources");
++            }
++            try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
++                seedSql = reader.lines().collect(Collectors.joining("\n"));
++            }
++        }
++
++        // Execute seed SQL
++        try (Connection conn = testDbConnection.getConnection();
++             Statement stmt = conn.createStatement()) {
++            // Split by semicolon and execute each statement
++            for (String sql : seedSql.split(";")) {
++                String trimmed = sql.trim();
++                if (!trimmed.isEmpty() && !trimmed.startsWith("--")) {
++                    stmt.execute(trimmed);
++                }
++            }
++        }
++    }
++
++    /**
++     * Clean up test database after tests.
++     */
++    public static void cleanup() {
++        if (testDbPath != null) {
++            try {
++                Files.deleteIfExists(testDbPath);
++                Files.deleteIfExists(testDbPath.getParent());
++            } catch (IOException e) {
++                // Ignore cleanup errors
++            }
++        }
++    }
++
++    /**
++     * Get the test database connection.
++     */
++    public static DatabaseConnection getTestDbConnection() {
++        return testDbConnection;
++    }
++
++    /**
++     * Get the test database path.
++     */
++    public static Path getTestDbPath() {
++        return testDbPath;
++    }
++}
+Index: src/test/java/com/revature/service/ExpenseServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/service/ExpenseServiceTest.java b/src/test/java/com/revature/Unit/service/ExpenseServiceTest.java
+rename from src/test/java/com/revature/service/ExpenseServiceTest.java
+rename to src/test/java/com/revature/Unit/service/ExpenseServiceTest.java
+--- a/src/test/java/com/revature/service/ExpenseServiceTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/service/ExpenseServiceTest.java	(date 1767140770781)
+@@ -1,9 +1,10 @@
+-package com.revature.service;
++package com.revature.Unit.service;
+ 
+ import java.util.Arrays;
+ import java.util.Collections;
+ import java.util.List;
+ 
++import com.revature.service.ExpenseService;
+ import org.junit.jupiter.api.Assertions;
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertFalse;
+Index: src/test/resources/seed_data_20241229.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/resources/seed_data_20241229.sql b/src/test/resources/seed_data_20241229.sql
+new file mode 100644
+--- /dev/null	(date 1767140694105)
++++ b/src/test/resources/seed_data_20241229.sql	(date 1767140694105)
+@@ -0,0 +1,32 @@
++-- Seed Data for Integration Tests
++-- Database: test_expense_manager.db
++-- Created: 2024-12-29T19:10:00-06:00
++-- Purpose: Populate test database with sample data for integration testing
++
++-- Clear existing data (in reverse order due to foreign key constraints)
++DELETE FROM approvals;
++DELETE FROM expenses;
++DELETE FROM users;
++
++-- Insert test users
++INSERT INTO users (id, username, password, role) VALUES
++                                                     (1, 'employee1', 'password123', 'Employee'),
++                                                     (2, 'employee2', 'password456', 'Employee'),
++                                                     (3, 'manager1', 'password123', 'Manager'),
++                                                     (4, 'testuser', 'testpass', 'Employee');
++
++-- Insert test expenses
++INSERT INTO expenses (id, user_id, amount, description, date) VALUES
++                                                                  (1, 1, 150.00, 'Business lunch', '2024-12-01'),
++                                                                  (2, 1, 250.50, 'Travel expense', '2024-12-05'),
++                                                                  (3, 1, 75.00, 'Office supplies', '2024-12-10'),
++                                                                  (4, 2, 120.00, 'Client meeting', '2024-12-03'),
++                                                                  (5, 2, 500.00, 'Conference registration', '2024-12-08');
++
++-- Insert test approvals (matching expense IDs)
++INSERT INTO approvals (id, expense_id, status, reviewer, comment, review_date) VALUES
++                                                                                   (1, 1, 'pending', NULL, NULL, NULL),
++                                                                                   (2, 2, 'approved', 3, 'Approved for travel', '2024-12-06'),
++                                                                                   (3, 3, 'denied', 3, 'Exceeds budget limit', '2024-12-11'),
++                                                                                   (4, 4, 'pending', NULL, NULL, NULL),
++                                                                                   (5, 5, 'approved', 3, 'Conference approved', '2024-12-09');
+\ No newline at end of file
+Index: src/test/java/com/revature/repository/ApprovalRepositoryTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/repository/ApprovalRepositoryTest.java b/src/test/java/com/revature/Unit/repository/ApprovalRepositoryTest.java
+rename from src/test/java/com/revature/repository/ApprovalRepositoryTest.java
+rename to src/test/java/com/revature/Unit/repository/ApprovalRepositoryTest.java
+--- a/src/test/java/com/revature/repository/ApprovalRepositoryTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/repository/ApprovalRepositoryTest.java	(date 1767140770792)
+@@ -1,4 +1,4 @@
+-package com.revature.repository;
++package com.revature.Unit.repository;
+ 
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+@@ -7,6 +7,9 @@
+ import static org.junit.jupiter.api.Assertions.assertFalse;
+ import static org.junit.jupiter.api.Assertions.assertThrows;
+ import static org.junit.jupiter.api.Assertions.assertTrue;
++
++import com.revature.repository.ApprovalRepository;
++import com.revature.repository.DatabaseConnection;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
+Index: ../../.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>target/\nmyenv/\n**/.venv/\n**/.vscode\n**/__pycache__/\n**/expense_manager.db\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../.gitignore b/../../.gitignore
+--- a/../../.gitignore	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/../../.gitignore	(date 1767140694101)
+@@ -4,3 +4,5 @@
+ **/.vscode
+ **/__pycache__/
+ **/expense_manager.db
++**/.idea/
++**/.DS_Store
+Index: src/test/java/com/revature/Api/ApproveAndDenyTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/Api/ApproveAndDenyTest.java b/src/test/java/com/revature/Api/ApproveAndDenyTest.java
+new file mode 100644
+--- /dev/null	(date 1767140770785)
++++ b/src/test/java/com/revature/Api/ApproveAndDenyTest.java	(date 1767140770785)
+@@ -0,0 +1,146 @@
++package com.revature.Api;
++
++import com.revature.repository.ApprovalRepository;
++import com.revature.repository.DatabaseConnection;
++import io.restassured.RestAssured;
++import io.restassured.filter.cookie.CookieFilter;
++import io.restassured.response.Response;
++import org.junit.jupiter.api.AfterAll;
++import org.junit.jupiter.api.BeforeAll;
++import org.junit.jupiter.api.Test;
++import static io.restassured.RestAssured.*;
++import static org.hamcrest.Matchers.*;
++import org.junit.jupiter.api.BeforeEach;
++
++import java.io.IOException;
++import java.sql.SQLException;
++
++
++class BaseApiTest {
++
++    protected static CookieFilter cookieFilter;
++
++    @BeforeAll
++    static void setup() {
++        RestAssured.baseURI = "http://localhost";
++        RestAssured.port = 5001;
++
++        cookieFilter = new CookieFilter();
++    }
++}
++
++
++
++
++
++
++
++public class ApproveAndDenyTest extends BaseApiTest {
++
++        @BeforeEach
++        void login() {
++            given()
++                    .filter(cookieFilter)
++                    .contentType("application/json")
++                    .body("""
++                {
++                  "username": "manager1",
++                  "password": "password123"
++                }
++            """)
++                    .post("/api/auth/login");
++        }
++
++    private static DatabaseConnection testDbConnection;
++    private static ApprovalRepository approvalRepository;
++
++    @BeforeAll
++    static void setUpDatabase() throws SQLException, IOException {
++        testDbConnection = TestDatabaseSetup.initializeTestDatabase();
++        approvalRepository = new ApprovalRepository(testDbConnection);
++        Thread serverThread = new Thread(() -> {
++            // Replace 'server.Main' with the actual class containing your main method
++            com.revature.Main.main(new String[]{""});
++        });
++        serverThread.start();
++
++        // 2. Allow the server a moment to start up (adjust sleep time as needed)
++        try {
++            Thread.sleep(1000);
++        } catch (InterruptedException e) {
++            e.printStackTrace();
++        }
++
++    }
++
++    @AfterAll
++    static void tearDownDatabase() {
++        TestDatabaseSetup.cleanup();
++    }
++
++        @Test
++        void getPendingExpenses_shouldReturnList() {
++            Response response = given()
++                    .filter(cookieFilter)
++                    .when()
++                    .get("/api/expenses/pending");
++            System.out.println(response.getBody().prettyPrint());
++
++        }
++
++        @Test
++        void approveExpense_shouldSucceed() {
++            int expenseId = 1; // ensure this exists in DB
++
++            given()
++                    .filter(cookieFilter)
++                    .contentType("application/json")
++                    .body("""
++                {
++                  "comment": "Approved by API test"
++                }
++            """)
++                    .when()
++                    .post("/api/expenses/" + expenseId + "/approve")
++                    .then()
++                    .statusCode(200)
++                    .body("message", containsString("approved"));
++
++        }
++
++        @Test
++        void approveNonExistentExpense_shouldFail() {
++            int expenseId = 99999;
++
++            given()
++                    .filter(cookieFilter)
++                    .when()
++                    .post("/api/expenses/" + expenseId + "/approve")
++                    .then()
++                    .statusCode(404);
++        }
++
++    @Test
++    void accessingProtectedEndpoint_withoutLogin_shouldFail() {
++        given()
++                .when()
++                .get("/api/expenses/pending")
++                .then()
++                .statusCode(anyOf(is(401), is(403)));
++    }
++    @Test
++    void downloadExpenseReport_shouldReturnCsv() {
++        given()
++                .filter(cookieFilter)
++                .when()
++                .get("/api/reports/expenses/csv")
++                .then()
++                .statusCode(200)
++                .header("Content-Type", containsString("text/csv"));
++    }
++
++}
++
++
++
++
+Index: src/test/java/com/revature/service/AuthenticationServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/service/AuthenticationServiceTest.java b/src/test/java/com/revature/Unit/service/AuthenticationServiceTest.java
+rename from src/test/java/com/revature/service/AuthenticationServiceTest.java
+rename to src/test/java/com/revature/Unit/service/AuthenticationServiceTest.java
+--- a/src/test/java/com/revature/service/AuthenticationServiceTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/service/AuthenticationServiceTest.java	(date 1767140770743)
+@@ -1,4 +1,4 @@
+-package com.revature.service;
++package com.revature.Unit.service;
+ 
+ 
+ import com.auth0.jwt.JWT;
+@@ -6,11 +6,11 @@
+ import com.revature.repository.User;
+ import com.revature.repository.UserRepository;
+ 
++import com.revature.service.AuthenticationService;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
+ import org.junit.jupiter.params.ParameterizedTest;
+-import org.junit.jupiter.params.provider.NullSource;
+ import org.junit.jupiter.params.provider.ValueSource;
+ import org.mockito.Mock;
+ import org.mockito.junit.jupiter.MockitoExtension;
+Index: src/test/java/com/revature/repository/UserRepositoryTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/repository/UserRepositoryTest.java b/src/test/java/com/revature/Unit/repository/UserRepositoryTest.java
+rename from src/test/java/com/revature/repository/UserRepositoryTest.java
+rename to src/test/java/com/revature/Unit/repository/UserRepositoryTest.java
+--- a/src/test/java/com/revature/repository/UserRepositoryTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/repository/UserRepositoryTest.java	(date 1767140770774)
+@@ -1,5 +1,8 @@
+-package com.revature.repository;
++package com.revature.Unit.repository;
+ 
++import com.revature.repository.DatabaseConnection;
++import com.revature.repository.User;
++import com.revature.repository.UserRepository;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
+Index: src/test/java/com/revature/repository/ExpenseRepositoryTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/revature/repository/ExpenseRepositoryTest.java b/src/test/java/com/revature/Unit/repository/ExpenseRepositoryTest.java
+rename from src/test/java/com/revature/repository/ExpenseRepositoryTest.java
+rename to src/test/java/com/revature/Unit/repository/ExpenseRepositoryTest.java
+--- a/src/test/java/com/revature/repository/ExpenseRepositoryTest.java	(revision 8f50e1a67573bb7114bc803477fcf46dcfad3ae0)
++++ b/src/test/java/com/revature/Unit/repository/ExpenseRepositoryTest.java	(date 1767140770801)
+@@ -1,4 +1,4 @@
+-package com.revature.repository;
++package com.revature.Unit.repository;
+ 
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+@@ -10,6 +10,8 @@
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertThrows;
+ import static org.junit.jupiter.api.Assertions.assertTrue;
++
++import com.revature.repository.*;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
+ import org.junit.jupiter.api.function.Executable;
+diff --git a/../employee/test/unit/service/__init__.py b/../employee/test/unit/service/__init__.py
+new file mode 100644
+diff --git a/../employee/test/repository/expense_repository_test.py b/../employee/test/unit/repository/expense_repository_test.py
+rename from ../employee/test/repository/expense_repository_test.py
+rename to ../employee/test/unit/repository/expense_repository_test.py
+diff --git a/../employee/test/api/auth_test.py b/../employee/test/unit/api/auth_test.py
+rename from ../employee/test/api/auth_test.py
+rename to ../employee/test/unit/api/auth_test.py
+diff --git a/../employee/test/repository/approval_repository_test.py b/../employee/test/unit/repository/approval_repository_test.py
+rename from ../employee/test/repository/approval_repository_test.py
+rename to ../employee/test/unit/repository/approval_repository_test.py
+diff --git a/../employee/test/service/authentication_service_test.py b/../employee/test/unit/service/authentication_service_test.py
+rename from ../employee/test/service/authentication_service_test.py
+rename to ../employee/test/unit/service/authentication_service_test.py
+diff --git a/../employee/test/api/expense_controller_test.py b/../employee/test/unit/api/expense_controller_test.py
+rename from ../employee/test/api/expense_controller_test.py
+rename to ../employee/test/unit/api/expense_controller_test.py
+diff --git a/../employee/test/service/expense_service_test.py b/../employee/test/unit/service/expense_service_test.py
+rename from ../employee/test/service/expense_service_test.py
+rename to ../employee/test/unit/service/expense_service_test.py
+diff --git a/../employee/test/repository/__init__.py b/../employee/test/unit/__init__.py
+rename from ../employee/test/repository/__init__.py
+rename to ../employee/test/unit/__init__.py
+diff --git a/../employee/test/service/__init__.py b/../employee/test/unit/api/__init__.py
+rename from ../employee/test/service/__init__.py
+rename to ../employee/test/unit/api/__init__.py
+diff --git a/../employee/test/repository/conftest.py b/../employee/test/unit/repository/conftest.py
+rename from ../employee/test/repository/conftest.py
+rename to ../employee/test/unit/repository/conftest.py
+diff --git a/../employee/test/unit/repository/__init__.py b/../employee/test/unit/repository/__init__.py
+new file mode 100644
+diff --git a/../employee/test/service/conftest.py b/../employee/test/unit/service/conftest.py
+rename from ../employee/test/service/conftest.py
+rename to ../employee/test/unit/service/conftest.py
+diff --git a/../employee/test/api/auth_controller_test.py b/../employee/test/unit/api/auth_controller_test.py
+rename from ../employee/test/api/auth_controller_test.py
+rename to ../employee/test/unit/api/auth_controller_test.py
+diff --git a/../employee/test/api/conftest.py b/../employee/test/unit/api/conftest.py
+rename from ../employee/test/api/conftest.py
+rename to ../employee/test/unit/api/conftest.py

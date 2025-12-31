@@ -1,4 +1,4 @@
-package com.revature.Api;
+package com.revature.api;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
