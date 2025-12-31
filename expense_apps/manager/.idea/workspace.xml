@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acdd08a-9432-40ad-af2a-779e6228aed5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/Api/DummyDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/DummyDataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/Api/ExpenseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ExpenseControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/expense_manager.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/ExpenseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ExpenseControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.db" beforeDir="false" afterPath="$PROJECT_DIR$/test.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../expense_manager.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.env" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -51,6 +58,12 @@
     "JUnit.AuthApiTest.executor": "Run",
     "JUnit.AuthApiTest.login_withInvalidCredentials_shouldFail.executor": "Run",
     "JUnit.AuthApiTest.login_withValidCredentials_shouldSucceed.executor": "Run",
+    "JUnit.ExpenseControllerTest.approveExpenseNoAuthTest.executor": "Run",
+    "JUnit.ExpenseControllerTest.approveExpenseSadTest.executor": "Run",
+    "JUnit.ExpenseControllerTest.approveExpenseTest (1).executor": "Run",
+    "JUnit.ExpenseControllerTest.approveExpenseTest.executor": "Run",
+    "JUnit.ExpenseControllerTest.denyExpenseHappyTest.executor": "Run",
+    "JUnit.ExpenseControllerTest.denyExpenseSadTest.executor": "Run",
     "JUnit.ExpenseControllerTest.dummyTest.executor": "Run",
     "JUnit.ExpenseServiceTest.executor": "Run",
     "JUnit.ExpenseServiceTest.getPendingExpenses_ReturnsExpenseList.executor": "Run",
@@ -97,7 +110,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExpenseServiceTest.getPendingExpenses_ReturnsExpenseList">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.revature.Main" />
       <module name="manager" />
@@ -111,7 +124,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApproveAndDenyTest.approveExpense_shouldSucceed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExpenseControllerTest.approveExpenseNoAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="manager" />
       <extension name="coverage">
         <pattern>
@@ -120,56 +133,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.revature.api" />
-      <option name="MAIN_CLASS_NAME" value="com.revature.Api.ApproveAndDenyTest" />
-      <option name="METHOD_NAME" value="approveExpense_shouldSucceed" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApproveAndDenyTest.getPendingExpenses_shouldReturnList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.revature.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.revature.api" />
-      <option name="MAIN_CLASS_NAME" value="com.revature.Api.ApproveAndDenyTest" />
-      <option name="METHOD_NAME" value="getPendingExpenses_shouldReturnList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExpenseControllerTest.dummyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.revature.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.revature.Api" />
       <option name="MAIN_CLASS_NAME" value="com.revature.api.ExpenseControllerTest" />
-      <option name="METHOD_NAME" value="dummyTest" />
+      <option name="METHOD_NAME" value="approveExpenseNoAuthTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpenseServiceTest.getPendingExpenses_ReturnsExpenseList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExpenseControllerTest.approveExpenseSadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.revature.Unit.service.*" />
+          <option name="PATTERN" value="com.revature.api.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.revature.Unit.service" />
-      <option name="MAIN_CLASS_NAME" value="com.revature.Unit.service.ExpenseServiceTest" />
-      <option name="METHOD_NAME" value="getPendingExpenses_ReturnsExpenseList" />
+      <option name="PACKAGE_NAME" value="com.revature.api" />
+      <option name="MAIN_CLASS_NAME" value="com.revature.api.ExpenseControllerTest" />
+      <option name="METHOD_NAME" value="approveExpenseSadTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpenseControllerTest.denyExpenseHappyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.revature.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.revature.api" />
+      <option name="MAIN_CLASS_NAME" value="com.revature.api.ExpenseControllerTest" />
+      <option name="METHOD_NAME" value="denyExpenseHappyTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpenseControllerTest.denyExpenseSadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.revature.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.revature.api" />
+      <option name="MAIN_CLASS_NAME" value="com.revature.api.ExpenseControllerTest" />
+      <option name="METHOD_NAME" value="denyExpenseSadTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,11 +190,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ExpenseServiceTest.getPendingExpenses_ReturnsExpenseList" />
-        <item itemvalue="JUnit.ExpenseControllerTest.dummyTest" />
-        <item itemvalue="JUnit.ApproveAndDenyTest.getPendingExpenses_shouldReturnList" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ApproveAndDenyTest.approveExpense_shouldSucceed" />
+        <item itemvalue="JUnit.ExpenseControllerTest.denyExpenseHappyTest" />
+        <item itemvalue="JUnit.ExpenseControllerTest.approveExpenseNoAuthTest" />
+        <item itemvalue="JUnit.ExpenseControllerTest.approveExpenseSadTest" />
+        <item itemvalue="JUnit.ExpenseControllerTest.denyExpenseSadTest" />
       </list>
     </recent_temporary>
   </component>
