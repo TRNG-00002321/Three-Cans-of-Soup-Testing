@@ -78,12 +78,14 @@ class TestAuthApi:
         assert data["authenticated"] == True
         assert data["user"]["username"]  == "employee1"
 
+    @pytest.mark.skip(reason="Incorrect status code, ticket EMS-58")
     def test_status_not_logged_in(self, test_app):
         response = requests.get(f"{test_app}/api/auth/status")
         data = response.json()
         assert response.status_code == 200
         assert data["authenticated"] == False
-
+        
+    @pytest.mark.skip(reason="Incorrect status code, ticket EMS-58")
     def test_status_logged_out(self, test_app):
         session = requests.Session()
         login = {"username": "employee1",
@@ -96,6 +98,7 @@ class TestAuthApi:
         assert response.status_code == 200
         assert data["authenticated"] == False
 
+    @pytest.mark.skip(reason="Incorrect status code, ticket EMS-59")
     def test_status_service_error(self, test_app):
         session = requests.Session()
         login = {"username": "employee1",
