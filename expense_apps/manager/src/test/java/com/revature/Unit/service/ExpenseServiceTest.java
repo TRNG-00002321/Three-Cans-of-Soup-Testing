@@ -59,9 +59,9 @@ public class ExpenseServiceTest {
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
         ExpenseWithUser[] expenses = {
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval()),
-            new ExpenseWithUser(new Expense(), new User(), new Approval())
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval()),
+                new ExpenseWithUser(new Expense(), new User(), new Approval())
         };
         return Arrays.asList(expenses);
     }
@@ -94,7 +94,7 @@ public class ExpenseServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 99, 453})
+    @ValueSource(ints = { 1, 2, 3, 99, 453 })
     public void getExpensesByEmployee_ReturnsExpenseList(int employeeId) {
 
         // Arrange
@@ -238,8 +238,7 @@ public class ExpenseServiceTest {
                 .thenThrow(new RuntimeException("Database connection failed"));
 
         assertThrows(RuntimeException.class,
-                () -> expenseService.approveExpense(999, 100, "Approved")
-        );
+                () -> expenseService.approveExpense(999, 100, "Approved"));
 
         verify(approvalRepository).updateApprovalStatus(999, "approved", 100, "Approved");
     }
@@ -272,8 +271,7 @@ public class ExpenseServiceTest {
                 .thenThrow(new RuntimeException("Database connection failed"));
 
         assertThrows(RuntimeException.class,
-                () -> expenseService.denyExpense(999, 100, "Denied")
-        );
+                () -> expenseService.denyExpense(999, 100, "Denied"));
 
         verify(approvalRepository).updateApprovalStatus(999, "denied", 100, "Denied");
     }
