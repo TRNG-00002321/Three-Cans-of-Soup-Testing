@@ -48,3 +48,7 @@ def approval_repository(db_connection):
 def app(user_repository, expense_repository, approval_repository):
     app = 0
     yield app
+
+@pytest.fixture
+def base_url():
+    return "http://127.0.0.1:5000"
