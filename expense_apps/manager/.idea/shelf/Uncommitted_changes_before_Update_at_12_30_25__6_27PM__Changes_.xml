@@ -1,9 +1,0 @@
-<changelist name="Uncommitted_changes_before_Update_at_12_30_25,_6_27 PM_[Changes]" date="1767140827327" recycled="false" toDelete="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_25,_6_27 PM_[Changes]/shelved.patch" />
-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/30/25, 6:27 PM [Changes]" />
-  <binary>
-    <option name="BEFORE_PATH" value="../../expense_manager.db" />
-    <option name="AFTER_PATH" value="../../expense_manager.db" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_25,_6_27 PM_[Changes]/expense_manager.db" />
-  </binary>
-</changelist>
