@@ -31,9 +31,13 @@ def test_app():
     """
     Create Flask test application with real database and live server.
     """
+    # Remove existing test database to ensure fresh state
+    if os.path.exists(TEST_DB_PATH):
+        os.remove(TEST_DB_PATH)
+    
     # Initialize test database
     db_conn = DatabaseConnection(TEST_DB_PATH)
-    #db_conn.initialize_database()
+    db_conn.initialize_database()
     
     # Load seed data
     with open(SEED_SQL_PATH, 'r') as f:
