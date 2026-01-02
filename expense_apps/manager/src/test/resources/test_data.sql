@@ -1,3 +1,30 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS expenses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    amount REAL NOT NULL,
+    description TEXT NOT NULL,
+    date TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS approvals (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    expense_id INTEGER NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending',
+    reviewer INTEGER,
+    comment TEXT,
+    review_date TEXT,
+    FOREIGN KEY (expense_id) REFERENCES expenses(id),
+    FOREIGN KEY (reviewer) REFERENCES users(id)
+);
+
 DELETE FROM approvals;
 DELETE FROM expenses;
 DELETE FROM users;

@@ -22,7 +22,6 @@ public class ReportControllerTest {
         DummyDataLoader dataLoader = new DummyDataLoader();
         dataLoader.restoreDatabase();
         RestAssured.baseURI = BASE_URL;
-
         managerJwtCookie = given()
                 .contentType(ContentType.JSON)
                 .body("{\"username\": \"manager1\", \"password\": \"password123\"}")
