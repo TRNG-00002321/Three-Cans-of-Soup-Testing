@@ -27,6 +27,17 @@ class TestAuthApi:
         assert response.status_code == 401
         assert data["error"] == "Invalid credentials"
 
+    @pytest.mark.skip(reason="Incorrect status code, ticket EMS-60")
+    def test_login_with_manager_credentials(self, test_app):
+        login = {"username": "manager1",
+                 "password": "password123"}
+
+        response = requests.post(f"{test_app}/api/auth/login", json=login)
+        data = response.json()
+
+        assert response.status_code == 401
+        assert data["error"] == "Invalid credentials"
+
     @pytest.mark.parametrize("data", [{"username": "employee1"}, {"password": "password123"}])
     def test_login_missing_field(self, test_app, data):
         response = requests.post(f"{test_app}/api/auth/login", json=data)
