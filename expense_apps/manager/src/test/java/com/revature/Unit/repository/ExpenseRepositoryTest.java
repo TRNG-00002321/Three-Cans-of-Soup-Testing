@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
@@ -39,9 +40,10 @@ public class ExpenseRepositoryTest {
     @InjectMocks
     private ExpenseRepository expenseRepository;
 
-    private ResultSet getMockResultSet() throws SQLException {
-        ResultSet mockResultSet = mock(ResultSet.class);
+    @Mock
+    ResultSet mockResultSet;
 
+    void setMockResultSet() throws SQLException {
         when(mockResultSet.next()).thenReturn(true, false);
         when(mockResultSet.getInt("id")).thenReturn(1);
         when(mockResultSet.getInt("user_id")).thenReturn(2);
@@ -55,8 +57,6 @@ public class ExpenseRepositoryTest {
         when(mockResultSet.getObject("reviewer")).thenReturn(null);
         when(mockResultSet.getString("comment")).thenReturn(null);
         when(mockResultSet.getString("review_date")).thenReturn(null);
-
-        return mockResultSet;
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ExpenseRepositoryTest {
         // Arrange
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = getMockResultSet();
+        setMockResultSet();
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
         when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
@@ -89,8 +89,7 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
     }
@@ -100,7 +99,7 @@ public class ExpenseRepositoryTest {
         // Arrange
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = mock(ResultSet.class);
+        // emptyResultSet = mock(ResultSet.class);
         when(mockResultSet.next()).thenReturn(false);
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
@@ -132,11 +131,11 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
-    public void findAllExpensesWithUsers_HasPendingExpenses_ReturnsList() throws SQLException {
+    public void findAllExpensesWithUsers_Expenses_ReturnsList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = getMockResultSet();
+        setMockResultSet(); 
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
         when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
@@ -161,18 +160,17 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
     }
 
     @Test
-    public void findAllExpensesWithUsers_NoPendingExpenses_ReturnsEmptyList() throws SQLException {
+    public void findAllExpensesWithUsers_NoExpenses_ReturnsEmptyList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = mock(ResultSet.class);
+        // ResultSet emptyResultSet = mock(ResultSet.class);
         when(mockResultSet.next()).thenReturn(false);
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
@@ -209,7 +207,7 @@ public class ExpenseRepositoryTest {
         int userId = 2;
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = getMockResultSet();
+        setMockResultSet();
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
         doNothing().when(mockPreparedStatement).setInt(1, userId);
@@ -235,8 +233,7 @@ public class ExpenseRepositoryTest {
                 () -> assertEquals("pending", approval.getStatus()),
                 () -> assertEquals(null, approval.getReviewer()),
                 () -> assertEquals(null, approval.getComment()),
-                () -> assertEquals(null, approval.getReviewDate())
-        );
+                () -> assertEquals(null, approval.getReviewDate()));
         verify(databaseConnection, times(1)).getConnection();
         verify(mockPreparedStatement, times(1)).executeQuery();
         verify(mockPreparedStatement, times(1)).setInt(1, userId);
@@ -248,7 +245,7 @@ public class ExpenseRepositoryTest {
         int userId = 999;
         Connection mockConnection = mock(Connection.class);
         PreparedStatement mockPreparedStatement = mock(PreparedStatement.class);
-        ResultSet mockResultSet = mock(ResultSet.class);
+        // ResultSet mockResultSet = mock(ResultSet.class);
         when(mockResultSet.next()).thenReturn(false);
         when(databaseConnection.getConnection()).thenReturn(mockConnection);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);

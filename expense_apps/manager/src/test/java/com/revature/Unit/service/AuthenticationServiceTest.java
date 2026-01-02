@@ -148,7 +148,7 @@ class AuthenticationServiceTest {
         Optional<User> userOptional = authenticationService.validateManagerAuthentication("token");
         assertFalse(userOptional.isPresent());
 
-        //userRepo fails
+        // userRepo fails
         user.setId(1);
         user.setUsername("username");
         user.setRole("manager");
