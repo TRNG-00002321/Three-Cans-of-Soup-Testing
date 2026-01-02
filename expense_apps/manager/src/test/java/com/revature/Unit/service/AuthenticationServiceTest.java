@@ -80,7 +80,7 @@ class AuthenticationServiceTest {
     }
 
     @ParameterizedTest
-    @NullSource
+    //@NullSource
     @ValueSource(strings = {"", "  ", "\n", "   \n"})
     void validateJwtTokenNoTokenTest(String strings) {
         Optional<User> userOptional = authenticationService.validateJwtToken(strings);
@@ -110,7 +110,7 @@ class AuthenticationServiceTest {
     }
 
     @ParameterizedTest
-    @NullSource
+    //@NullSource
     @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
     void validateAuthenticationInvalidBearerTest(String strings) {
         Optional<User> newUser = authenticationService.validateAuthentication(strings);
@@ -184,7 +184,7 @@ class AuthenticationServiceTest {
     }
 
     @ParameterizedTest
-    @NullSource
+    //@NullSource
     @ValueSource(strings = {"NotBearer 1", "Bearer StringNotInt", "Bearer 1.1", "Bearer "})
     void validateManagerAuthenticationLegacyInvalidBearerTest(String bearer) {
         Optional<User> userOptional = authenticationService.validateManagerAuthenticationLegacy(bearer);

@@ -122,57 +122,57 @@ public class ReportControllerTest {
         "/api/reports/expenses/pending/csv"
     })
     public void testProtectedEndpoints_NoParams_InvalidToken(String endpoint) {
-         // No token
+        // No token
         given()
-            .when().get(endpoint)
-            .then()
-            .statusCode(401);
-        
+                .when().get(endpoint)
+                .then()
+                .statusCode(401);
+
         // Invalid token
         given().cookie("jwt", "invalid_token_value")
-            .when().get(endpoint)
-            .then()
-            .statusCode(401);
+                .when().get(endpoint)
+                .then()
+                .statusCode(401);
     }
-    
+
     @ParameterizedTest
     @CsvSource({
         "/api/reports/expenses/employee/{id}/csv, id, 1",
         "/api/reports/expenses/category/{cat}/csv, cat, Travel"
     })
     public void testProtectedEndpoints_WithPathParam_InvalidToken(String endpoint, String paramName, String paramValue) {
-         // No token
+        // No token
         given()
-            .pathParam(paramName, paramValue)
-            .when().get(endpoint)
-            .then()
-            .statusCode(401);
-        
+                .pathParam(paramName, paramValue)
+                .when().get(endpoint)
+                .then()
+                .statusCode(401);
+
         // Invalid token
         given().cookie("jwt", "invalid_token_value")
-            .pathParam(paramName, paramValue)
-            .when().get(endpoint)
-            .then()
-            .statusCode(401);
+                .pathParam(paramName, paramValue)
+                .when().get(endpoint)
+                .then()
+                .statusCode(401);
     }
-    
+
     @Test
     public void testProtectedEndpoints_DateRange_InvalidToken() {
-         // No token
+        // No token
         given()
-            .queryParam("startDate", "2024-01-01")
-            .queryParam("endDate", "2024-01-31")
-            .when().get("/api/reports/expenses/daterange/csv")
-            .then()
-            .statusCode(401);
-        
+                .queryParam("startDate", "2024-01-01")
+                .queryParam("endDate", "2024-01-31")
+                .when().get("/api/reports/expenses/daterange/csv")
+                .then()
+                .statusCode(401);
+
         // Invalid token
         given().cookie("jwt", "invalid_token_value")
-            .queryParam("startDate", "2024-01-01")
-            .queryParam("endDate", "2024-01-31")
-            .when().get("/api/reports/expenses/daterange/csv")
-            .then()
-            .statusCode(401);
+                .queryParam("startDate", "2024-01-01")
+                .queryParam("endDate", "2024-01-31")
+                .when().get("/api/reports/expenses/daterange/csv")
+                .then()
+                .statusCode(401);
     }
 
 }
