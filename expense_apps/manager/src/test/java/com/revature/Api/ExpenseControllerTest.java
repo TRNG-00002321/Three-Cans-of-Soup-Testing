@@ -9,6 +9,13 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Tag;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -16,6 +23,10 @@ import io.restassured.filter.cookie.CookieFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+@Epic("Manager App")
+@Feature("Expense Management")
+@Tag("API")
+@Tag("Sprint-3")
 public class ExpenseControllerTest {
 
     private static final String BASE_URL = "http://localhost:5001";
@@ -34,6 +45,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify managers can retrieve all expenses with statistics")
+    @Severity(SeverityLevel.CRITICAL)
     public void get_expenses_with_valid_manager_auth_sucess() {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -55,6 +69,9 @@ public class ExpenseControllerTest {
 
     @Test
     @Disabled("Bug in expense API - ticket EMS-55")
+    @Story("View All Expenses")
+    @Description("Verify unauthenticated users cannot access expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void get_expenses_with_no_auth_fail() {
         given()
                 .when()
@@ -65,6 +82,9 @@ public class ExpenseControllerTest {
 
     @Test
     @Disabled("Bug in expense API - ticket EMS-56")
+    @Story("View All Expenses")
+    @Description("Verify employees cannot access all expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void get_expenses_with_employee_auth_fail() {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -82,6 +102,9 @@ public class ExpenseControllerTest {
 
     @Test
     @Disabled("Bug in expense API - ticket EMS-57")
+    @Story("View All Expenses")
+    @Description("Verify retrieval of specific expense by ID")
+    @Severity(SeverityLevel.NORMAL)
     public void get_expense_by_id_with_auth_success() {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -102,6 +125,9 @@ public class ExpenseControllerTest {
         "1, 3",
         "2, 2"
     })
+    @Story("View All Expenses")
+    @Description("Verify retrieval of expenses stats by employee ID")
+    @Severity(SeverityLevel.NORMAL)
     public void get_expense_by_employeeId_with_auth_success(String employeeId, int count) {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -127,6 +153,9 @@ public class ExpenseControllerTest {
         "1, 3",
         "2, 2"
     })
+    @Story("View All Expenses")
+    @Description("Verify unauthenticated users cannot access employee expense stats")
+    @Severity(SeverityLevel.NORMAL)
     public void get_expense_by_employeeId_with_no_auth_fails(String employeeId, int count) {
         given()
                 .when()
@@ -140,6 +169,9 @@ public class ExpenseControllerTest {
         "1, 3",
         "2, 2"
     })
+    @Story("View All Expenses")
+    @Description("Verify employees cannot access other employees' expense stats")
+    @Severity(SeverityLevel.NORMAL)
     public void get_expense_by_employeeId_with_employee_auth_fails(String employeeId, int count) {
         given()
                 .when()
@@ -150,6 +182,9 @@ public class ExpenseControllerTest {
 
     //J's tests
     @Test
+    @Story("Review Expenses")
+    @Description("Verify retrieval of pending expenses for review")
+    @Severity(SeverityLevel.CRITICAL)
     void getPendingExpenseValidAuthReturns200() {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -167,6 +202,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify unauthenticated access to pending expenses fails")
+    @Severity(SeverityLevel.NORMAL)
     void getPendingExpenseInvalidAuthReturns401() {
         given()
                 .when()
@@ -176,6 +214,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify retrieval of expense list by employee")
+    @Severity(SeverityLevel.NORMAL)
     void getExpenseByEmployeeReturns200() {
         String jwt = given()
                 .contentType(ContentType.JSON)
@@ -210,6 +251,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify valid denial request succeeds")
+    @Severity(SeverityLevel.CRITICAL)
     public void denyExpenseHappyTest() {
         authenticateForCookieFilter();
         Response response = given()
@@ -227,6 +271,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify denial fails for invalid expense ID")
+    @Severity(SeverityLevel.NORMAL)
     public void denyExpenseSadTest() {
         authenticateForCookieFilter();
         Response response = given()
@@ -243,6 +290,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify unauthenticated users cannot deny expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void denyExpenseNoAuthTest() {
         Response response = given()
                 .body("""
@@ -257,6 +307,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify valid approval request succeeds")
+    @Severity(SeverityLevel.CRITICAL)
     public void approveExpenseHappyTest() {
         authenticateForCookieFilter();
         Response response = given()
@@ -274,6 +327,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify approval fails for invalid expense ID")
+    @Severity(SeverityLevel.NORMAL)
     public void approveExpenseSadTest() {
         authenticateForCookieFilter();
         Response response = given()
@@ -290,6 +346,9 @@ public class ExpenseControllerTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify unauthenticated users cannot approve expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void approveExpenseNoAuthTest() {
         Response response = given()
                 .body("""
