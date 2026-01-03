@@ -2,6 +2,12 @@ import pytest
 import requests
 
 
+import allure
+
+@allure.epic("Employee App")
+@allure.feature("Expense Management")
+@allure.suite("API Tests")
+@allure.tag("API", "Sprint-3")
 class TestExpenseController:
     
     @pytest.mark.parametrize("status", [
@@ -9,6 +15,9 @@ class TestExpenseController:
         "approved",
         "denied"
     ])
+    @allure.story("View Status")
+    @allure.title("View expenses by status")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_get_expenses_with_valid_employee_auth_and_valid_status_success(self, test_app, status):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -25,6 +34,9 @@ class TestExpenseController:
         ("employee1", "password123", 3),
         ("employee2", "password456", 2)
     ])
+    @allure.story("View History")
+    @allure.title("View own expenses only")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_get_expenses_with_valid_employee_auth_and_valid_status_returns_own_expeses_success(self, test_app, username, password, expected_count):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': username,
@@ -36,6 +48,9 @@ class TestExpenseController:
         assert response.json() is not None
         assert response.json()['count'] == expected_count
 
+    @allure.story("View History")
+    @allure.title("View expenses unauthorized access")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_expenses_with_invalid_auth_and_valid_status_fail(self, test_app):
         jwt_token = "invalid_token"
     
@@ -43,6 +58,9 @@ class TestExpenseController:
         assert response.status_code == 403
         assert response.json() is not None
         
+    @allure.story("View History")
+    @allure.title("Manager cannot view employee expenses via this endpoint")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_get_expenses_with_valid_manager_auth_and_valid_status_fail(self, test_app):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'manager1',
@@ -54,6 +72,9 @@ class TestExpenseController:
         assert response.json() is not None
 
 
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Edit pending expense success")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_edit_expense_description_with_valid_employee_auth_and_valid_status_success(self, test_app):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -77,6 +98,9 @@ class TestExpenseController:
 
 
     @pytest.mark.parametrize("expense_id", [2,3])
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Cannot edit approved/denied expenses")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_edit_expense_description_with_valid_employee_auth_and_invalid_status(self, test_app,expense_id):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -95,6 +119,9 @@ class TestExpenseController:
         assert response.status_code == 400
         assert 'Cannot edit expense' in response.json()['error']
 
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Delete pending expense success")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_delete_expense_description_with_valid_employee_auth_and_valid_status_success(self, test_app):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -107,6 +134,9 @@ class TestExpenseController:
         assert 'Expense deleted successfully' in response.json()['message']
 
     @pytest.mark.parametrize("expense_id", [2,3])
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Cannot delete approved/denied expenses")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_delete_expense_description_with_valid_employee_auth_and_invalid_status(self, test_app,expense_id):
             jwt_token = requests.post(f'{test_app}/api/auth/login', json={
                 'username': 'employee1',
@@ -123,6 +153,9 @@ class TestExpenseController:
         ({"amount": 100}, 400),
         ({"amount": "invalid", "description": "Lunch"}, 400)
     ])
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense invalid payload")
+    @allure.severity(allure.severity_level.NORMAL)
     def test_submit_expense_invalid_payload_fail(self, test_app, payload, expected_status):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -133,6 +166,9 @@ class TestExpenseController:
         assert response.status_code == expected_status
         assert response.json().get('error') is not None
         
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense success")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_submit_expense_success(self, test_app):
         jwt_token = requests.post(f'{test_app}/api/auth/login', json={
             'username': 'employee1',
@@ -155,6 +191,9 @@ class TestExpenseController:
         (None, 401),
         ("invalid_token", 403)
     ])
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense security check")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_submit_expense_security_fail(self, test_app, token, expected_status):
         cookies = {}
         if token:

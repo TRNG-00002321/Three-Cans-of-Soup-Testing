@@ -4,6 +4,12 @@ from unittest.mock import MagicMock
 from repository import Expense
 from repository.expense_repository import ExpenseRepository
 
+import allure
+
+@allure.epic("Employee App")
+@allure.feature("Expense Management")
+@allure.suite("Unit Tests")
+@allure.tag("Unit", "Sprint-2")
 class TestExpenseRepository:
     """
     create
@@ -41,6 +47,8 @@ class TestExpenseRepository:
         expense.date = "2025/12/16"
         return expense
 
+    @allure.story("Submit Expenses")
+    @allure.title("Create expense success")
     def test_create_expense(self, mock_db, mock_conn, mock_cursor, expense):
         mock_cursor.lastrowid = 1
         mock_conn.execute.side_effect = [mock_cursor, None]
@@ -54,6 +62,8 @@ class TestExpenseRepository:
         assert new_expense.id == 1
         mock_conn.commit.assert_called_once()
         
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Update valid expense success")
     def test_update_valid_expense_returns(self, expense_repository, conn):
         expense = Expense(
                 id=0,
@@ -68,6 +78,8 @@ class TestExpenseRepository:
         conn.commit.assert_called_once()
         assert result is not None
     
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Update None expense raises error")
     def test_update_none_expense_raisesError(self, expense_repository, conn):
 
         with pytest.raises(Exception):
@@ -75,6 +87,8 @@ class TestExpenseRepository:
 
         assert conn.commit.call_count == 0
         
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Delete valid ID success")
     def test_delete_valid_id_returns_true(self, expense_repository, conn, cursor):
         cursor.rowcount = 1
 
@@ -84,6 +98,8 @@ class TestExpenseRepository:
         conn.commit.assert_called_once()
         assert deleted
     
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Delete invalid ID returns False")
     def test_delete_invalid_id_returns_true(self, expense_repository, conn, cursor):
         cursor.rowcount = 0
 

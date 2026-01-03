@@ -2,8 +2,16 @@ from unittest.mock import MagicMock
 import pytest
 
 
-class Test_Expense_Controller():
+import allure
+
+@allure.epic("Employee App")
+@allure.feature("Expense Management")
+@allure.suite("Unit Tests")
+@allure.tag("Unit", "Sprint-2")
+class TestApprovalRepository:
     
+    @allure.story("View Status")
+    @allure.title("Find expenses with status for user")
     def test_find_expenses_with_status_for_user(self, approval_repository, mock_db_connection):
         _, mock_context = mock_db_connection
         mock_cursor = MagicMock()
@@ -46,6 +54,8 @@ class Test_Expense_Controller():
         assert approval.review_date == '2024-01-19'
     
     #Look over _ fuinctionality
+    @allure.story("View Status")
+    @allure.title("Find expenses with status empty result")
     def test_find_expenses_with_status_empty_result(self, approval_repository, mock_db_connection):
         _, mock_context = mock_db_connection
         mock_cursor = MagicMock()
@@ -59,6 +69,8 @@ class Test_Expense_Controller():
         mock_context.execute.assert_called_once()
         mock_cursor.fetchall.assert_called_once()
     
+    @allure.story("View Status")
+    @allure.title("Find expenses with status connection failure")
     def test_find_expenses_with_status_connection_fails(self, approval_repository, mock_db_connection):
         mock_conn, _ = mock_db_connection
         mock_conn.get_connection.side_effect = Exception("Database connection failed")

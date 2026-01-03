@@ -30,6 +30,12 @@ def service(expense_repo, approval_repo):
     return ExpenseService(expense_repo, approval_repo)
 
 
+import allure
+
+@allure.epic("Employee App")
+@allure.feature("Expense Management")
+@allure.suite("Unit Tests")
+@allure.tag("Unit", "Sprint-2")
 class TestExpenseService:
 
     @pytest.fixture
@@ -54,6 +60,8 @@ class TestExpenseService:
     def expense_service(self, expense_repository, approval_repository ):
         return ExpenseService(expense_repository, approval_repository)
     
+    @allure.story("View Status")
+    @allure.title("Get user expenses with status")
     def test_get_user_expenses_with_status(self, service, approval_repo):
         expense = Expense(id=1, user_id=10, amount=100, description="Taxi", date="2025-01-01")
         approval = Approval(id=1, expense_id=1, status="pending", reviewer=None, comment=None, review_date=None)
@@ -67,6 +75,8 @@ class TestExpenseService:
         assert result == [(expense, approval)]
         approval_repo.find_expenses_with_status_for_user.assert_called_once_with(10)    
 
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense with explicit date")
     def test_submit_expense_valid_expense_with_date(self, expense, expense_repository,expense_service):
         expense_repository.create.return_value =  expense
         expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
@@ -78,6 +88,8 @@ class TestExpenseService:
         assert isinstance(submitted_expense, Expense)
         assert submitted_expense == expense
 
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense without explicit date (defaults to now)")
     def test_submit_expense_valid_expense_without_date(self, expense, expense_repository,expense_service):
         expense.date = datetime.now().strftime('%Y-%m-%d')
         expense_repository.create.return_value =  expense
@@ -90,6 +102,8 @@ class TestExpenseService:
         assert isinstance(submitted_expense, Expense)
         assert submitted_expense == expense
 
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense invalid amount (0)")
     def test_submit_expense_valid_invalid_amount_zero(self, expense, expense_repository,expense_service):
         expense.amount = 0
 
@@ -97,6 +111,8 @@ class TestExpenseService:
             expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
         expense_repository.create.assert_not_called()
 
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense invalid amount (negative)")
     def test_submit_expense_valid_invalid_amount_negative(self, expense, expense_repository,expense_service):
         expense.amount = -100
 
@@ -104,6 +120,8 @@ class TestExpenseService:
             expense_service.submit_expense(expense.user_id, expense.amount, expense.description, expense.date)
         expense_repository.create.assert_not_called()
 
+    @allure.story("Submit Expenses")
+    @allure.title("Submit expense invalid description")
     @pytest.mark.parametrize("description", ["", "   ", "\n", "  \n"])
     def test_submit_expense_valid_invalid_description(self, expense, expense_repository,expense_service, description):
         expense.description = description
@@ -113,10 +131,15 @@ class TestExpenseService:
         expense_repository.create.assert_not_called()
         
 
+    @allure.story("View Expenses")
+    @allure.title("Expense repo find by ID mock verification")
     def test_expense_repo_mock(self,expense_repository):
         assert expense_repository.find_by_id(0) is not None
         assert expense_repository.find_by_id(-1) is None
     
+
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Update expense reviewed throws error")
     @pytest.mark.parametrize(
             "status",
             [
@@ -141,6 +164,9 @@ class TestExpenseService:
         assert 'Cannot edit expense that has been reviewed' == str(context.value)
         expense_repository.update.assert_not_called()
     
+
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Update expense bad value throws error")
     @pytest.mark.parametrize(
             "amount,description,date,expected_error",
             [
@@ -166,6 +192,9 @@ class TestExpenseService:
         assert expected_error == str(context.value)
         expense_repository.update.assert_not_called()
         
+
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Delete reviewed expense raises error")
     @pytest.mark.parametrize(
             "status",
             [
@@ -187,6 +216,9 @@ class TestExpenseService:
         assert 'Cannot delete expense that has been reviewed' == str(context.value)
         expense_repository.delete.assert_not_called()
 
+
+    @allure.story("Edit Pending Expenses")
+    @allure.title("Update expense parameterized IDs")
     @pytest.mark.parametrize(
             "expense_id,user_id,expected",
             [
@@ -214,6 +246,9 @@ class TestExpenseService:
             assert result is None
             expense_repository.update.assert_not_called()
             
+
+    @allure.story("Delete Pending Expenses")
+    @allure.title("Delete expense parameterized")
     @pytest.mark.parametrize(
             "expense_id,user_id,expected",
             [
@@ -238,6 +273,8 @@ class TestExpenseService:
             assert not result
             expense_repository.delete.assert_not_called()
 
+    @allure.story("View Status")
+    @allure.title("Get user expenses with status empty result")
     def test_get_user_expenses_with_status_empty_result(self):
         user_id = 999
         mock_approval_repository = Mock()
@@ -251,6 +288,8 @@ class TestExpenseService:
         assert len(result) == 0
         mock_approval_repository.find_expenses_with_status_for_user.assert_called_once_with(user_id)
         
+    @allure.story("View Status")
+    @allure.title("Get user expenses with status multiple expenses")
     def test_get_user_expenses_with_status_multiple_expenses(self):
         user_id = 456
         
@@ -286,6 +325,8 @@ class TestExpenseService:
         assert result[2][1].status == "denied"
         mock_approval_repository.find_expenses_with_status_for_user.assert_called_once_with(user_id)
         
+    @allure.story("View Status")
+    @allure.title("Get user expenses with status DB error")
     def test_get_user_expenses_with_status_sql_error(self):
         user_id = 789
         mock_approval_repository = Mock()
