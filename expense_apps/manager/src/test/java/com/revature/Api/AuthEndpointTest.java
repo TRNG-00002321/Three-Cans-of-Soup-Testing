@@ -136,7 +136,7 @@ public class AuthEndpointTest {
         given()
             .cookie("jwt",jwt)
             .when()
-            .get(BASE_URL+"/api/auth/logout")
+            .post(BASE_URL+"/api/auth/logout")
             .then()
             .statusCode(200)
             .body("success", is(true));
@@ -144,7 +144,7 @@ public class AuthEndpointTest {
         given()
             .cookie("jwt",jwt)
             .when()
-            .get(BASE_URL+"api/auth/status")
+            .get(BASE_URL+"/api/auth/status")
             .then()
             .statusCode(200)
             .body("authenticated", is(false));
