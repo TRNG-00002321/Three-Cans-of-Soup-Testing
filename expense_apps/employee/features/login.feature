@@ -20,5 +20,11 @@ Feature: Employee Login
 
     Examples:
       | username    | password    |
-      | testuser    | testpass    |
       | invaliduser | invalidpass |
+      |nousername   | nopassword   |
+
+  Scenario: Unsuccessful login with manager credentials
+    When the employee enters username manager1
+    And the employee enters password password123
+    And clicks the login button
+    Then an error message should be displayed indicating login failed

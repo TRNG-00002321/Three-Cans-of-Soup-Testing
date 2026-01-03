@@ -42,3 +42,10 @@ def step_error_message_displayed(context):
     context.wait.until(EC.text_to_be_present_in_element((By.ID, "login-message"), "Invalid credentials"))
     login_message = context.driver.find_element(By.ID, "login-message")
     assert "Invalid credentials" in login_message.text
+
+@then(u'an error message should be displayed indicating login failed')
+def step_error_message_displayed(context):
+    context.wait.until(EC.text_to_be_present_in_element((By.ID, "login-message"), "Login failed"))
+    login_message = context.driver.find_element(By.ID, "login-message")
+    assert "Login failed" in login_message.text
+
