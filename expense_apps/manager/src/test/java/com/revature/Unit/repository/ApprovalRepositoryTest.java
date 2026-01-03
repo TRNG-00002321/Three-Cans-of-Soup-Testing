@@ -22,6 +22,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -49,6 +50,7 @@ public class ApprovalRepositoryTest {
 
     @BeforeEach
     void setUp() throws SQLException {
+        Allure.label("suite", "Unit Tests");
         approvalRepository = new ApprovalRepository(databaseConnection);
         when(databaseConnection.getConnection()).thenReturn(connection);
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);

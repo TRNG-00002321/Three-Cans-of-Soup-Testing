@@ -30,6 +30,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 
 @Epic("Manager App")
@@ -53,6 +54,7 @@ public class ReportControllerTest {
 
     @BeforeEach
     public void setup() {
+        Allure.label("suite", "Unit Tests");
         mockExpenses = List.of(
                 new ExpenseWithUser(),
                 new ExpenseWithUser()

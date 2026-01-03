@@ -26,6 +26,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -69,6 +71,7 @@ public class ExpenseServiceTest {
     private ExpenseService expenseService;
 
     private List<ExpenseWithUser> getListOfExpensesWithUser() {
+        Allure.label("suite", "Unit Tests");
         ExpenseWithUser[] expenses = {
                 new ExpenseWithUser(new Expense(), new User(), new Approval()),
                 new ExpenseWithUser(new Expense(), new User(), new Approval()),

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,6 +50,7 @@ class AuthenticationMiddlewareTest {
 
     @BeforeEach
     void setUp() {
+        Allure.label("suite", "Unit Tests");
         authenticationMiddleware = new AuthenticationMiddleware(authenticationService);
     }
 

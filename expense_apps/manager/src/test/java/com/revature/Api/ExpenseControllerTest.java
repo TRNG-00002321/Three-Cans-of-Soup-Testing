@@ -15,6 +15,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 
 import io.restassured.RestAssured;
@@ -40,6 +41,7 @@ public class ExpenseControllerTest {
 
     @BeforeEach
     public void setUp() throws Exception {
+        Allure.label("suite", "API Tests");
         DummyDataLoader dataLoader = new DummyDataLoader();
         dataLoader.restoreDatabase();
     }

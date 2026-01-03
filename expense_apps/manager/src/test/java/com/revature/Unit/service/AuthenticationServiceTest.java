@@ -26,6 +26,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
+import io.qameta.allure.Allure;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.auth0.jwt.JWT;
@@ -50,6 +51,7 @@ class AuthenticationServiceTest {
 
     @BeforeEach
     void setup() {
+        Allure.label("suite", "Unit Tests");
         user = new User();
         authenticationService = new AuthenticationService(userRepository);
     }

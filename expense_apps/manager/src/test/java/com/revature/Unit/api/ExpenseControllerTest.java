@@ -25,6 +25,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.api.AuthenticationMiddleware;
+import io.qameta.allure.Allure;
 import com.revature.api.ExpenseController;
 import com.revature.repository.Approval;
 import com.revature.repository.Expense;
@@ -72,6 +73,7 @@ public class ExpenseControllerTest {
 
     @BeforeEach
     public void setup() {
+        Allure.label("suite", "Unit Tests");
         ctxMock = mock(Context.class, Mockito.RETURNS_DEEP_STUBS);
         validatorMock = mock(Validator.class);
 
