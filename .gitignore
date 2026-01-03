@@ -6,5 +6,4 @@ myenv/
 **/.env
 .env
 **/allure-results
-**/allure-report
 **/.idea
