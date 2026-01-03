@@ -51,8 +51,7 @@ def before_all(context):
     context.server_thread = threading.Thread(target=context.server.serve_forever)
     context.server_thread.daemon = True
     context.server_thread.start()
-    
-    time.sleep(0.5) # Wait for server to boot
+  
 
 def before_scenario(context, scenario):
     """Scenario setup: Browser initialization."""
