@@ -22,8 +22,6 @@ from repository.expense_model import Expense
 
 import allure
 
-@allure.epic("Employee App")
-@allure.feature("Expense Management")
 @allure.suite("Unit Tests")
 @allure.tag("Unit", "Sprint-2")
 class TestExpenseController:
@@ -73,7 +71,6 @@ class TestExpenseController:
         return app.test_cli_runner()
 
     @pytest.mark.parametrize("amount", ["123_000", 123, "123", "12.3", 12.3])
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense valid amount success")
     def test_submit_expense_valid_amount_success(self, client, expense_service, expense, amount):
         payload = {
@@ -93,7 +90,6 @@ class TestExpenseController:
         assert data["expense"]["date"] == expense.date
         assert data["expense"]["status"] == "pending"
 
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense no data failure")
     def test_submit_expense_no_data_failure(self, client):
         payload = {}
@@ -104,7 +100,6 @@ class TestExpenseController:
         data = response.get_json()
         assert data["error"] == "JSON data required"
 
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense no description failure")
     def test_submit_expense_no_description_failure(self, client):
         payload = {
@@ -118,7 +113,6 @@ class TestExpenseController:
         data = response.get_json()
         assert data["error"] == "Amount and description are required"
 
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense no amount failure")
     def test_submit_expense_no_amount_failure(self, client):
         payload = {
@@ -133,7 +127,6 @@ class TestExpenseController:
         assert data["error"] == "Amount and description are required"
 
     @pytest.mark.parametrize("amount", ["string", "  ", "\n", "  \n", "123,00"])
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense invalid amount failure")
     def test_submit_expense_invalid_amount_failure(self, amount, client):
         payload = {
@@ -147,7 +140,6 @@ class TestExpenseController:
         data = response.get_json()
         assert data["error"] == "Amount must be a valid number"
 
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense service failure")
     def test_submit_expense_submit_failure(self, client, expense_service):
         payload = {
@@ -164,7 +156,6 @@ class TestExpenseController:
         data = response.get_json()
         assert data["error"] == "Failed to submit expense"
 
-    @allure.story("Submit Expenses")
     @allure.title("Submit expense service data failure")
     def test_submit_expense_submit_data_failure(self, client, expense_service):
         payload = {
@@ -186,7 +177,6 @@ class TestExpenseController:
         "approved",
         "denied"
     ])
-    @allure.story("View Status")
     @allure.title("Get expenses valid status")
     def test_get_expenses_valid_status(self, mock_client, mock_app, monkeypatch, status):
         mock_user = User(1, "test_user", "test_pass", "Employee")
@@ -233,7 +223,6 @@ class TestExpenseController:
             assert expense_json['comment'] == expected_approval.comment
             assert expense_json['review_date'] == expected_approval.review_date
             
-    @allure.story("View Status")
     @allure.title("Get expenses no status")
     def test_get_expenses_no_status(self, mock_client, mock_app, monkeypatch):
         mock_user = User(1, "test_user", "test_pass", "Employee")
@@ -280,7 +269,6 @@ class TestExpenseController:
             assert expense_json['comment'] == expected_approval.comment
             assert expense_json['review_date'] == expected_approval.review_date
 
-    @allure.story("View Status")
     @allure.title("Get expenses service exception")
     def test_get_expenses_service_exception(self, mock_client, mock_app, monkeypatch):
         mock_user = User(1, "test_user", "test_pass", "Employee")
@@ -301,4 +289,3 @@ class TestExpenseController:
             user_id=1,
             status_filter="approved"
         )
-        

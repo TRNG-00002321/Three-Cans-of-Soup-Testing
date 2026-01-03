@@ -21,13 +21,10 @@ def sample_user():
 
 import allure
 
-@allure.epic("Employee App")
-@allure.feature("Employee Authentication")
 @allure.suite("Unit Tests")
 @allure.tag("Unit", "Sprint-2")
 class Test_Authentication_Service():
 
-    @allure.story("Employee Login")
     @allure.title("Authenticate user success")
     def test_authenticate_user_success(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_username.return_value = sample_user
@@ -37,7 +34,6 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_username.assert_called_once_with('testuser')
 
-    @allure.story("Employee Login")
     @allure.title("Authenticate user wrong password")
     def test_authenticate_user_failure_wrong_password(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_username.return_value = sample_user
@@ -47,7 +43,6 @@ class Test_Authentication_Service():
         assert user is None
         mock_user_repository.find_by_username.assert_called_once_with('testuser')
 
-    @allure.story("Employee Login")
     @allure.title("Authenticate user not found")
     def test_authenticate_user_failure_user_not_found(self, auth_service, mock_user_repository):
         mock_user_repository.find_by_username.return_value = None
@@ -57,7 +52,6 @@ class Test_Authentication_Service():
         assert user is None
         mock_user_repository.find_by_username.assert_called_once_with('nonexistent')
 
-    @allure.story("Employee Login")
     @allure.title("Get user by ID")
     def test_get_user_by_id(self, auth_service, mock_user_repository, sample_user):
         mock_user_repository.find_by_id.return_value = sample_user
@@ -67,7 +61,6 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_id.assert_called_once_with(1)
 
-    @allure.story("Employee Login")
     @allure.title("Generate JWT token")
     def test_generate_jwt_token(self, auth_service, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
@@ -78,7 +71,6 @@ class Test_Authentication_Service():
         assert decoded['username'] == sample_user.username
         assert decoded['role'] == sample_user.role
 
-    @allure.story("Employee Login")
     @allure.title("Validate JWT token valid")
     def test_validate_jwt_token_valid(self, auth_service, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
@@ -88,7 +80,6 @@ class Test_Authentication_Service():
         assert payload is not None
         assert payload['user_id'] == sample_user.id
 
-    @allure.story("Employee Login")
     @allure.title("Validate JWT token invalid input")
     def test_validate_jwt_token_invalid_input(self, auth_service, sample_user):
         token = "invalid.token"
@@ -97,7 +88,6 @@ class Test_Authentication_Service():
         
         assert result is None
 
-    @allure.story("Employee Login")
     @allure.title("Validate JWT token expired")
     def test_validate_jwt_token_expired(self, auth_service, sample_user):
         payload = {
@@ -113,13 +103,11 @@ class Test_Authentication_Service():
         
         assert result is None
 
-    @allure.story("Employee Login")
     @allure.title("Validate JWT token invalid string")
     def test_validate_jwt_token_invalid_string(self, auth_service):
         result = auth_service.validate_jwt_token("invalid.token.string")
         assert result is None
 
-    @allure.story("Employee Login")
     @allure.title("Get user from token valid")
     def test_get_user_from_token_valid(self, auth_service, mock_user_repository, sample_user):
         token = auth_service.generate_jwt_token(sample_user)
@@ -130,7 +118,6 @@ class Test_Authentication_Service():
         assert user == sample_user
         mock_user_repository.find_by_id.assert_called_once_with(sample_user.id)
 
-    @allure.story("Employee Login")
     @allure.title("Get user from token invalid")
     def test_get_user_from_token_invalid(self, auth_service):
         user = auth_service.get_user_from_token("invalid.token")

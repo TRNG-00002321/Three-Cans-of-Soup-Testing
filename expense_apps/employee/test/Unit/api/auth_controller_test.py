@@ -6,12 +6,9 @@ from flask import Flask
 
 import allure
 
-@allure.epic("Employee App")
-@allure.feature("Employee Authentication")
 @allure.suite("Unit Tests")
 @allure.tag("Unit", "Sprint-2")
 class Test_Auth_Controller():
-    @allure.story("Employee Login")
     @allure.title("Login valid user")
     def test_login_valid_user(self, client, app, mock_employee):
         # Arrange
@@ -21,7 +18,7 @@ class Test_Auth_Controller():
         # Act
         response = client.post("api/auth/login", json={'username' : 'employee1', 'password' : 'password123'})
 
-       # Assert
+        # Assert
         assert response.status_code == 200
         assert response.json['user']['username'] == 'employee1'
 
@@ -31,7 +28,6 @@ class Test_Auth_Controller():
         app.auth_service.authenticate_user.assert_called_once()
         app.auth_service.generate_jwt_token.assert_called_once()
 
-    @allure.story("Employee Login")
     @allure.title("Login invalid user")
     def test_login_invalid_user(self, client, app):
         # Arrange
@@ -40,7 +36,7 @@ class Test_Auth_Controller():
         # Act
         response = client.post("api/auth/login", json={'username' : 'invaliduser', 'password' : 'invalidpass'})
 
-       # Assert
+        # Assert
         assert 401 == response.status_code
         app.auth_service.authenticate_user.assert_called_once()
         assert response.json['error'] == 'Invalid credentials'
@@ -52,17 +48,15 @@ class Test_Auth_Controller():
         ({'username' : 'employee1'}, 'Username and password required'),
         ({'username': '', 'password': ''}, 'Username and password required'),
         ])
-    @allure.story("Employee Login")
     @allure.title("Login invalid body")
     def test_login_invalid_body(self, client, json_data, error_message):
         # Act
         response = client.post("api/auth/login", json=json_data)
 
-       # Assert
+        # Assert
         assert 400 == response.status_code
         assert error_message == response.json['error']
     
-    @allure.story("Employee Login")
     @allure.title("Logout")
     def test_logout(self, client):
         response = client.post("api/auth/logout")
@@ -70,7 +64,6 @@ class Test_Auth_Controller():
         print(response.headers['Set-Cookie'])
         assert 'Expires=Thu, 01 Jan 1970 00:00:00 GMT' in response.headers['Set-Cookie']
 
-    @allure.story("Employee Login")
     @allure.title("Status authenticated")
     def test_status_authenicated(self, client, app, mock_employee):
         client.set_cookie('jwt_token', 'fake_token')
@@ -84,7 +77,6 @@ class Test_Auth_Controller():
         assert response.json['user']['username'] == 'employee1'
         assert response.json['user']['role'] == 'employee'
         
-    @allure.story("Employee Login")
     @allure.title("Status not authenticated")
     def test_status_not_authenicated(self, client, app, mock_employee):
 
@@ -96,7 +88,6 @@ class Test_Auth_Controller():
 
     #TODO: Log Defect in Jira
     @pytest.mark.skip("Incorrect Status Code - JIRA: EMS-42 ")
-    @allure.story("Employee Login")
     @allure.title("Status server error")
     def test_status_server_error(self, client, app):
         # Arrange

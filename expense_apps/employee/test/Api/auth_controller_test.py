@@ -5,13 +5,10 @@ import requests
 
 import allure
 
-@allure.epic("Employee App")
-@allure.feature("Employee Authentication")
 @allure.suite("API Tests")
 @allure.tag("API", "Sprint-3")
 class TestAuthApi:
 
-    @allure.story("Employee Login")
     @allure.title("Login with valid credentials")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_login_with_valid_credentials(self, test_app):
@@ -26,7 +23,6 @@ class TestAuthApi:
         assert data["user"]["username"] == "employee1"
         assert "jwt_token" in response.cookies
 
-    @allure.story("Employee Login")
     @allure.title("Login with invalid credentials")
     @allure.severity(allure.severity_level.NORMAL)
     def test_login_with_invalid_credentials(self, test_app):
@@ -40,7 +36,6 @@ class TestAuthApi:
         assert data["error"] == "Invalid credentials"
 
     @pytest.mark.skip(reason="Incorrect status code, ticket EMS-60")
-    @allure.story("Employee Login")
     @allure.title("Login with manager credentials (unauthorized)")
     @allure.severity(allure.severity_level.NORMAL)
     def test_login_with_manager_credentials(self, test_app):
@@ -54,7 +49,6 @@ class TestAuthApi:
         assert data["error"] == "Invalid credentials"
 
     @pytest.mark.parametrize("data", [{"username": "employee1"}, {"password": "password123"}])
-    @allure.story("Employee Login")
     @allure.title("Login with missing fields")
     @allure.severity(allure.severity_level.NORMAL)
     def test_login_missing_field(self, test_app, data):
@@ -64,7 +58,6 @@ class TestAuthApi:
         assert response.status_code == 400
         assert data["error"] == "Username and password required"
 
-    @allure.story("Employee Login")
     @allure.title("Login with missing JSON")
     @allure.severity(allure.severity_level.NORMAL)
     def test_login_missing_json(self, test_app):
@@ -74,7 +67,6 @@ class TestAuthApi:
         assert response.status_code == 400
         assert data["error"] == "JSON data required"
 
-    @allure.story("Employee Login")
     @allure.title("Login service failure")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_login_service_error(self, test_app):
@@ -85,7 +77,6 @@ class TestAuthApi:
         assert response.status_code == 500
         assert response.json()["error"] == "Login failed"
 
-    @allure.story("Employee Login")
     @allure.title("Logout")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_logout(self, test_app):
@@ -104,7 +95,6 @@ class TestAuthApi:
         assert data["message"] == "Logout successful"
         assert "jwt_token" not in response.cookies
 
-    @allure.story("Employee Login")
     @allure.title("Check status when logged in")
     @allure.severity(allure.severity_level.NORMAL)
     def test_status_logged_in(self, test_app):
@@ -119,7 +109,6 @@ class TestAuthApi:
         assert data["authenticated"] == True
         assert data["user"]["username"]  == "employee1"
 
-    @allure.story("Employee Login")
     @allure.title("Check status when not logged in")
     @allure.severity(allure.severity_level.NORMAL)
     def test_status_not_logged_in(self, test_app):
@@ -128,7 +117,6 @@ class TestAuthApi:
         assert response.status_code == 200
         assert data["authenticated"] == False
 
-    @allure.story("Employee Login")
     @allure.title("Check status after logout")
     @allure.severity(allure.severity_level.NORMAL)
     def test_status_logged_out(self, test_app):
