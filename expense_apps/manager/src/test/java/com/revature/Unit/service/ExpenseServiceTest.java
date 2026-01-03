@@ -20,6 +20,13 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.repository.Approval;
@@ -30,6 +37,10 @@ import com.revature.repository.ExpenseWithUser;
 import com.revature.repository.User;
 import com.revature.service.ExpenseService;
 
+@Epic("Manager App")
+@Feature("Expense Management")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class ExpenseServiceTest {
 
@@ -67,6 +78,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify retrieval of pending expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void getPendingExpenses_ReturnsExpenseList() {
         // Arrange
         when(expenseRepository.findPendingExpensesWithUsers()).thenReturn(getListOfExpensesWithUser());
@@ -79,6 +93,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify error handling for pending expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void getPendingExpenses_ThrowsRuntimeException() {
         // Arrange
         when(expenseRepository.findPendingExpensesWithUsers())
@@ -95,6 +112,9 @@ public class ExpenseServiceTest {
 
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3, 99, 453 })
+    @Story("View All Expenses")
+    @Description("Verify retrieval of expenses by employee ID")
+    @Severity(SeverityLevel.NORMAL)
     public void getExpensesByEmployee_ReturnsExpenseList(int employeeId) {
 
         // Arrange
@@ -108,6 +128,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify error handling for employee expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void getExpenseByEmployee_ThrowsRuntimeException() {
         // Arrange
         when(expenseRepository.findExpensesByUser(anyInt()))
@@ -124,6 +147,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify retrieval of all expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void getAllExpenses_ReturnsExpenseList() {
         // Arrange
         when(expenseRepository.findAllExpensesWithUsers()).thenReturn(getListOfExpensesWithUser());
@@ -136,6 +162,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify error handling for all expenses")
+    @Severity(SeverityLevel.CRITICAL)
     public void getAllExpenses_ThrowsRuntimeException() {
         // Arrange
         when(expenseRepository.findAllExpensesWithUsers())
@@ -151,6 +180,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Generate Reports")
+    @Description("Verify CSV report generation with all fields present")
+    @Severity(SeverityLevel.NORMAL)
     void generateCsvReportTestAllFields() {
         // Arrange
         when(expense.getId()).thenReturn(1);
@@ -181,6 +213,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Generate Reports")
+    @Description("Verify CSV report generation for pending expenses")
+    @Severity(SeverityLevel.NORMAL)
     void generateCsvReportTestPending() {
         // Arrange
         when(expense.getId()).thenReturn(2);
@@ -211,6 +246,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify successful expense approval")
+    @Severity(SeverityLevel.CRITICAL)
     void approveExpense_SuccessfulApproval_ReturnsTrue() {
         when(approvalRepository.updateApprovalStatus(123, "approved", 456, "Looks good"))
                 .thenReturn(true);
@@ -222,6 +260,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify failed expense approval")
+    @Severity(SeverityLevel.NORMAL)
     void approveExpense_FailedApproval_ReturnsFalse() {
         when(approvalRepository.updateApprovalStatus(999, "approved", 456, "Test"))
                 .thenReturn(false);
@@ -233,6 +274,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify database error handling during approval")
+    @Severity(SeverityLevel.CRITICAL)
     void approveExpense_DatabaseError_ThrowsRuntimeException() {
         when(approvalRepository.updateApprovalStatus(999, "approved", 100, "Approved"))
                 .thenThrow(new RuntimeException("Database connection failed"));
@@ -244,6 +288,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify successful expense denial")
+    @Severity(SeverityLevel.CRITICAL)
     void denyExpense_SuccessfulDenial_ReturnsTrue() {
         when(approvalRepository.updateApprovalStatus(123, "denied", 456, "Insufficient docs"))
                 .thenReturn(true);
@@ -255,6 +302,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify failed expense denial")
+    @Severity(SeverityLevel.NORMAL)
     void denyExpense_FailedDenial_ReturnsFalse() {
         when(approvalRepository.updateApprovalStatus(999, "denied", 456, "Test"))
                 .thenReturn(false);
@@ -266,6 +316,9 @@ public class ExpenseServiceTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify database error handling during denial")
+    @Severity(SeverityLevel.CRITICAL)
     void denyExpense_DatabaseError_ThrowsRuntimeException() {
         when(approvalRepository.updateApprovalStatus(999, "denied", 100, "Denied"))
                 .thenThrow(new RuntimeException("Database connection failed"));

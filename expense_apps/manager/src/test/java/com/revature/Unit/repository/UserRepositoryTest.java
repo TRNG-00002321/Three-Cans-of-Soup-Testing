@@ -19,12 +19,23 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.repository.DatabaseConnection;
 import com.revature.repository.User;
 import com.revature.repository.UserRepository;
 
+@Epic("Manager App")
+@Feature("Manager Authentication")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class UserRepositoryTest {
 
@@ -59,6 +70,9 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify finding user by ID")
+    @Severity(SeverityLevel.NORMAL)
     void findByIdSuccessTest() throws SQLException {
         setUpResultSetBasicManager();
 
@@ -78,11 +92,17 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify error handling when finding user by ID")
+    @Severity(SeverityLevel.CRITICAL)
     void findByIdConnectionFailTest() {
         assertThrows(RuntimeException.class, () -> userRepo.findById(1));
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify empty result when user ID not found")
+    @Severity(SeverityLevel.NORMAL)
     void findByIdNoResultTest() throws SQLException {
         when(mockStatement.executeQuery()).thenReturn(mockResultSet);
         when(mockResultSet.next()).thenReturn(false);
@@ -90,6 +110,9 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify finding user by username")
+    @Severity(SeverityLevel.NORMAL)
     void findByUsernameSuccessTest() throws SQLException {
         setUpResultSetBasicManager();
 
@@ -109,11 +132,17 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify error handling when finding user by username")
+    @Severity(SeverityLevel.CRITICAL)
     void findByUsernameConnectionFailTest() {
         assertThrows(RuntimeException.class, () -> userRepo.findByUsername("username"));
     }
 
     @Test
+    @Story("Manager Login")
+    @Description("Verify empty result when username not found")
+    @Severity(SeverityLevel.NORMAL)
     void findByUsernameNoResultTest() throws SQLException {
         when(mockStatement.executeQuery()).thenReturn(mockResultSet);
         when(mockResultSet.next()).thenReturn(false);

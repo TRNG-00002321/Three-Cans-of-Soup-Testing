@@ -22,6 +22,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.repository.Approval;
@@ -31,6 +38,10 @@ import com.revature.repository.ExpenseRepository;
 import com.revature.repository.ExpenseWithUser;
 import com.revature.repository.User;
 
+@Epic("Manager App")
+@Feature("Expense Management")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class ExpenseRepositoryTest {
 
@@ -60,6 +71,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify retrieval of pending expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void findPendingExpensesWithUsers_HasPendingExpenses_ReturnsList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
@@ -95,6 +109,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify empty list when no pending expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void findPendingExpensesWithUsers_NoPendingExpenses_ReturnsEmptyList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
@@ -116,6 +133,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("Review Expenses")
+    @Description("Verify error handling for pending expenses retrieval")
+    @Severity(SeverityLevel.CRITICAL)
     public void findPendingExpensesWithUsers_ThrowsRuntimeException() throws SQLException {
         // Arrange
         when(databaseConnection.getConnection()).thenThrow(SQLException.class);
@@ -131,6 +151,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify retrieval of all expenses")
+    @Severity(SeverityLevel.NORMAL)
     public void findAllExpensesWithUsers_Expenses_ReturnsList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
@@ -166,6 +189,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify empty list when no expenses exist")
+    @Severity(SeverityLevel.NORMAL)
     public void findAllExpensesWithUsers_NoExpenses_ReturnsEmptyList() throws SQLException {
         // Arrange
         Connection mockConnection = mock(Connection.class);
@@ -187,6 +213,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify error handling for all expenses retrieval")
+    @Severity(SeverityLevel.CRITICAL)
     public void findAllExpensesWithUsers_ThrowsRuntimeException() throws SQLException {
         // Arrange
         when(databaseConnection.getConnection()).thenThrow(SQLException.class);
@@ -202,6 +231,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify retrieval of expenses by user ID")
+    @Severity(SeverityLevel.NORMAL)
     public void findExpensesByUsers_ValidUserId_ReturnsList() throws SQLException {
         // Arrange
         int userId = 2;
@@ -240,6 +272,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify empty list when no expenses found for user")
+    @Severity(SeverityLevel.NORMAL)
     public void findExpensesByUsers_InvalidUserId_ReturnsEmptyList() throws SQLException {
         // Arrange
         int userId = 999;
@@ -264,6 +299,9 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
+    @Story("View All Expenses")
+    @Description("Verify error handling for user expenses retrieval")
+    @Severity(SeverityLevel.CRITICAL)
     public void findExpensesByUsers_ThrowsRuntimeException() throws SQLException {
         // Arrange
         int userId = 2;
