@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acdd08a-9432-40ad-af2a-779e6228aed5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../employee/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../employee/test/service/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../employee/test/service/expense_service_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/.idea/employee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/employee.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/repository/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/repository/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/test/Api/auth_controller_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/test/Api/auth_controller_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/test/Api/test_expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/test/Api/test_expense_manager.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/revature/api/ReportControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../expense_manager.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../expense_manager.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "EMS-16",
+    "git-widget-placeholder": "EMS-48",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager",
     "project.structure.last.edited": "Modules",
@@ -159,6 +158,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.ExpenseServiceTest" />
+      <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReportTestHappy" />
+      <item itemvalue="JUnit.ReportControllerTest.generateCategoryExpensesReport_sanitizesCategoryForFilename" />
+      <item itemvalue="JUnit.ReportControllerTest.generatePendingExpensesReport_serviceFailure_throwsInternalServerError" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -185,5 +191,9 @@
       <updated>1765853504728</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

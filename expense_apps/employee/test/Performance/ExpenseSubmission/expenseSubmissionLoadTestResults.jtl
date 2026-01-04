@@ -1,0 +1,1115 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1767523906685,91,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-2,text,true,,562,453,4,4,http://localhost:5000/api/auth/login,75,0,40
+1767523907591,14,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-4,text,true,,562,453,5,5,http://localhost:5000/api/auth/login,13,0,3
+1767523907780,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-1,text,true,,562,453,5,5,http://localhost:5000/api/auth/login,10,0,2
+1767523908812,32,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,336,686,7,7,http://localhost:5000/api/expenses,32,0,2
+1767523909486,13,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-5,text,true,,562,453,8,8,http://localhost:5000/api/auth/login,13,0,3
+1767523909486,15,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-8,text,true,,562,453,8,8,http://localhost:5000/api/auth/login,14,0,3
+1767523909565,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-3,text,true,,562,453,8,8,http://localhost:5000/api/auth/login,10,0,3
+1767523910231,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-6,text,true,,562,453,9,9,http://localhost:5000/api/auth/login,5,0,1
+1767523910520,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-10,text,true,,562,453,10,10,http://localhost:5000/api/auth/login,8,0,2
+1767523911247,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-7,text,true,,562,453,11,11,http://localhost:5000/api/auth/login,7,0,2
+1767523911515,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-9,text,true,,562,453,12,12,http://localhost:5000/api/auth/login,10,0,3
+1767523911938,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,336,708,12,12,http://localhost:5000/api/expenses,13,0,2
+1767523912253,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-11,text,true,,562,453,13,13,http://localhost:5000/api/auth/login,6,0,1
+1767523912833,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,336,686,14,14,http://localhost:5000/api/expenses,14,0,2
+1767523913337,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-12,text,true,,562,453,15,15,http://localhost:5000/api/auth/login,7,0,2
+1767523913732,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,336,708,15,15,http://localhost:5000/api/expenses,22,0,2
+1767523914059,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-3,text,true,,336,708,16,16,http://localhost:5000/api/expenses,14,0,1
+1767523914373,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-13,text,true,,562,453,16,16,http://localhost:5000/api/auth/login,6,0,2
+1767523915351,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-14,text,true,,562,453,18,18,http://localhost:5000/api/auth/login,9,0,3
+1767523915806,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-17,text,true,,562,453,19,19,http://localhost:5000/api/auth/login,9,0,2
+1767523916526,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,336,708,20,20,http://localhost:5000/api/expenses,11,0,1
+1767523916763,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-15,text,true,,562,453,20,20,http://localhost:5000/api/auth/login,9,0,2
+1767523916809,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-3,text,true,,336,708,20,20,http://localhost:5000/api/expenses,20,0,2
+1767523916888,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-20,text,true,,562,453,21,21,http://localhost:5000/api/auth/login,9,0,2
+1767523917090,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,336,686,21,21,http://localhost:5000/api/expenses,22,0,2
+1767523917200,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,336,686,21,21,http://localhost:5000/api/expenses,22,0,2
+1767523917262,14,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-16,text,true,,562,453,21,21,http://localhost:5000/api/auth/login,13,0,2
+1767523917945,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-18,text,true,,562,453,22,22,http://localhost:5000/api/auth/login,7,0,1
+1767523917992,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,337,708,22,22,http://localhost:5000/api/expenses,25,0,3
+1767523918578,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,337,686,23,23,http://localhost:5000/api/expenses,13,0,1
+1767523918624,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-19,text,true,,562,453,23,23,http://localhost:5000/api/auth/login,5,0,1
+1767523919251,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-24,text,true,,562,453,24,24,http://localhost:5000/api/auth/login,7,0,2
+1767523919803,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-22,text,true,,562,453,25,25,http://localhost:5000/api/auth/login,9,0,3
+1767523919914,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,337,708,26,26,http://localhost:5000/api/expenses,25,0,2
+1767523920566,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-21,text,true,,562,453,27,27,http://localhost:5000/api/auth/login,11,0,2
+1767523920794,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,337,686,27,27,http://localhost:5000/api/expenses,41,0,7
+1767523920935,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-25,text,true,,562,453,27,27,http://localhost:5000/api/auth/login,6,0,1
+1767523921000,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-26,text,true,,562,453,27,27,http://localhost:5000/api/auth/login,8,0,2
+1767523921232,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,337,686,28,28,http://localhost:5000/api/expenses,17,0,3
+1767523921262,14,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-23,text,true,,562,453,28,28,http://localhost:5000/api/auth/login,13,0,2
+1767523921492,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,337,708,28,28,http://localhost:5000/api/expenses,18,0,2
+1767523921683,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,337,686,29,29,http://localhost:5000/api/expenses,23,0,4
+1767523921863,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-29,text,true,,562,453,29,29,http://localhost:5000/api/auth/login,7,0,2
+1767523921971,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,337,708,29,29,http://localhost:5000/api/expenses,20,0,2
+1767523922344,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-27,text,true,,562,453,30,30,http://localhost:5000/api/auth/login,7,0,1
+1767523923212,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-28,text,true,,562,453,31,31,http://localhost:5000/api/auth/login,10,0,3
+1767523923578,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,337,686,32,32,http://localhost:5000/api/expenses,16,0,1
+1767523923832,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-30,text,true,,562,453,32,32,http://localhost:5000/api/auth/login,9,0,2
+1767523924187,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,337,686,33,33,http://localhost:5000/api/expenses,21,0,1
+1767523924359,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,337,708,33,33,http://localhost:5000/api/expenses,16,0,1
+1767523924706,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,337,708,34,34,http://localhost:5000/api/expenses,15,0,2
+1767523924965,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-32,text,true,,562,453,34,34,http://localhost:5000/api/auth/login,9,0,3
+1767523925120,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,337,686,34,34,http://localhost:5000/api/expenses,10,0,1
+1767523925366,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,337,686,35,35,http://localhost:5000/api/expenses,21,0,1
+1767523925461,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,337,686,35,35,http://localhost:5000/api/expenses,22,0,2
+1767523925508,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,337,686,35,35,http://localhost:5000/api/expenses,27,0,1
+1767523925795,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,337,686,35,35,http://localhost:5000/api/expenses,16,0,1
+1767523926049,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-33,text,true,,562,453,36,36,http://localhost:5000/api/auth/login,9,0,1
+1767523926186,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-31,text,true,,562,453,36,36,http://localhost:5000/api/auth/login,5,0,2
+1767523927016,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-34,text,true,,562,453,37,37,http://localhost:5000/api/auth/login,6,0,2
+1767523927524,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-3,text,true,,337,686,38,38,http://localhost:5000/api/expenses,20,0,2
+1767523927699,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-36,text,true,,562,453,39,39,http://localhost:5000/api/auth/login,9,0,2
+1767523927759,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,337,686,39,39,http://localhost:5000/api/expenses,22,0,2
+1767523927821,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,337,708,39,39,http://localhost:5000/api/expenses,17,0,2
+1767523928042,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,337,686,39,39,http://localhost:5000/api/expenses,20,0,2
+1767523928342,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-39,text,true,,562,453,40,40,http://localhost:5000/api/auth/login,5,0,2
+1767523928468,4,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-35,text,true,,562,453,40,40,http://localhost:5000/api/auth/login,4,0,1
+1767523929472,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-37,text,true,,562,453,42,42,http://localhost:5000/api/auth/login,8,0,3
+1767523929472,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-41,text,true,,562,453,42,42,http://localhost:5000/api/auth/login,10,0,3
+1767523929739,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,337,686,42,42,http://localhost:5000/api/expenses,21,0,2
+1767523930240,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,337,708,43,43,http://localhost:5000/api/expenses,25,0,2
+1767523930526,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-38,text,true,,562,453,43,43,http://localhost:5000/api/auth/login,7,0,2
+1767523930637,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,337,686,44,44,http://localhost:5000/api/expenses,22,0,2
+1767523930668,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-42,text,true,,562,453,44,44,http://localhost:5000/api/auth/login,9,0,2
+1767523930966,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-4,text,true,,216,661,44,44,http://localhost:5000/api/expenses,8,0,2
+1767523931075,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-43,text,true,,562,453,44,44,http://localhost:5000/api/auth/login,9,0,2
+1767523931354,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,337,708,45,45,http://localhost:5000/api/expenses,19,0,2
+1767523931763,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,337,708,45,45,http://localhost:5000/api/expenses,19,0,1
+1767523931901,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,337,708,46,46,http://localhost:5000/api/expenses,18,0,1
+1767523931993,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,337,708,46,46,http://localhost:5000/api/expenses,25,0,4
+1767523932041,28,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,337,708,46,46,http://localhost:5000/api/expenses,28,0,2
+1767523932357,13,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-44,text,true,,562,453,46,46,http://localhost:5000/api/auth/login,12,0,2
+1767523932546,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,337,686,47,47,http://localhost:5000/api/expenses,23,0,2
+1767523932546,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,337,686,47,47,http://localhost:5000/api/expenses,41,0,2
+1767523932863,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-40,text,true,,562,453,47,47,http://localhost:5000/api/auth/login,10,0,3
+1767523933097,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,337,686,48,48,http://localhost:5000/api/expenses,17,0,4
+1767523933255,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-45,text,true,,562,453,48,48,http://localhost:5000/api/auth/login,8,0,2
+1767523933301,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,337,686,48,48,http://localhost:5000/api/expenses,20,0,2
+1767523933397,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-46,text,true,,562,453,48,48,http://localhost:5000/api/auth/login,8,0,2
+1767523933633,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-36,text,true,,210,657,48,48,http://localhost:5000/api/expenses,5,0,2
+1767523933648,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,337,686,49,49,http://localhost:5000/api/expenses,15,0,2
+1767523933994,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,337,686,49,49,http://localhost:5000/api/expenses,13,0,2
+1767523934040,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,337,708,49,49,http://localhost:5000/api/expenses,16,0,1
+1767523934541,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,337,708,50,50,http://localhost:5000/api/expenses,12,0,1
+1767523934590,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-3,text,true,,337,708,50,50,http://localhost:5000/api/expenses,14,0,1
+1767523934590,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,337,708,50,50,http://localhost:5000/api/expenses,24,0,1
+1767523934667,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,337,686,50,50,http://localhost:5000/api/expenses,11,0,1
+1767523934699,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,337,708,50,50,http://localhost:5000/api/expenses,10,0,1
+1767523935028,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-47,text,true,,562,453,51,51,http://localhost:5000/api/auth/login,7,0,1
+1767523935307,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,337,686,51,51,http://localhost:5000/api/expenses,17,0,3
+1767523935385,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,337,708,51,51,http://localhost:5000/api/expenses,22,0,2
+1767523935415,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,337,686,51,51,http://localhost:5000/api/expenses,17,0,2
+1767523935527,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,337,708,52,52,http://localhost:5000/api/expenses,24,0,2
+1767523935775,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-49,text,true,,562,453,52,52,http://localhost:5000/api/auth/login,8,0,2
+1767523936021,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-20,text,true,,216,661,52,52,http://localhost:5000/api/expenses,7,0,2
+1767523936056,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-48,text,true,,562,453,53,53,http://localhost:5000/api/auth/login,8,0,2
+1767523936164,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-51,text,true,,562,453,53,53,http://localhost:5000/api/auth/login,6,0,2
+1767523936179,38,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,337,686,53,53,http://localhost:5000/api/expenses,37,0,1
+1767523936211,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,337,708,53,53,http://localhost:5000/api/expenses,27,0,1
+1767523936257,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,337,708,53,53,http://localhost:5000/api/expenses,20,0,2
+1767523936821,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-50,text,true,,562,453,54,54,http://localhost:5000/api/auth/login,9,0,2
+1767523937147,4,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-54,text,true,,562,453,54,54,http://localhost:5000/api/auth/login,4,0,1
+1767523937162,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,337,686,54,54,http://localhost:5000/api/expenses,19,0,3
+1767523937223,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,337,686,54,54,http://localhost:5000/api/expenses,12,0,1
+1767523937381,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,337,686,55,55,http://localhost:5000/api/expenses,19,0,7
+1767523937395,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-3,text,true,,337,686,55,55,http://localhost:5000/api/expenses,17,0,3
+1767523937848,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,337,686,54,54,http://localhost:5000/api/expenses,11,0,1
+1767523937848,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,337,686,55,55,http://localhost:5000/api/expenses,25,0,1
+1767523938052,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,337,686,55,55,http://localhost:5000/api/expenses,19,0,2
+1767523938409,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,337,708,55,55,http://localhost:5000/api/expenses,15,0,3
+1767523938503,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,337,686,56,56,http://localhost:5000/api/expenses,18,0,1
+1767523938535,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,337,686,56,56,http://localhost:5000/api/expenses,11,0,1
+1767523938692,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-20,text,true,,210,657,56,56,http://localhost:5000/api/expenses,10,0,2
+1767523938723,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,337,708,56,56,http://localhost:5000/api/expenses,21,0,3
+1767523938924,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,337,708,56,56,http://localhost:5000/api/expenses,19,0,2
+1767523939111,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,337,686,57,57,http://localhost:5000/api/expenses,21,0,2
+1767523939158,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-53,text,true,,562,453,57,57,http://localhost:5000/api/auth/login,11,0,3
+1767523939299,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,337,686,57,57,http://localhost:5000/api/expenses,20,0,2
+1767523939646,12,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-57,text,true,,562,453,57,57,http://localhost:5000/api/auth/login,12,0,3
+1767523939786,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-52,text,true,,562,453,58,58,http://localhost:5000/api/auth/login,9,0,3
+1767523939943,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-55,text,true,,562,453,58,58,http://localhost:5000/api/auth/login,9,0,3
+1767523940508,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-56,text,true,,562,453,59,59,http://localhost:5000/api/auth/login,9,0,3
+1767523940929,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,337,708,60,60,http://localhost:5000/api/expenses,25,0,2
+1767523940959,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,337,686,60,60,http://localhost:5000/api/expenses,21,0,2
+1767523941164,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-4,text,true,,210,657,60,60,http://localhost:5000/api/expenses,5,0,1
+1767523941226,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,337,708,60,60,http://localhost:5000/api/expenses,18,0,3
+1767523941303,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-59,text,true,,562,453,60,60,http://localhost:5000/api/auth/login,8,0,1
+1767523941364,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,337,708,60,60,http://localhost:5000/api/expenses,15,0,2
+1767523941395,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,337,686,60,60,http://localhost:5000/api/expenses,27,0,4
+1767523941834,103,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-7,text,true,,210,657,61,61,http://localhost:5000/api/expenses,102,0,12
+1767523941846,151,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-21,text,true,,210,657,61,61,http://localhost:5000/api/expenses,151,0,3
+1767523941846,300,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,337,708,62,62,http://localhost:5000/api/expenses,300,0,4
+1767523941928,255,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,337,686,62,62,http://localhost:5000/api/expenses,255,0,51
+1767523941917,295,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,337,686,62,62,http://localhost:5000/api/expenses,295,0,19
+1767523941996,238,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,337,686,62,62,http://localhost:5000/api/expenses,238,0,2
+1767523942692,39,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-60,text,true,,562,453,63,63,http://localhost:5000/api/auth/login,38,0,4
+1767523942813,36,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,337,686,63,63,http://localhost:5000/api/expenses,36,0,1
+1767523942913,33,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-54,text,true,,337,708,63,63,http://localhost:5000/api/expenses,33,0,2
+1767523942923,82,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-58,text,true,,562,453,63,63,http://localhost:5000/api/auth/login,82,0,11
+1767523943057,77,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,337,708,63,63,http://localhost:5000/api/expenses,76,0,18
+1767523943062,92,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-62,text,true,,562,453,63,63,http://localhost:5000/api/auth/login,92,0,16
+1767523943091,112,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,337,686,63,63,http://localhost:5000/api/expenses,112,0,31
+1767523943173,44,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-61,text,true,,562,453,63,63,http://localhost:5000/api/auth/login,44,0,6
+1767523943329,38,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,337,686,64,64,http://localhost:5000/api/expenses,37,0,3
+1767523943367,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,337,686,64,64,http://localhost:5000/api/expenses,24,0,2
+1767523943475,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,337,708,64,64,http://localhost:5000/api/expenses,15,0,2
+1767523943631,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-65,text,true,,562,453,64,64,http://localhost:5000/api/auth/login,7,0,2
+1767523943711,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-64,text,true,,562,453,64,64,http://localhost:5000/api/auth/login,8,0,3
+1767523943857,61,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,337,686,65,65,http://localhost:5000/api/expenses,60,0,6
+1767523943866,82,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,337,686,65,65,http://localhost:5000/api/expenses,81,0,5
+1767523943886,87,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,337,686,65,65,http://localhost:5000/api/expenses,86,0,4
+1767523943896,93,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,337,686,65,65,http://localhost:5000/api/expenses,92,0,8
+1767523944409,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,337,686,65,65,http://localhost:5000/api/expenses,12,0,1
+1767523944564,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-66,text,true,,562,453,66,66,http://localhost:5000/api/auth/login,5,0,2
+1767523944625,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,337,708,66,66,http://localhost:5000/api/expenses,14,0,2
+1767523944660,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-63,text,true,,562,453,66,66,http://localhost:5000/api/auth/login,5,0,1
+1767523945250,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,337,708,67,67,http://localhost:5000/api/expenses,21,0,1
+1767523945393,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-47,text,true,,216,661,67,67,http://localhost:5000/api/expenses,6,0,2
+1767523945426,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,337,686,67,67,http://localhost:5000/api/expenses,23,0,4
+1767523945844,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,337,686,68,68,http://localhost:5000/api/expenses,14,0,1
+1767523945953,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,337,686,68,68,http://localhost:5000/api/expenses,20,0,2
+1767523946077,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,337,708,68,68,http://localhost:5000/api/expenses,23,0,2
+1767523946232,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,337,686,68,68,http://localhost:5000/api/expenses,19,0,2
+1767523946544,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,686,69,69,http://localhost:5000/api/expenses,19,0,2
+1767523946998,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-68,text,true,,562,453,70,70,http://localhost:5000/api/auth/login,6,0,2
+1767523947059,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,70,70,http://localhost:5000/api/expenses,20,0,5
+1767523947447,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-6,text,true,,216,661,70,70,http://localhost:5000/api/expenses,8,0,2
+1767523947512,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-67,text,true,,562,453,71,71,http://localhost:5000/api/auth/login,5,0,0
+1767523947511,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-62,text,true,,338,686,71,71,http://localhost:5000/api/expenses,17,0,1
+1767523947528,11,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-42,text,true,,216,661,71,71,http://localhost:5000/api/expenses,10,0,4
+1767523947698,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,71,71,http://localhost:5000/api/expenses,16,0,1
+1767523947869,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,71,71,http://localhost:5000/api/expenses,17,0,1
+1767523947977,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,686,71,71,http://localhost:5000/api/expenses,13,0,1
+1767523948260,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,708,72,72,http://localhost:5000/api/expenses,22,0,4
+1767523948337,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,708,72,72,http://localhost:5000/api/expenses,17,0,2
+1767523948572,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-70,text,true,,562,453,72,72,http://localhost:5000/api/auth/login,7,0,1
+1767523948696,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,338,708,73,73,http://localhost:5000/api/expenses,11,0,1
+1767523948763,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,73,73,http://localhost:5000/api/expenses,13,0,2
+1767523948820,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-72,text,true,,562,453,73,73,http://localhost:5000/api/auth/login,7,0,2
+1767523948898,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-73,text,true,,562,453,73,73,http://localhost:5000/api/auth/login,5,0,1
+1767523949022,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,708,73,73,http://localhost:5000/api/expenses,23,0,2
+1767523949039,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-69,text,true,,562,453,73,73,http://localhost:5000/api/auth/login,9,0,2
+1767523949022,43,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,708,73,73,http://localhost:5000/api/expenses,42,0,2
+1767523949365,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-8,text,true,,338,686,74,74,http://localhost:5000/api/expenses,21,0,4
+1767523949875,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-71,text,true,,562,453,74,74,http://localhost:5000/api/auth/login,8,0,1
+1767523950044,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-76,text,true,,562,453,74,74,http://localhost:5000/api/auth/login,7,0,2
+1767523950108,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,708,74,74,http://localhost:5000/api/expenses,15,0,4
+1767523950231,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,708,74,74,http://localhost:5000/api/expenses,17,0,2
+1767523950309,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,686,74,74,http://localhost:5000/api/expenses,11,0,1
+1767523950372,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,708,74,74,http://localhost:5000/api/expenses,13,0,1
+1767523950464,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,75,75,http://localhost:5000/api/expenses,22,0,1
+1767523950774,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,75,75,http://localhost:5000/api/expenses,23,0,3
+1767523950951,17,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-74,text,true,,562,453,75,75,http://localhost:5000/api/auth/login,17,0,4
+1767523951243,28,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,686,76,76,http://localhost:5000/api/expenses,27,0,5
+1767523951513,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,708,76,76,http://localhost:5000/api/expenses,17,0,2
+1767523951530,12,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-75,text,true,,562,453,76,76,http://localhost:5000/api/auth/login,11,0,2
+1767523951546,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,686,76,76,http://localhost:5000/api/expenses,21,0,2
+1767523951546,37,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,686,76,76,http://localhost:5000/api/expenses,37,0,2
+1767523951591,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,686,76,76,http://localhost:5000/api/expenses,16,0,2
+1767523951945,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-77,text,true,,562,453,77,77,http://localhost:5000/api/auth/login,6,0,2
+1767523952039,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,338,686,77,77,http://localhost:5000/api/expenses,14,0,2
+1767523952258,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,78,78,http://localhost:5000/api/expenses,17,0,2
+1767523952407,33,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,686,78,78,http://localhost:5000/api/expenses,32,0,9
+1767523952428,39,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,338,686,78,78,http://localhost:5000/api/expenses,38,0,2
+1767523952478,71,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,708,78,78,http://localhost:5000/api/expenses,71,0,11
+1767523952599,44,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,78,78,http://localhost:5000/api/expenses,44,0,2
+1767523952615,35,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-79,text,true,,562,453,78,78,http://localhost:5000/api/auth/login,34,0,1
+1767523952755,10,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-16,text,true,,216,661,78,78,http://localhost:5000/api/expenses,10,0,5
+1767523952879,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-15,text,true,,216,661,79,79,http://localhost:5000/api/expenses,4,0,1
+1767523953066,19,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-78,text,true,,562,453,79,79,http://localhost:5000/api/auth/login,18,0,5
+1767523953143,28,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,79,79,http://localhost:5000/api/expenses,28,0,2
+1767523953188,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,686,79,79,http://localhost:5000/api/expenses,11,0,2
+1767523953251,55,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,708,79,79,http://localhost:5000/api/expenses,54,0,8
+1767523953251,80,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,708,79,79,http://localhost:5000/api/expenses,79,0,8
+1767523953286,66,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,686,79,79,http://localhost:5000/api/expenses,65,0,5
+1767523953393,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-81,text,true,,562,453,79,79,http://localhost:5000/api/auth/login,5,0,1
+1767523953469,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,2
+1767523953530,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,708,80,80,http://localhost:5000/api/expenses,18,0,2
+1767523953597,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-80,text,true,,562,453,80,80,http://localhost:5000/api/auth/login,7,0,2
+1767523953984,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,708,80,80,http://localhost:5000/api/expenses,21,0,3
+1767523954062,32,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,686,81,81,http://localhost:5000/api/expenses,31,0,3
+1767523954124,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,81,81,http://localhost:5000/api/expenses,13,0,2
+1767523954358,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,686,81,81,http://localhost:5000/api/expenses,20,0,2
+1767523954452,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,81,81,http://localhost:5000/api/expenses,22,0,2
+1767523954545,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,708,81,81,http://localhost:5000/api/expenses,21,0,2
+1767523954623,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-55,text,true,,216,661,81,81,http://localhost:5000/api/expenses,7,0,2
+1767523954671,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,708,82,82,http://localhost:5000/api/expenses,18,0,1
+1767523954686,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,82,82,http://localhost:5000/api/expenses,16,0,1
+1767523954731,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,708,82,82,http://localhost:5000/api/expenses,15,0,1
+1767523954731,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,708,82,82,http://localhost:5000/api/expenses,23,0,1
+1767523954903,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,708,82,82,http://localhost:5000/api/expenses,23,0,2
+1767523954920,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-82,text,true,,562,453,82,82,http://localhost:5000/api/auth/login,10,0,2
+1767523955169,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-17,text,true,,210,657,82,82,http://localhost:5000/api/expenses,7,0,2
+1767523955435,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,338,708,83,83,http://localhost:5000/api/expenses,23,0,4
+1767523955592,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,686,83,83,http://localhost:5000/api/expenses,23,0,2
+1767523955624,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,83,83,http://localhost:5000/api/expenses,16,0,1
+1767523955639,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,686,83,83,http://localhost:5000/api/expenses,16,0,1
+1767523955813,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,686,83,83,http://localhost:5000/api/expenses,16,0,1
+1767523955891,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,708,84,84,http://localhost:5000/api/expenses,14,0,1
+1767523956063,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,708,84,84,http://localhost:5000/api/expenses,23,0,3
+1767523956171,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,686,84,84,http://localhost:5000/api/expenses,22,0,2
+1767523956171,43,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,338,686,84,84,http://localhost:5000/api/expenses,42,0,2
+1767523956264,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-85,text,true,,562,453,84,84,http://localhost:5000/api/auth/login,9,0,2
+1767523956361,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,84,84,http://localhost:5000/api/expenses,17,0,2
+1767523956549,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-83,text,true,,562,453,85,85,http://localhost:5000/api/auth/login,8,0,2
+1767523956548,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,85,85,http://localhost:5000/api/expenses,20,0,1
+1767523956724,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,85,85,http://localhost:5000/api/expenses,20,0,2
+1767523956893,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,85,85,http://localhost:5000/api/expenses,14,0,2
+1767523956941,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-54,text,true,,338,686,85,85,http://localhost:5000/api/expenses,23,0,2
+1767523957048,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,686,86,86,http://localhost:5000/api/expenses,17,0,1
+1767523957065,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,86,86,http://localhost:5000/api/expenses,17,0,2
+1767523957079,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,338,686,86,86,http://localhost:5000/api/expenses,14,0,1
+1767523957357,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-15,text,true,,210,657,86,86,http://localhost:5000/api/expenses,6,0,1
+1767523957437,31,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,338,708,86,86,http://localhost:5000/api/expenses,30,0,2
+1767523957483,46,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,708,86,86,http://localhost:5000/api/expenses,46,0,2
+1767523957461,89,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,686,86,86,http://localhost:5000/api/expenses,89,0,2
+1767523957594,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,86,86,http://localhost:5000/api/expenses,13,0,1
+1767523957610,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,686,86,86,http://localhost:5000/api/expenses,13,0,1
+1767523957623,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,708,86,86,http://localhost:5000/api/expenses,14,0,1
+1767523957657,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,708,87,87,http://localhost:5000/api/expenses,17,0,3
+1767523957722,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,87,87,http://localhost:5000/api/expenses,19,0,3
+1767523957751,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,708,87,87,http://localhost:5000/api/expenses,15,0,1
+1767523957767,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,686,87,87,http://localhost:5000/api/expenses,16,0,2
+1767523957797,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,708,87,87,http://localhost:5000/api/expenses,19,0,1
+1767523957892,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,686,87,87,http://localhost:5000/api/expenses,17,0,1
+1767523958002,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-67,text,true,,210,657,87,87,http://localhost:5000/api/expenses,7,0,1
+1767523958017,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,87,87,http://localhost:5000/api/expenses,16,0,1
+1767523958127,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,686,87,87,http://localhost:5000/api/expenses,18,0,1
+1767523958136,24,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-88,text,true,,562,453,87,87,http://localhost:5000/api/auth/login,24,0,1
+1767523958204,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,686,87,87,http://localhost:5000/api/expenses,23,0,1
+1767523958316,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,686,88,88,http://localhost:5000/api/expenses,21,0,1
+1767523958332,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-86,text,true,,562,453,88,88,http://localhost:5000/api/auth/login,9,0,1
+1767523958347,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,686,88,88,http://localhost:5000/api/expenses,12,0,1
+1767523958444,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-87,text,true,,562,453,88,88,http://localhost:5000/api/auth/login,7,0,1
+1767523958586,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,686,88,88,http://localhost:5000/api/expenses,22,0,2
+1767523958775,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-89,text,true,,562,453,88,88,http://localhost:5000/api/auth/login,6,0,1
+1767523959106,6,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-84,text,true,,562,453,89,89,http://localhost:5000/api/auth/login,6,0,1
+1767523959231,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,89,89,http://localhost:5000/api/expenses,16,0,1
+1767523959354,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,686,89,89,http://localhost:5000/api/expenses,16,0,2
+1767523959434,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-55,text,true,,210,657,89,89,http://localhost:5000/api/expenses,7,0,1
+1767523959590,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-65,text,true,,338,708,90,90,http://localhost:5000/api/expenses,20,0,1
+1767523959684,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,686,90,90,http://localhost:5000/api/expenses,25,0,2
+1767523959684,40,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-70,text,true,,338,686,90,90,http://localhost:5000/api/expenses,40,0,2
+1767523959856,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,686,90,90,http://localhost:5000/api/expenses,14,0,1
+1767523959887,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,338,708,90,90,http://localhost:5000/api/expenses,14,0,1
+1767523959935,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,338,686,90,90,http://localhost:5000/api/expenses,15,0,1
+1767523959969,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,338,708,90,90,http://localhost:5000/api/expenses,15,0,1
+1767523960386,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-90,text,true,,562,453,91,91,http://localhost:5000/api/auth/login,8,0,1
+1767523960434,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,338,686,91,91,http://localhost:5000/api/expenses,20,0,3
+1767523960496,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,91,91,http://localhost:5000/api/expenses,17,0,1
+1767523960651,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,92,92,http://localhost:5000/api/expenses,23,0,1
+1767523960661,33,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,686,92,92,http://localhost:5000/api/expenses,33,0,1
+1767523960838,39,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,686,92,92,http://localhost:5000/api/expenses,39,0,2
+1767523960834,83,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,686,92,92,http://localhost:5000/api/expenses,82,0,4
+1767523961074,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,92,92,http://localhost:5000/api/expenses,21,0,1
+1767523961074,39,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,686,92,92,http://localhost:5000/api/expenses,39,0,1
+1767523961151,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-52,text,true,,338,686,92,92,http://localhost:5000/api/expenses,15,0,2
+1767523961514,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,686,93,93,http://localhost:5000/api/expenses,19,0,1
+1767523961522,26,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-92,text,true,,562,453,93,93,http://localhost:5000/api/auth/login,25,0,1
+1767523961594,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,686,93,93,http://localhost:5000/api/expenses,24,0,0
+1767523961741,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-91,text,true,,562,453,93,93,http://localhost:5000/api/auth/login,8,0,1
+1767523961768,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,93,93,http://localhost:5000/api/expenses,20,0,2
+1767523962004,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,708,94,94,http://localhost:5000/api/expenses,22,0,1
+1767523962004,41,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,708,94,94,http://localhost:5000/api/expenses,41,0,1
+1767523962085,9,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-94,text,true,,562,453,94,94,http://localhost:5000/api/auth/login,8,0,1
+1767523962611,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,686,95,95,http://localhost:5000/api/expenses,13,0,1
+1767523962672,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,686,95,95,http://localhost:5000/api/expenses,15,0,1
+1767523962736,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,686,95,95,http://localhost:5000/api/expenses,13,0,0
+1767523962752,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,708,95,95,http://localhost:5000/api/expenses,15,0,1
+1767523962775,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-93,text,true,,562,453,95,95,http://localhost:5000/api/auth/login,5,0,1
+1767523962783,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,686,95,95,http://localhost:5000/api/expenses,17,0,3
+1767523962990,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,708,95,95,http://localhost:5000/api/expenses,24,0,1
+1767523963084,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,96,96,http://localhost:5000/api/expenses,21,0,2
+1767523963131,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,96,96,http://localhost:5000/api/expenses,15,0,1
+1767523963183,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-65,text,true,,338,708,96,96,http://localhost:5000/api/expenses,16,0,2
+1767523963202,4,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-95,text,true,,562,453,96,96,http://localhost:5000/api/auth/login,4,0,1
+1767523963320,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,338,686,96,96,http://localhost:5000/api/expenses,20,0,1
+1767523963461,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,96,96,http://localhost:5000/api/expenses,23,0,2
+1767523963478,29,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,686,96,96,http://localhost:5000/api/expenses,28,0,2
+1767523963633,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,1
+1767523963724,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523963774,11,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-96,text,true,,562,453,97,97,http://localhost:5000/api/auth/login,10,0,2
+1767523963880,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,97,97,http://localhost:5000/api/expenses,22,0,1
+1767523963896,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,97,97,http://localhost:5000/api/expenses,27,0,1
+1767523964112,8,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-98,text,true,,562,453,97,97,http://localhost:5000/api/auth/login,8,0,1
+1767523964115,36,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,686,97,97,http://localhost:5000/api/expenses,35,0,3
+1767523964491,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,708,98,98,http://localhost:5000/api/expenses,17,0,1
+1767523964617,10,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-97,text,true,,562,453,98,98,http://localhost:5000/api/auth/login,10,0,5
+1767523964645,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,1
+1767523964754,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,686,98,98,http://localhost:5000/api/expenses,23,0,1
+1767523964770,29,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,708,98,98,http://localhost:5000/api/expenses,29,0,1
+1767523965067,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,98,98,http://localhost:5000/api/expenses,15,0,1
+1767523965196,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,686,98,98,http://localhost:5000/api/expenses,12,0,1
+1767523965302,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-62,text,true,,338,686,98,98,http://localhost:5000/api/expenses,17,0,3
+1767523965349,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-64,text,true,,216,661,98,98,http://localhost:5000/api/expenses,5,0,1
+1767523965462,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-4,text,true,,216,661,98,98,http://localhost:5000/api/expenses,4,0,1
+1767523965504,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,708,98,98,http://localhost:5000/api/expenses,14,0,1
+1767523965675,7,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-100,text,true,,562,453,98,98,http://localhost:5000/api/auth/login,7,0,1
+1767523966152,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,98,98,http://localhost:5000/api/expenses,21,0,2
+1767523966346,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,708,98,98,http://localhost:5000/api/expenses,22,0,2
+1767523966438,33,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,686,98,98,http://localhost:5000/api/expenses,33,0,1
+1767523966441,48,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,708,98,98,http://localhost:5000/api/expenses,47,0,1
+1767523966459,44,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,686,98,98,http://localhost:5000/api/expenses,44,0,1
+1767523966519,5,Employee Logs In,200,OK,ExepenseSubmissionScenarios 1-99,text,true,,562,453,98,98,http://localhost:5000/api/auth/login,4,0,1
+1767523966650,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,708,98,98,http://localhost:5000/api/expenses,12,0,2
+1767523966656,35,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,686,98,98,http://localhost:5000/api/expenses,35,0,1
+1767523966666,46,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,708,98,98,http://localhost:5000/api/expenses,45,0,6
+1767523966785,11,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-1,text,true,,216,661,98,98,http://localhost:5000/api/expenses,11,0,3
+1767523966789,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,98,98,http://localhost:5000/api/expenses,21,0,2
+1767523966820,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,98,98,http://localhost:5000/api/expenses,20,0,2
+1767523966932,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,686,98,98,http://localhost:5000/api/expenses,22,0,6
+1767523967140,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-70,text,true,,338,708,98,98,http://localhost:5000/api/expenses,23,0,2
+1767523967142,34,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,686,98,98,http://localhost:5000/api/expenses,34,0,2
+1767523967231,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,686,98,98,http://localhost:5000/api/expenses,24,0,2
+1767523967429,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,98,98,http://localhost:5000/api/expenses,16,0,1
+1767523967600,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,98,98,http://localhost:5000/api/expenses,24,0,2
+1767523967677,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,686,98,98,http://localhost:5000/api/expenses,21,0,2
+1767523967709,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,708,98,98,http://localhost:5000/api/expenses,16,0,2
+1767523967771,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,686,98,98,http://localhost:5000/api/expenses,23,0,2
+1767523967889,32,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,338,708,98,98,http://localhost:5000/api/expenses,32,0,2
+1767523967893,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,686,98,98,http://localhost:5000/api/expenses,41,0,3
+1767523967958,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,98,98,http://localhost:5000/api/expenses,15,0,1
+1767523968210,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,708,98,98,http://localhost:5000/api/expenses,22,0,2
+1767523968406,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-67,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,1
+1767523968459,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,708,98,98,http://localhost:5000/api/expenses,17,0,2
+1767523968674,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,686,98,98,http://localhost:5000/api/expenses,24,0,2
+1767523968679,47,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,98,98,http://localhost:5000/api/expenses,46,0,2
+1767523968762,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,686,98,98,http://localhost:5000/api/expenses,27,0,3
+1767523968819,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,338,686,98,98,http://localhost:5000/api/expenses,26,0,2
+1767523968866,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,98,98,http://localhost:5000/api/expenses,15,0,2
+1767523968896,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,686,98,98,http://localhost:5000/api/expenses,20,0,2
+1767523969222,10,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-17,text,true,,216,661,98,98,http://localhost:5000/api/expenses,10,0,2
+1767523969370,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,98,98,http://localhost:5000/api/expenses,18,0,1
+1767523969398,28,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,98,98,http://localhost:5000/api/expenses,28,0,4
+1767523969651,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,708,98,98,http://localhost:5000/api/expenses,13,0,1
+1767523969769,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,708,98,98,http://localhost:5000/api/expenses,13,0,1
+1767523970176,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,708,98,98,http://localhost:5000/api/expenses,24,0,3
+1767523970228,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,686,98,98,http://localhost:5000/api/expenses,27,0,6
+1767523970335,33,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,686,98,98,http://localhost:5000/api/expenses,33,0,4
+1767523970574,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,98,98,http://localhost:5000/api/expenses,27,0,1
+1767523970845,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,686,98,98,http://localhost:5000/api/expenses,19,0,3
+1767523971093,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,708,98,98,http://localhost:5000/api/expenses,12,0,1
+1767523971127,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,708,98,98,http://localhost:5000/api/expenses,14,0,1
+1767523971222,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,708,98,98,http://localhost:5000/api/expenses,11,0,1
+1767523971272,3,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-57,text,true,,216,661,98,98,http://localhost:5000/api/expenses,3,0,0
+1767523971299,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,98,98,http://localhost:5000/api/expenses,15,0,1
+1767523971472,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,98,98,http://localhost:5000/api/expenses,20,0,2
+1767523971607,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-84,text,true,,216,661,98,98,http://localhost:5000/api/expenses,6,0,1
+1767523971675,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,98,98,http://localhost:5000/api/expenses,22,0,2
+1767523971803,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,686,98,98,http://localhost:5000/api/expenses,15,0,2
+1767523971818,65,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-52,text,true,,216,661,98,98,http://localhost:5000/api/expenses,64,0,1
+1767523971834,62,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,708,98,98,http://localhost:5000/api/expenses,62,0,2
+1767523971935,45,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,338,708,98,98,http://localhost:5000/api/expenses,45,0,19
+1767523971928,79,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,686,98,98,http://localhost:5000/api/expenses,79,0,2
+1767523972111,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,708,98,98,http://localhost:5000/api/expenses,23,0,1
+1767523972163,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-65,text,true,,338,686,98,98,http://localhost:5000/api/expenses,15,0,2
+1767523972255,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-51,text,true,,216,661,98,98,http://localhost:5000/api/expenses,5,0,2
+1767523972536,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,708,98,98,http://localhost:5000/api/expenses,22,0,2
+1767523972551,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,2
+1767523972553,38,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,708,98,98,http://localhost:5000/api/expenses,37,0,2
+1767523972582,26,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-60,text,true,,216,661,98,98,http://localhost:5000/api/expenses,26,0,1
+1767523972586,36,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,338,708,98,98,http://localhost:5000/api/expenses,36,0,2
+1767523972615,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,708,98,98,http://localhost:5000/api/expenses,21,0,6
+1767523972731,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,686,98,98,http://localhost:5000/api/expenses,22,0,1
+1767523972847,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,686,98,98,http://localhost:5000/api/expenses,19,0,2
+1767523972878,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,686,98,98,http://localhost:5000/api/expenses,14,0,2
+1767523972894,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-54,text,true,,210,657,98,98,http://localhost:5000/api/expenses,5,0,1
+1767523972957,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,1
+1767523973119,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,98,98,http://localhost:5000/api/expenses,19,0,2
+1767523973297,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-70,text,true,,338,708,98,98,http://localhost:5000/api/expenses,26,0,2
+1767523973360,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-57,text,true,,210,657,98,98,http://localhost:5000/api/expenses,9,0,1
+1767523973375,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,686,98,98,http://localhost:5000/api/expenses,15,0,1
+1767523973549,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,2
+1767523973624,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,686,98,98,http://localhost:5000/api/expenses,15,0,1
+1767523973782,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,98,98,http://localhost:5000/api/expenses,20,0,1
+1767523973782,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-91,text,true,,338,686,98,98,http://localhost:5000/api/expenses,40,0,1
+1767523973860,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,708,98,98,http://localhost:5000/api/expenses,22,0,1
+1767523973860,38,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,686,98,98,http://localhost:5000/api/expenses,38,0,1
+1767523973905,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,98,98,http://localhost:5000/api/expenses,13,0,1
+1767523973922,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,708,98,98,http://localhost:5000/api/expenses,14,0,1
+1767523973995,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,708,98,98,http://localhost:5000/api/expenses,21,0,2
+1767523974092,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-38,text,true,,216,661,98,98,http://localhost:5000/api/expenses,6,0,2
+1767523974160,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,686,98,98,http://localhost:5000/api/expenses,17,0,2
+1767523974310,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,686,98,98,http://localhost:5000/api/expenses,21,0,2
+1767523974372,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,98,98,http://localhost:5000/api/expenses,23,0,2
+1767523974387,32,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,686,98,98,http://localhost:5000/api/expenses,31,0,2
+1767523974402,28,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,98,98,http://localhost:5000/api/expenses,27,0,2
+1767523974435,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,1
+1767523974452,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-52,text,true,,338,686,98,98,http://localhost:5000/api/expenses,21,0,3
+1767523974559,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,3
+1767523974631,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,2
+1767523974643,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,2
+1767523974719,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,708,98,98,http://localhost:5000/api/expenses,17,0,1
+1767523974719,39,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-67,text,true,,338,686,98,98,http://localhost:5000/api/expenses,38,0,1
+1767523975092,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,3
+1767523975331,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,98,98,http://localhost:5000/api/expenses,14,0,1
+1767523975595,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,3
+1767523975620,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,708,98,98,http://localhost:5000/api/expenses,18,0,1
+1767523975813,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,708,98,98,http://localhost:5000/api/expenses,21,0,1
+1767523975860,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,98,98,http://localhost:5000/api/expenses,16,0,1
+1767523975892,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,98,98,http://localhost:5000/api/expenses,18,0,2
+1767523975938,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-13,text,true,,216,661,98,98,http://localhost:5000/api/expenses,8,0,2
+1767523976201,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,708,98,98,http://localhost:5000/api/expenses,16,0,2
+1767523976283,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,338,708,98,98,http://localhost:5000/api/expenses,26,0,1
+1767523976375,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-95,text,true,,338,686,98,98,http://localhost:5000/api/expenses,18,0,1
+1767523976516,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,686,98,98,http://localhost:5000/api/expenses,23,0,1
+1767523976762,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,708,98,98,http://localhost:5000/api/expenses,20,0,2
+1767523976793,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,686,98,98,http://localhost:5000/api/expenses,14,0,2
+1767523976964,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,2
+1767523977048,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,98,98,http://localhost:5000/api/expenses,18,0,1
+1767523977076,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,686,98,98,http://localhost:5000/api/expenses,15,0,2
+1767523977312,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-40,text,true,,338,708,98,98,http://localhost:5000/api/expenses,19,0,2
+1767523977404,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,2
+1767523977436,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,686,97,97,http://localhost:5000/api/expenses,16,0,2
+1767523977516,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-1,text,true,,210,657,97,97,http://localhost:5000/api/expenses,8,0,1
+1767523977544,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,686,97,97,http://localhost:5000/api/expenses,26,0,7
+1767523977547,40,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,686,97,97,http://localhost:5000/api/expenses,40,0,5
+1767523977750,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-48,text,true,,216,661,97,97,http://localhost:5000/api/expenses,8,0,2
+1767523977814,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,686,97,97,http://localhost:5000/api/expenses,15,0,1
+1767523978076,28,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,686,97,97,http://localhost:5000/api/expenses,28,0,2
+1767523978078,43,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,97,97,http://localhost:5000/api/expenses,43,0,2
+1767523978219,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,686,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523978251,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523978293,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,686,97,97,http://localhost:5000/api/expenses,18,0,2
+1767523978313,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,708,97,97,http://localhost:5000/api/expenses,26,0,3
+1767523978343,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,97,97,http://localhost:5000/api/expenses,11,0,2
+1767523978404,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,686,97,97,http://localhost:5000/api/expenses,11,0,1
+1767523979074,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,708,97,97,http://localhost:5000/api/expenses,19,0,2
+1767523979136,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,97,97,http://localhost:5000/api/expenses,20,0,2
+1767523979199,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,686,97,97,http://localhost:5000/api/expenses,20,0,2
+1767523979262,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,97,97,http://localhost:5000/api/expenses,24,0,3
+1767523979413,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,97,97,http://localhost:5000/api/expenses,19,0,1
+1767523979465,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,686,97,97,http://localhost:5000/api/expenses,23,0,2
+1767523979482,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-76,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,3
+1767523979561,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,97,97,http://localhost:5000/api/expenses,25,0,2
+1767523979604,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,686,97,97,http://localhost:5000/api/expenses,22,0,2
+1767523979732,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,686,97,97,http://localhost:5000/api/expenses,25,0,3
+1767523979966,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,216,661,97,97,http://localhost:5000/api/expenses,6,0,2
+1767523979980,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,338,686,97,97,http://localhost:5000/api/expenses,12,0,1
+1767523980012,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,2
+1767523980027,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-70,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,4
+1767523980041,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-42,text,true,,210,657,97,97,http://localhost:5000/api/expenses,10,0,1
+1767523980057,9,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,97,97,http://localhost:5000/api/expenses,9,0,0
+1767523980072,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-66,text,true,,216,661,97,97,http://localhost:5000/api/expenses,6,0,1
+1767523980306,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523980353,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,686,97,97,http://localhost:5000/api/expenses,14,0,1
+1767523980400,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-90,text,true,,216,661,97,97,http://localhost:5000/api/expenses,5,0,1
+1767523980415,4,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-13,text,true,,210,657,97,97,http://localhost:5000/api/expenses,4,0,1
+1767523980524,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,97,97,http://localhost:5000/api/expenses,21,0,2
+1767523980649,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,1
+1767523980649,49,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,686,97,97,http://localhost:5000/api/expenses,49,0,1
+1767523980713,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,338,708,97,97,http://localhost:5000/api/expenses,23,0,2
+1767523980730,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,708,97,97,http://localhost:5000/api/expenses,24,0,1
+1767523980995,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,686,97,97,http://localhost:5000/api/expenses,26,0,4
+1767523981087,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,686,97,97,http://localhost:5000/api/expenses,19,0,2
+1767523981103,37,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,686,97,97,http://localhost:5000/api/expenses,37,0,2
+1767523981107,50,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,686,97,97,http://localhost:5000/api/expenses,50,0,1
+1767523981180,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,708,97,97,http://localhost:5000/api/expenses,23,0,4
+1767523981242,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,338,686,97,97,http://localhost:5000/api/expenses,26,0,2
+1767523981350,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,708,97,97,http://localhost:5000/api/expenses,10,0,1
+1767523981678,15,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-60,text,true,,210,657,97,97,http://localhost:5000/api/expenses,14,0,2
+1767523981833,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-62,text,true,,338,686,97,97,http://localhost:5000/api/expenses,14,0,2
+1767523982006,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,686,97,97,http://localhost:5000/api/expenses,22,0,1
+1767523982179,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,686,97,97,http://localhost:5000/api/expenses,19,0,3
+1767523982397,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,708,97,97,http://localhost:5000/api/expenses,17,0,3
+1767523982536,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,708,97,97,http://localhost:5000/api/expenses,17,0,3
+1767523982599,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,97,97,http://localhost:5000/api/expenses,16,0,2
+1767523982756,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-54,text,true,,338,686,97,97,http://localhost:5000/api/expenses,24,0,3
+1767523983027,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,708,97,97,http://localhost:5000/api/expenses,23,0,2
+1767523983369,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,97,97,http://localhost:5000/api/expenses,25,0,1
+1767523983512,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,708,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523983542,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,97,97,http://localhost:5000/api/expenses,17,0,3
+1767523983713,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,708,97,97,http://localhost:5000/api/expenses,19,0,1
+1767523983790,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,2
+1767523983869,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,686,97,97,http://localhost:5000/api/expenses,24,0,1
+1767523983930,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,708,97,97,http://localhost:5000/api/expenses,14,0,1
+1767523983945,11,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-17,text,true,,210,657,97,97,http://localhost:5000/api/expenses,11,0,4
+1767523984040,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,708,97,97,http://localhost:5000/api/expenses,25,0,7
+1767523984069,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,686,97,97,http://localhost:5000/api/expenses,13,0,1
+1767523984191,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,708,97,97,http://localhost:5000/api/expenses,21,0,2
+1767523984427,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-49,text,true,,216,661,97,97,http://localhost:5000/api/expenses,9,0,3
+1767523984552,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-65,text,true,,338,708,97,97,http://localhost:5000/api/expenses,15,0,1
+1767523984552,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,686,97,97,http://localhost:5000/api/expenses,24,0,1
+1767523984693,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,686,97,97,http://localhost:5000/api/expenses,22,0,2
+1767523984787,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,97,97,http://localhost:5000/api/expenses,19,0,1
+1767523985193,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,97,97,http://localhost:5000/api/expenses,19,0,1
+1767523985208,11,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-6,text,true,,210,657,97,97,http://localhost:5000/api/expenses,11,0,2
+1767523985430,49,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,97,97,http://localhost:5000/api/expenses,48,0,8
+1767523985777,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,686,97,97,http://localhost:5000/api/expenses,21,0,3
+1767523985791,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-86,text,true,,216,661,97,97,http://localhost:5000/api/expenses,9,0,2
+1767523986088,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,97,97,http://localhost:5000/api/expenses,16,0,2
+1767523986212,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,97,97,http://localhost:5000/api/expenses,26,0,6
+1767523986215,40,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,686,97,97,http://localhost:5000/api/expenses,40,0,5
+1767523986258,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,708,97,97,http://localhost:5000/api/expenses,15,0,2
+1767523986357,134,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,686,97,97,http://localhost:5000/api/expenses,134,0,8
+1767523986447,52,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-22,text,true,,216,661,97,97,http://localhost:5000/api/expenses,52,0,7
+1767523986412,119,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,686,97,97,http://localhost:5000/api/expenses,119,0,9
+1767523986384,166,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,708,97,97,http://localhost:5000/api/expenses,166,0,1
+1767523986510,73,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,686,97,97,http://localhost:5000/api/expenses,73,0,5
+1767523986680,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,338,686,97,97,http://localhost:5000/api/expenses,12,0,1
+1767523986874,29,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,708,97,97,http://localhost:5000/api/expenses,28,0,4
+1767523987157,45,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,216,661,97,97,http://localhost:5000/api/expenses,44,0,23
+1767523987150,71,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,97,97,http://localhost:5000/api/expenses,71,0,3
+1767523987331,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,686,97,97,http://localhost:5000/api/expenses,13,0,2
+1767523987676,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,338,686,97,97,http://localhost:5000/api/expenses,13,0,2
+1767523987894,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,708,97,97,http://localhost:5000/api/expenses,21,0,4
+1767523987942,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,97,97,http://localhost:5000/api/expenses,12,0,1
+1767523987957,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-95,text,true,,338,708,97,97,http://localhost:5000/api/expenses,16,0,2
+1767523988051,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,686,97,97,http://localhost:5000/api/expenses,16,0,1
+1767523988175,28,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,97,97,http://localhost:5000/api/expenses,28,0,4
+1767523988315,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,97,97,http://localhost:5000/api/expenses,21,0,1
+1767523988315,45,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,97,97,http://localhost:5000/api/expenses,45,0,1
+1767523988332,49,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,708,97,97,http://localhost:5000/api/expenses,49,0,2
+1767523988424,39,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,708,97,97,http://localhost:5000/api/expenses,39,0,6
+1767523988431,53,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,97,97,http://localhost:5000/api/expenses,53,0,5
+1767523988518,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,686,97,97,http://localhost:5000/api/expenses,17,0,1
+1767523988597,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-52,text,true,,338,708,97,97,http://localhost:5000/api/expenses,22,0,3
+1767523988660,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,708,97,97,http://localhost:5000/api/expenses,25,0,3
+1767523988751,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,708,97,97,http://localhost:5000/api/expenses,25,0,2
+1767523988830,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,708,97,97,http://localhost:5000/api/expenses,21,0,6
+1767523988860,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-52,text,true,,338,686,97,97,http://localhost:5000/api/expenses,16,0,4
+1767523989002,38,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,97,97,http://localhost:5000/api/expenses,38,0,2
+1767523989002,57,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,686,97,97,http://localhost:5000/api/expenses,57,0,2
+1767523989204,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-91,text,true,,216,661,97,97,http://localhost:5000/api/expenses,5,0,1
+1767523989425,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,338,708,97,97,http://localhost:5000/api/expenses,18,0,4
+1767523989706,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,708,97,97,http://localhost:5000/api/expenses,21,0,2
+1767523989721,14,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-62,text,true,,210,657,97,97,http://localhost:5000/api/expenses,14,0,2
+1767523989783,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,686,97,97,http://localhost:5000/api/expenses,14,0,1
+1767523989830,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-16,text,true,,338,708,97,97,http://localhost:5000/api/expenses,24,0,2
+1767523990050,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,686,96,96,http://localhost:5000/api/expenses,21,0,1
+1767523990221,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-4,text,true,,338,686,96,96,http://localhost:5000/api/expenses,20,0,2
+1767523990474,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,686,95,95,http://localhost:5000/api/expenses,19,0,2
+1767523990537,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,95,95,http://localhost:5000/api/expenses,21,0,2
+1767523990599,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,708,95,95,http://localhost:5000/api/expenses,12,0,1
+1767523990722,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,95,95,http://localhost:5000/api/expenses,22,0,3
+1767523990769,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,708,95,95,http://localhost:5000/api/expenses,15,0,1
+1767523990862,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,708,95,95,http://localhost:5000/api/expenses,14,0,1
+1767523991083,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,95,95,http://localhost:5000/api/expenses,18,0,1
+1767523991099,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-60,text,true,,216,661,95,95,http://localhost:5000/api/expenses,6,0,1
+1767523991252,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-10,text,true,,338,708,95,95,http://localhost:5000/api/expenses,17,0,1
+1767523991347,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,686,95,95,http://localhost:5000/api/expenses,20,0,1
+1767523991347,38,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,686,95,95,http://localhost:5000/api/expenses,38,0,1
+1767523991347,55,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,708,95,95,http://localhost:5000/api/expenses,55,0,1
+1767523991426,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-65,text,true,,338,686,95,95,http://localhost:5000/api/expenses,14,0,2
+1767523991597,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,686,94,94,http://localhost:5000/api/expenses,18,0,1
+1767523991659,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,708,94,94,http://localhost:5000/api/expenses,19,0,1
+1767523991864,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,708,94,94,http://localhost:5000/api/expenses,17,0,1
+1767523991896,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,686,94,94,http://localhost:5000/api/expenses,18,0,1
+1767523992005,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,708,94,94,http://localhost:5000/api/expenses,19,0,1
+1767523992083,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,94,94,http://localhost:5000/api/expenses,14,0,1
+1767523992161,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,338,686,94,94,http://localhost:5000/api/expenses,17,0,2
+1767523992315,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,686,94,94,http://localhost:5000/api/expenses,19,0,0
+1767523992409,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,708,94,94,http://localhost:5000/api/expenses,17,0,2
+1767523992455,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,94,94,http://localhost:5000/api/expenses,21,0,2
+1767523992690,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,686,94,94,http://localhost:5000/api/expenses,21,0,2
+1767523992738,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,708,94,94,http://localhost:5000/api/expenses,23,0,2
+1767523992801,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,94,94,http://localhost:5000/api/expenses,19,0,2
+1767523992956,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-76,text,true,,216,661,94,94,http://localhost:5000/api/expenses,7,0,2
+1767523993020,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,708,94,94,http://localhost:5000/api/expenses,14,0,1
+1767523993035,10,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-53,text,true,,216,661,94,94,http://localhost:5000/api/expenses,10,0,2
+1767523993176,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,94,94,http://localhost:5000/api/expenses,21,0,1
+1767523993363,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,686,94,94,http://localhost:5000/api/expenses,23,0,2
+1767523993394,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,686,94,94,http://localhost:5000/api/expenses,21,0,2
+1767523994083,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,94,94,http://localhost:5000/api/expenses,20,0,2
+1767523994161,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,708,94,94,http://localhost:5000/api/expenses,18,0,1
+1767523994177,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-92,text,true,,210,657,94,94,http://localhost:5000/api/expenses,9,0,1
+1767523994524,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,686,94,94,http://localhost:5000/api/expenses,13,0,1
+1767523994572,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,708,94,94,http://localhost:5000/api/expenses,19,0,2
+1767523994790,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,686,94,94,http://localhost:5000/api/expenses,20,0,2
+1767523994884,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,708,94,94,http://localhost:5000/api/expenses,20,0,1
+1767523994931,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,708,94,94,http://localhost:5000/api/expenses,20,0,1
+1767523994962,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,686,94,94,http://localhost:5000/api/expenses,15,0,1
+1767523995010,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,708,94,94,http://localhost:5000/api/expenses,19,0,2
+1767523995184,44,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,686,94,94,http://localhost:5000/api/expenses,44,0,3
+1767523995199,55,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,686,94,94,http://localhost:5000/api/expenses,54,0,1
+1767523995231,36,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-66,text,true,,210,657,94,94,http://localhost:5000/api/expenses,35,0,4
+1767523995369,31,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,94,94,http://localhost:5000/api/expenses,31,0,4
+1767523995617,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,686,94,94,http://localhost:5000/api/expenses,23,0,1
+1767523995617,41,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-11,text,true,,338,708,94,94,http://localhost:5000/api/expenses,41,0,1
+1767523995726,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,93,93,http://localhost:5000/api/expenses,19,0,1
+1767523995835,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,708,93,93,http://localhost:5000/api/expenses,20,0,2
+1767523995882,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-55,text,true,,210,657,93,93,http://localhost:5000/api/expenses,8,0,1
+1767523995897,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,93,93,http://localhost:5000/api/expenses,18,0,2
+1767523996005,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-20,text,true,,210,657,93,93,http://localhost:5000/api/expenses,10,0,1
+1767523996005,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,93,93,http://localhost:5000/api/expenses,25,0,1
+1767523996052,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-67,text,true,,338,708,93,93,http://localhost:5000/api/expenses,22,0,2
+1767523996114,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,686,93,93,http://localhost:5000/api/expenses,17,0,2
+1767523996303,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,708,93,93,http://localhost:5000/api/expenses,17,0,1
+1767523996319,32,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,93,93,http://localhost:5000/api/expenses,32,0,2
+1767523996381,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-77,text,true,,216,661,93,93,http://localhost:5000/api/expenses,5,0,2
+1767523996446,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,93,93,http://localhost:5000/api/expenses,18,0,1
+1767523996508,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-9,text,true,,338,686,93,93,http://localhost:5000/api/expenses,16,0,2
+1767523996555,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,686,92,92,http://localhost:5000/api/expenses,20,0,4
+1767523996619,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,92,92,http://localhost:5000/api/expenses,19,0,3
+1767523996681,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,92,92,http://localhost:5000/api/expenses,18,0,2
+1767523996712,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,686,92,92,http://localhost:5000/api/expenses,13,0,2
+1767523996853,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-95,text,true,,338,686,92,92,http://localhost:5000/api/expenses,15,0,2
+1767523996853,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,92,92,http://localhost:5000/api/expenses,25,0,1
+1767523996917,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-70,text,true,,338,686,92,92,http://localhost:5000/api/expenses,18,0,2
+1767523996980,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,708,91,91,http://localhost:5000/api/expenses,20,0,4
+1767523996997,13,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-91,text,true,,210,657,91,91,http://localhost:5000/api/expenses,12,0,1
+1767523997028,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-22,text,true,,210,657,91,91,http://localhost:5000/api/expenses,5,0,1
+1767523997043,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-34,text,true,,338,708,91,91,http://localhost:5000/api/expenses,15,0,1
+1767523997106,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,686,90,90,http://localhost:5000/api/expenses,13,0,2
+1767523997169,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,90,90,http://localhost:5000/api/expenses,18,0,1
+1767523997231,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,90,90,http://localhost:5000/api/expenses,20,0,1
+1767523997246,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,90,90,http://localhost:5000/api/expenses,19,0,1
+1767523997437,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,708,90,90,http://localhost:5000/api/expenses,18,0,2
+1767523997485,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-30,text,true,,338,686,90,90,http://localhost:5000/api/expenses,25,0,1
+1767523997534,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,686,90,90,http://localhost:5000/api/expenses,20,0,1
+1767523997581,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-42,text,true,,216,661,90,90,http://localhost:5000/api/expenses,6,0,1
+1767523997804,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,90,90,http://localhost:5000/api/expenses,13,0,1
+1767523997927,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-31,text,true,,338,708,90,90,http://localhost:5000/api/expenses,18,0,1
+1767523997976,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,686,89,89,http://localhost:5000/api/expenses,21,0,6
+1767523998052,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,686,89,89,http://localhost:5000/api/expenses,27,0,1
+1767523998052,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,686,89,89,http://localhost:5000/api/expenses,41,0,8
+1767523998115,47,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,89,89,http://localhost:5000/api/expenses,47,0,2
+1767523998177,33,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,89,89,http://localhost:5000/api/expenses,33,0,2
+1767523998315,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,708,89,89,http://localhost:5000/api/expenses,24,0,1
+1767523998650,95,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,708,89,89,http://localhost:5000/api/expenses,95,0,1
+1767523998634,130,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-62,text,true,,338,708,89,89,http://localhost:5000/api/expenses,129,0,2
+1767523998584,203,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,89,89,http://localhost:5000/api/expenses,203,0,8
+1767523998772,55,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,89,89,http://localhost:5000/api/expenses,55,0,3
+1767523998820,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,686,89,89,http://localhost:5000/api/expenses,19,0,4
+1767523998850,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-54,text,true,,216,661,89,89,http://localhost:5000/api/expenses,8,0,2
+1767523998834,33,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,686,89,89,http://localhost:5000/api/expenses,33,0,0
+1767523999006,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,686,89,89,http://localhost:5000/api/expenses,18,0,2
+1767523999022,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,89,89,http://localhost:5000/api/expenses,19,0,2
+1767523999178,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,89,89,http://localhost:5000/api/expenses,14,0,2
+1767523999226,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,686,89,89,http://localhost:5000/api/expenses,14,0,1
+1767523999256,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,686,89,89,http://localhost:5000/api/expenses,16,0,2
+1767523999332,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,89,89,http://localhost:5000/api/expenses,15,0,1
+1767523999410,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,686,89,89,http://localhost:5000/api/expenses,13,0,0
+1767523999425,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-1,text,true,,338,686,89,89,http://localhost:5000/api/expenses,14,0,2
+1767523999597,99,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,686,89,89,http://localhost:5000/api/expenses,98,0,2
+1767523999738,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,686,89,89,http://localhost:5000/api/expenses,18,0,3
+1767524000093,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,686,89,89,http://localhost:5000/api/expenses,17,0,1
+1767524000202,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,686,89,89,http://localhost:5000/api/expenses,18,0,2
+1767524000327,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,686,89,89,http://localhost:5000/api/expenses,15,0,1
+1767524000327,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,708,89,89,http://localhost:5000/api/expenses,26,0,1
+1767524000373,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-54,text,true,,210,657,89,89,http://localhost:5000/api/expenses,5,0,1
+1767524000468,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-23,text,true,,338,708,89,89,http://localhost:5000/api/expenses,17,0,1
+1767524000655,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,686,88,88,http://localhost:5000/api/expenses,23,0,1
+1767524000840,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,708,88,88,http://localhost:5000/api/expenses,13,0,1
+1767524000980,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,88,88,http://localhost:5000/api/expenses,20,0,2
+1767524001623,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,686,88,88,http://localhost:5000/api/expenses,20,0,3
+1767524001671,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,686,88,88,http://localhost:5000/api/expenses,18,0,2
+1767524002445,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-25,text,true,,216,661,88,88,http://localhost:5000/api/expenses,5,0,1
+1767524002729,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,210,657,88,88,http://localhost:5000/api/expenses,4,0,1
+1767524002839,4,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-86,text,true,,210,657,88,88,http://localhost:5000/api/expenses,4,0,1
+1767524002886,11,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-30,text,true,,216,661,88,88,http://localhost:5000/api/expenses,11,0,2
+1767524003027,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-44,text,true,,338,708,87,87,http://localhost:5000/api/expenses,12,0,1
+1767524003122,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,86,86,http://localhost:5000/api/expenses,15,0,1
+1767524003392,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,86,86,http://localhost:5000/api/expenses,21,0,2
+1767524003408,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-52,text,true,,338,686,86,86,http://localhost:5000/api/expenses,16,0,2
+1767524003614,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,708,85,85,http://localhost:5000/api/expenses,23,0,1
+1767524003645,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,708,85,85,http://localhost:5000/api/expenses,17,0,1
+1767524003722,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,85,85,http://localhost:5000/api/expenses,21,0,2
+1767524003754,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,708,85,85,http://localhost:5000/api/expenses,18,0,1
+1767524003786,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-10,text,true,,210,657,85,85,http://localhost:5000/api/expenses,8,0,2
+1767524003819,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,84,84,http://localhost:5000/api/expenses,18,0,2
+1767524003961,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,686,84,84,http://localhost:5000/api/expenses,17,0,1
+1767524003993,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,84,84,http://localhost:5000/api/expenses,20,0,1
+1767524004212,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,686,84,84,http://localhost:5000/api/expenses,15,0,2
+1767524004404,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,84,84,http://localhost:5000/api/expenses,18,0,1
+1767524004894,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,686,84,84,http://localhost:5000/api/expenses,22,0,1
+1767524004971,10,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,686,84,84,http://localhost:5000/api/expenses,10,0,0
+1767524005112,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,708,84,84,http://localhost:5000/api/expenses,22,0,2
+1767524005299,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-2,text,true,,338,708,84,84,http://localhost:5000/api/expenses,20,0,2
+1767524005346,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,708,83,83,http://localhost:5000/api/expenses,24,0,1
+1767524005377,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,686,83,83,http://localhost:5000/api/expenses,17,0,1
+1767524005472,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-97,text,true,,216,661,83,83,http://localhost:5000/api/expenses,9,0,2
+1767524005488,6,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-76,text,true,,210,657,83,83,http://localhost:5000/api/expenses,6,0,2
+1767524005612,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,708,82,82,http://localhost:5000/api/expenses,14,0,0
+1767524005628,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,708,82,82,http://localhost:5000/api/expenses,14,0,1
+1767524005681,57,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-95,text,true,,338,686,82,82,http://localhost:5000/api/expenses,57,0,1
+1767524005783,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,708,82,82,http://localhost:5000/api/expenses,25,0,2
+1767524005876,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,708,82,82,http://localhost:5000/api/expenses,22,0,2
+1767524005893,14,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-77,text,true,,216,661,82,82,http://localhost:5000/api/expenses,14,0,1
+1767524006005,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-59,text,true,,338,708,82,82,http://localhost:5000/api/expenses,18,0,2
+1767524006224,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,708,81,81,http://localhost:5000/api/expenses,18,0,1
+1767524006332,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-74,text,true,,216,661,81,81,http://localhost:5000/api/expenses,8,0,2
+1767524006441,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,708,81,81,http://localhost:5000/api/expenses,21,0,1
+1767524006894,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,708,81,81,http://localhost:5000/api/expenses,22,0,2
+1767524007020,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-80,text,true,,338,708,81,81,http://localhost:5000/api/expenses,20,0,1
+1767524007099,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,80,80,http://localhost:5000/api/expenses,17,0,1
+1767524007224,29,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,686,80,80,http://localhost:5000/api/expenses,29,0,1
+1767524007589,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,338,708,80,80,http://localhost:5000/api/expenses,20,0,2
+1767524007759,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,80,80,http://localhost:5000/api/expenses,19,0,1
+1767524007805,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524008012,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-90,text,true,,216,661,80,80,http://localhost:5000/api/expenses,8,0,2
+1767524008044,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,2
+1767524008105,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,80,80,http://localhost:5000/api/expenses,20,0,1
+1767524008153,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,80,80,http://localhost:5000/api/expenses,15,0,1
+1767524008200,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524008262,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,686,80,80,http://localhost:5000/api/expenses,18,0,1
+1767524008354,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,686,80,80,http://localhost:5000/api/expenses,18,0,1
+1767524008512,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,686,80,80,http://localhost:5000/api/expenses,13,0,2
+1767524008574,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,80,80,http://localhost:5000/api/expenses,10,0,0
+1767524008919,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,708,80,80,http://localhost:5000/api/expenses,17,0,1
+1767524009139,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,708,80,80,http://localhost:5000/api/expenses,23,0,1
+1767524009185,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,686,80,80,http://localhost:5000/api/expenses,25,0,1
+1767524009185,42,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,80,80,http://localhost:5000/api/expenses,42,0,1
+1767524009296,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524009579,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,686,80,80,http://localhost:5000/api/expenses,15,0,1
+1767524009689,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,708,80,80,http://localhost:5000/api/expenses,17,0,1
+1767524010066,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,708,80,80,http://localhost:5000/api/expenses,21,0,2
+1767524010082,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,708,80,80,http://localhost:5000/api/expenses,27,0,1
+1767524010160,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-91,text,true,,338,686,80,80,http://localhost:5000/api/expenses,18,0,1
+1767524010191,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,686,80,80,http://localhost:5000/api/expenses,14,0,1
+1767524010254,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,686,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524010567,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,708,80,80,http://localhost:5000/api/expenses,22,0,1
+1767524010582,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,686,80,80,http://localhost:5000/api/expenses,20,0,2
+1767524010708,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524010756,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,708,80,80,http://localhost:5000/api/expenses,13,0,0
+1767524010788,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,708,80,80,http://localhost:5000/api/expenses,10,0,1
+1767524010896,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,80,80,http://localhost:5000/api/expenses,20,0,1
+1767524011103,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-32,text,true,,216,661,80,80,http://localhost:5000/api/expenses,9,0,2
+1767524011134,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,708,80,80,http://localhost:5000/api/expenses,17,0,2
+1767524011164,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,686,80,80,http://localhost:5000/api/expenses,18,0,2
+1767524011417,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-25,text,true,,210,657,80,80,http://localhost:5000/api/expenses,6,0,1
+1767524011510,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,708,80,80,http://localhost:5000/api/expenses,13,0,1
+1767524011636,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,80,80,http://localhost:5000/api/expenses,18,0,1
+1767524011651,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,80,80,http://localhost:5000/api/expenses,17,0,2
+1767524011715,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-67,text,true,,338,686,80,80,http://localhost:5000/api/expenses,20,0,2
+1767524011746,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,686,80,80,http://localhost:5000/api/expenses,19,0,1
+1767524012198,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,80,80,http://localhost:5000/api/expenses,22,0,2
+1767524012277,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,708,80,80,http://localhost:5000/api/expenses,24,0,1
+1767524012448,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,708,80,80,http://localhost:5000/api/expenses,20,0,1
+1767524012525,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,686,80,80,http://localhost:5000/api/expenses,20,0,1
+1767524012695,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,80,80,http://localhost:5000/api/expenses,17,0,1
+1767524012804,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,708,80,80,http://localhost:5000/api/expenses,16,0,1
+1767524012850,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,80,80,http://localhost:5000/api/expenses,19,0,0
+1767524013269,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,80,80,http://localhost:5000/api/expenses,21,0,2
+1767524013523,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-14,text,true,,338,686,80,80,http://localhost:5000/api/expenses,24,0,1
+1767524013615,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,708,79,79,http://localhost:5000/api/expenses,20,0,1
+1767524013727,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,708,79,79,http://localhost:5000/api/expenses,22,0,2
+1767524013822,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,686,79,79,http://localhost:5000/api/expenses,21,0,2
+1767524014153,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-54,text,true,,338,686,79,79,http://localhost:5000/api/expenses,17,0,1
+1767524014278,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,79,79,http://localhost:5000/api/expenses,20,0,2
+1767524014357,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-95,text,true,,338,708,79,79,http://localhost:5000/api/expenses,20,0,1
+1767524014452,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,686,79,79,http://localhost:5000/api/expenses,21,0,3
+1767524014546,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,686,79,79,http://localhost:5000/api/expenses,16,0,1
+1767524014674,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,79,79,http://localhost:5000/api/expenses,22,0,1
+1767524014753,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,686,79,79,http://localhost:5000/api/expenses,16,0,1
+1767524014816,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-1,text,true,,216,661,79,79,http://localhost:5000/api/expenses,8,0,2
+1767524015098,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,686,79,79,http://localhost:5000/api/expenses,19,0,2
+1767524015969,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,686,79,79,http://localhost:5000/api/expenses,21,0,2
+1767524016034,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,708,79,79,http://localhost:5000/api/expenses,21,0,1
+1767524016065,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-25,text,true,,338,708,79,79,http://localhost:5000/api/expenses,19,0,2
+1767524016112,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,686,78,78,http://localhost:5000/api/expenses,21,0,2
+1767524016192,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-46,text,true,,210,657,78,78,http://localhost:5000/api/expenses,7,0,2
+1767524016474,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-43,text,true,,338,708,78,78,http://localhost:5000/api/expenses,26,0,2
+1767524016490,29,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,686,77,77,http://localhost:5000/api/expenses,29,0,1
+1767524016522,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,686,77,77,http://localhost:5000/api/expenses,18,0,1
+1767524016583,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-1,text,true,,210,657,77,77,http://localhost:5000/api/expenses,5,0,1
+1767524016599,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,76,76,http://localhost:5000/api/expenses,16,0,1
+1767524016614,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,686,76,76,http://localhost:5000/api/expenses,19,0,1
+1767524016662,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,76,76,http://localhost:5000/api/expenses,16,0,1
+1767524016803,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,708,76,76,http://localhost:5000/api/expenses,23,0,1
+1767524016803,39,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,686,76,76,http://localhost:5000/api/expenses,38,0,1
+1767524016928,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,686,76,76,http://localhost:5000/api/expenses,23,0,2
+1767524017572,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,686,76,76,http://localhost:5000/api/expenses,21,0,2
+1767524017603,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,76,76,http://localhost:5000/api/expenses,15,0,2
+1767524017698,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,686,76,76,http://localhost:5000/api/expenses,21,0,2
+1767524017837,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,686,76,76,http://localhost:5000/api/expenses,18,0,1
+1767524017978,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,686,76,76,http://localhost:5000/api/expenses,21,0,0
+1767524017993,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,76,76,http://localhost:5000/api/expenses,16,0,2
+1767524018008,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-28,text,true,,338,708,76,76,http://localhost:5000/api/expenses,12,0,1
+1767524018248,10,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-83,text,true,,216,661,75,75,http://localhost:5000/api/expenses,9,0,1
+1767524018247,29,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,75,75,http://localhost:5000/api/expenses,28,0,2
+1767524018294,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,686,75,75,http://localhost:5000/api/expenses,27,0,1
+1767524018405,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-91,text,true,,338,686,75,75,http://localhost:5000/api/expenses,18,0,1
+1767524018563,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-45,text,true,,338,708,75,75,http://localhost:5000/api/expenses,20,0,2
+1767524018578,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,74,74,http://localhost:5000/api/expenses,19,0,1
+1767524018812,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-39,text,true,,338,708,74,74,http://localhost:5000/api/expenses,11,0,1
+1767524018921,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,686,73,73,http://localhost:5000/api/expenses,18,0,1
+1767524019263,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-68,text,true,,338,708,73,73,http://localhost:5000/api/expenses,20,0,2
+1767524019500,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,686,72,72,http://localhost:5000/api/expenses,21,0,1
+1767524019515,17,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-74,text,true,,210,657,72,72,http://localhost:5000/api/expenses,16,0,1
+1767524019672,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,72,72,http://localhost:5000/api/expenses,20,0,2
+1767524019719,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,686,72,72,http://localhost:5000/api/expenses,21,0,1
+1767524019830,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,686,72,72,http://localhost:5000/api/expenses,19,0,1
+1767524019877,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,686,72,72,http://localhost:5000/api/expenses,21,0,1
+1767524019940,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-62,text,true,,216,661,72,72,http://localhost:5000/api/expenses,8,0,2
+1767524019955,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,686,72,72,http://localhost:5000/api/expenses,20,0,1
+1767524019955,44,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-24,text,true,,338,708,72,72,http://localhost:5000/api/expenses,43,0,1
+1767524020020,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,686,71,71,http://localhost:5000/api/expenses,25,0,1
+1767524020160,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,686,71,71,http://localhost:5000/api/expenses,21,0,2
+1767524020253,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,708,71,71,http://localhost:5000/api/expenses,21,0,2
+1767524020269,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-29,text,true,,338,708,71,71,http://localhost:5000/api/expenses,19,0,1
+1767524020474,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,70,70,http://localhost:5000/api/expenses,20,0,1
+1767524020598,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,70,70,http://localhost:5000/api/expenses,21,0,2
+1767524020630,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-60,text,true,,338,708,70,70,http://localhost:5000/api/expenses,21,0,3
+1767524020692,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-54,text,true,,338,708,69,69,http://localhost:5000/api/expenses,19,0,1
+1767524020738,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-69,text,true,,216,661,68,68,http://localhost:5000/api/expenses,6,0,1
+1767524020925,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,708,68,68,http://localhost:5000/api/expenses,20,0,2
+1767524020987,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,68,68,http://localhost:5000/api/expenses,15,0,2
+1767524021298,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-26,text,true,,338,686,68,68,http://localhost:5000/api/expenses,16,0,1
+1767524021892,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,708,67,67,http://localhost:5000/api/expenses,16,0,1
+1767524022018,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-21,text,true,,338,708,67,67,http://localhost:5000/api/expenses,17,0,2
+1767524022065,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,66,66,http://localhost:5000/api/expenses,18,0,1
+1767524022366,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-15,text,true,,338,708,66,66,http://localhost:5000/api/expenses,16,0,1
+1767524022473,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,65,65,http://localhost:5000/api/expenses,17,0,1
+1767524022489,14,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-81,text,true,,216,661,65,65,http://localhost:5000/api/expenses,14,0,1
+1767524022536,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-79,text,true,,338,708,65,65,http://localhost:5000/api/expenses,16,0,2
+1767524022628,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,708,64,64,http://localhost:5000/api/expenses,16,0,2
+1767524023038,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,708,64,64,http://localhost:5000/api/expenses,25,0,1
+1767524023053,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,708,64,64,http://localhost:5000/api/expenses,25,0,1
+1767524023114,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,64,64,http://localhost:5000/api/expenses,19,0,2
+1767524023130,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,708,64,64,http://localhost:5000/api/expenses,17,0,1
+1767524023286,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-6,text,true,,338,686,64,64,http://localhost:5000/api/expenses,17,0,2
+1767524023459,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,63,63,http://localhost:5000/api/expenses,21,0,1
+1767524023474,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-91,text,true,,338,708,63,63,http://localhost:5000/api/expenses,24,0,1
+1767524023504,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,63,63,http://localhost:5000/api/expenses,19,0,1
+1767524023645,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-95,text,true,,210,657,63,63,http://localhost:5000/api/expenses,10,0,3
+1767524023724,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,686,62,62,http://localhost:5000/api/expenses,17,0,1
+1767524023864,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,62,62,http://localhost:5000/api/expenses,18,0,1
+1767524024163,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,708,62,62,http://localhost:5000/api/expenses,21,0,2
+1767524024569,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,686,62,62,http://localhost:5000/api/expenses,19,0,1
+1767524024631,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,686,62,62,http://localhost:5000/api/expenses,21,0,1
+1767524024662,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-67,text,true,,338,686,62,62,http://localhost:5000/api/expenses,18,0,1
+1767524024866,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,61,61,http://localhost:5000/api/expenses,16,0,1
+1767524024896,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,708,61,61,http://localhost:5000/api/expenses,20,0,1
+1767524025193,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,61,61,http://localhost:5000/api/expenses,23,0,2
+1767524025241,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,686,61,61,http://localhost:5000/api/expenses,21,0,2
+1767524025368,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-53,text,true,,338,708,61,61,http://localhost:5000/api/expenses,22,0,2
+1767524025431,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-51,text,true,,338,708,60,60,http://localhost:5000/api/expenses,20,0,1
+1767524026079,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-61,text,true,,338,686,59,59,http://localhost:5000/api/expenses,21,0,2
+1767524026285,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,708,58,58,http://localhost:5000/api/expenses,26,0,1
+1767524026519,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,708,58,58,http://localhost:5000/api/expenses,19,0,2
+1767524026817,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,58,58,http://localhost:5000/api/expenses,21,0,1
+1767524026832,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,686,58,58,http://localhost:5000/api/expenses,25,0,1
+1767524026941,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,686,58,58,http://localhost:5000/api/expenses,19,0,1
+1767524027082,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,58,58,http://localhost:5000/api/expenses,21,0,4
+1767524027099,20,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-32,text,true,,210,657,58,58,http://localhost:5000/api/expenses,19,0,1
+1767524027195,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,708,58,58,http://localhost:5000/api/expenses,19,0,1
+1767524027242,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,708,58,58,http://localhost:5000/api/expenses,19,0,2
+1767524027321,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-47,text,true,,216,661,58,58,http://localhost:5000/api/expenses,6,0,2
+1767524027523,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-91,text,true,,338,708,58,58,http://localhost:5000/api/expenses,23,0,1
+1767524027555,56,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,708,57,57,http://localhost:5000/api/expenses,55,0,1
+1767524027555,74,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-13,text,true,,338,686,57,57,http://localhost:5000/api/expenses,73,0,1
+1767524027944,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,686,56,56,http://localhost:5000/api/expenses,19,0,2
+1767524027975,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,56,56,http://localhost:5000/api/expenses,19,0,2
+1767524028024,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,686,56,56,http://localhost:5000/api/expenses,22,0,1
+1767524028024,41,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,56,56,http://localhost:5000/api/expenses,41,0,1
+1767524028493,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-77,text,true,,338,708,56,56,http://localhost:5000/api/expenses,22,0,2
+1767524028649,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,708,55,55,http://localhost:5000/api/expenses,13,0,1
+1767524028916,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,686,55,55,http://localhost:5000/api/expenses,17,0,1
+1767524029350,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-17,text,true,,338,708,55,55,http://localhost:5000/api/expenses,20,0,1
+1767524029522,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,54,54,http://localhost:5000/api/expenses,17,0,2
+1767524030094,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-22,text,true,,338,686,54,54,http://localhost:5000/api/expenses,14,0,3
+1767524030371,27,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,686,53,53,http://localhost:5000/api/expenses,26,0,2
+1767524030448,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,686,53,53,http://localhost:5000/api/expenses,19,0,2
+1767524030728,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,686,53,53,http://localhost:5000/api/expenses,26,0,2
+1767524030791,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,686,53,53,http://localhost:5000/api/expenses,21,0,2
+1767524031028,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,708,53,53,http://localhost:5000/api/expenses,14,0,1
+1767524031693,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,53,53,http://localhost:5000/api/expenses,19,0,2
+1767524031803,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,686,53,53,http://localhost:5000/api/expenses,16,0,1
+1767524031914,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,686,53,53,http://localhost:5000/api/expenses,18,0,1
+1767524032430,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,686,53,53,http://localhost:5000/api/expenses,22,0,2
+1767524032477,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,53,53,http://localhost:5000/api/expenses,18,0,2
+1767524032570,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-37,text,true,,338,708,53,53,http://localhost:5000/api/expenses,27,0,1
+1767524032867,3,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-33,text,true,,210,657,52,52,http://localhost:5000/api/expenses,3,0,0
+1767524033338,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,708,52,52,http://localhost:5000/api/expenses,22,0,2
+1767524033603,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,52,52,http://localhost:5000/api/expenses,21,0,2
+1767524033650,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,708,52,52,http://localhost:5000/api/expenses,24,0,2
+1767524034011,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-73,text,true,,210,657,52,52,http://localhost:5000/api/expenses,8,0,1
+1767524034199,4,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-93,text,true,,210,657,52,52,http://localhost:5000/api/expenses,3,0,1
+1767524034620,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,686,52,52,http://localhost:5000/api/expenses,13,0,2
+1767524034667,4,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-62,text,true,,210,657,52,52,http://localhost:5000/api/expenses,4,0,1
+1767524034699,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,686,52,52,http://localhost:5000/api/expenses,17,0,1
+1767524034931,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,686,52,52,http://localhost:5000/api/expenses,21,0,1
+1767524034964,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-47,text,true,,210,657,52,52,http://localhost:5000/api/expenses,5,0,1
+1767524035137,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,52,52,http://localhost:5000/api/expenses,19,0,1
+1767524035214,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,52,52,http://localhost:5000/api/expenses,15,0,1
+1767524035590,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-55,text,true,,216,661,52,52,http://localhost:5000/api/expenses,9,0,2
+1767524035699,9,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,686,52,52,http://localhost:5000/api/expenses,9,0,1
+1767524035716,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,708,52,52,http://localhost:5000/api/expenses,11,0,0
+1767524035716,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-64,text,true,,338,708,52,52,http://localhost:5000/api/expenses,21,0,0
+1767524035792,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,686,51,51,http://localhost:5000/api/expenses,17,0,2
+1767524035792,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,686,51,51,http://localhost:5000/api/expenses,26,0,1
+1767524035918,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-19,text,true,,338,708,51,51,http://localhost:5000/api/expenses,10,0,0
+1767524035995,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,50,50,http://localhost:5000/api/expenses,22,0,1
+1767524036011,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,686,50,50,http://localhost:5000/api/expenses,21,0,2
+1767524036076,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,686,50,50,http://localhost:5000/api/expenses,20,0,1
+1767524036091,12,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-81,text,true,,210,657,50,50,http://localhost:5000/api/expenses,12,0,2
+1767524036235,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,50,50,http://localhost:5000/api/expenses,11,0,1
+1767524036267,10,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,708,50,50,http://localhost:5000/api/expenses,10,0,0
+1767524036330,9,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,50,50,http://localhost:5000/api/expenses,9,0,1
+1767524036702,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,686,50,50,http://localhost:5000/api/expenses,24,0,2
+1767524037122,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,50,50,http://localhost:5000/api/expenses,12,0,1
+1767524037153,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,50,50,http://localhost:5000/api/expenses,13,0,1
+1767524037248,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,686,50,50,http://localhost:5000/api/expenses,19,0,1
+1767524037468,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,686,50,50,http://localhost:5000/api/expenses,14,0,1
+1767524037532,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,50,50,http://localhost:5000/api/expenses,21,0,1
+1767524037564,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,50,50,http://localhost:5000/api/expenses,18,0,1
+1767524037771,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,686,50,50,http://localhost:5000/api/expenses,16,0,1
+1767524037882,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,708,50,50,http://localhost:5000/api/expenses,15,0,1
+1767524038022,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,708,50,50,http://localhost:5000/api/expenses,12,0,0
+1767524038196,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-20,text,true,,338,708,50,50,http://localhost:5000/api/expenses,20,0,1
+1767524038462,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,686,49,49,http://localhost:5000/api/expenses,14,0,1
+1767524038541,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,686,49,49,http://localhost:5000/api/expenses,11,0,1
+1767524039487,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,686,49,49,http://localhost:5000/api/expenses,15,0,1
+1767524039751,28,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-88,text,true,,338,708,49,49,http://localhost:5000/api/expenses,28,0,2
+1767524039955,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,686,49,49,http://localhost:5000/api/expenses,21,0,2
+1767524040443,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-100,text,true,,338,686,49,49,http://localhost:5000/api/expenses,22,0,2
+1767524040806,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-63,text,true,,338,686,48,48,http://localhost:5000/api/expenses,19,0,2
+1767524040948,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,686,47,47,http://localhost:5000/api/expenses,22,0,2
+1767524041228,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-35,text,true,,338,686,47,47,http://localhost:5000/api/expenses,14,0,1
+1767524041557,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,686,46,46,http://localhost:5000/api/expenses,21,0,2
+1767524041633,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,46,46,http://localhost:5000/api/expenses,13,0,1
+1767524041665,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,46,46,http://localhost:5000/api/expenses,15,0,0
+1767524041933,28,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,686,46,46,http://localhost:5000/api/expenses,28,0,2
+1767524041964,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,686,46,46,http://localhost:5000/api/expenses,20,0,2
+1767524042530,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,46,46,http://localhost:5000/api/expenses,11,0,1
+1767524042577,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-36,text,true,,338,708,46,46,http://localhost:5000/api/expenses,18,0,1
+1767524042701,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,708,45,45,http://localhost:5000/api/expenses,19,0,1
+1767524042764,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,686,45,45,http://localhost:5000/api/expenses,16,0,1
+1767524042951,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,708,45,45,http://localhost:5000/api/expenses,12,0,1
+1767524042982,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,686,45,45,http://localhost:5000/api/expenses,10,0,1
+1767524043184,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,686,45,45,http://localhost:5000/api/expenses,25,0,1
+1767524043419,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,686,45,45,http://localhost:5000/api/expenses,13,0,1
+1767524044223,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,45,45,http://localhost:5000/api/expenses,18,0,2
+1767524044303,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,45,45,http://localhost:5000/api/expenses,21,0,2
+1767524044710,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,686,45,45,http://localhost:5000/api/expenses,14,0,1
+1767524044774,5,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-62,text,true,,216,661,45,45,http://localhost:5000/api/expenses,5,0,1
+1767524045074,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,45,45,http://localhost:5000/api/expenses,19,0,2
+1767524045136,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,45,45,http://localhost:5000/api/expenses,24,0,2
+1767524045636,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-27,text,true,,338,708,45,45,http://localhost:5000/api/expenses,15,0,0
+1767524045889,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,44,44,http://localhost:5000/api/expenses,18,0,2
+1767524046705,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,708,44,44,http://localhost:5000/api/expenses,22,0,2
+1767524046736,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,44,44,http://localhost:5000/api/expenses,22,0,2
+1767524046816,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,44,44,http://localhost:5000/api/expenses,25,0,2
+1767524046910,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-87,text,true,,338,708,44,44,http://localhost:5000/api/expenses,14,0,1
+1767524047068,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,686,43,43,http://localhost:5000/api/expenses,22,0,2
+1767524047559,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,43,43,http://localhost:5000/api/expenses,19,0,1
+1767524047559,42,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,43,43,http://localhost:5000/api/expenses,42,0,1
+1767524047763,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-48,text,true,,338,686,43,43,http://localhost:5000/api/expenses,19,0,2
+1767524048076,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,708,43,43,http://localhost:5000/api/expenses,14,0,1
+1767524048282,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,686,43,43,http://localhost:5000/api/expenses,22,0,1
+1767524048595,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-41,text,true,,338,708,43,43,http://localhost:5000/api/expenses,20,0,1
+1767524048896,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-57,text,true,,338,708,42,42,http://localhost:5000/api/expenses,22,0,2
+1767524049023,22,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,686,41,41,http://localhost:5000/api/expenses,22,0,0
+1767524049071,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,41,41,http://localhost:5000/api/expenses,16,0,1
+1767524049152,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,686,41,41,http://localhost:5000/api/expenses,19,0,1
+1767524049246,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-83,text,true,,210,657,41,41,http://localhost:5000/api/expenses,8,0,1
+1767524049324,17,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,686,41,41,http://localhost:5000/api/expenses,17,0,1
+1767524049543,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,686,41,41,http://localhost:5000/api/expenses,18,0,2
+1767524049623,20,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-58,text,true,,338,686,41,41,http://localhost:5000/api/expenses,20,0,1
+1767524050011,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,686,41,41,http://localhost:5000/api/expenses,24,0,2
+1767524050264,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,216,661,41,41,http://localhost:5000/api/expenses,8,0,1
+1767524050327,8,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-66,text,true,,210,657,41,41,http://localhost:5000/api/expenses,8,0,2
+1767524051385,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-88,text,true,,216,661,41,41,http://localhost:5000/api/expenses,9,0,2
+1767524051417,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,41,41,http://localhost:5000/api/expenses,22,0,2
+1767524051947,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,41,41,http://localhost:5000/api/expenses,26,0,2
+1767524051963,31,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-75,text,true,,338,708,41,41,http://localhost:5000/api/expenses,31,0,2
+1767524052088,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,40,40,http://localhost:5000/api/expenses,20,0,2
+1767524052373,12,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-73,text,true,,338,708,40,40,http://localhost:5000/api/expenses,12,0,1
+1767524052503,59,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-5,text,true,,338,708,39,39,http://localhost:5000/api/expenses,59,0,1
+1767524052721,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,38,38,http://localhost:5000/api/expenses,24,0,1
+1767524052863,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,38,38,http://localhost:5000/api/expenses,20,0,2
+1767524052989,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,708,38,38,http://localhost:5000/api/expenses,15,0,1
+1767524053115,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-12,text,true,,338,708,38,38,http://localhost:5000/api/expenses,18,0,1
+1767524053271,8,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-50,text,true,,216,661,37,37,http://localhost:5000/api/expenses,8,0,2
+1767524053430,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,686,37,37,http://localhost:5000/api/expenses,18,0,1
+1767524053557,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-42,text,true,,338,708,37,37,http://localhost:5000/api/expenses,22,0,1
+1767524053913,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-46,text,true,,338,708,36,36,http://localhost:5000/api/expenses,23,0,2
+1767524053961,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-96,text,true,,338,708,35,35,http://localhost:5000/api/expenses,24,0,2
+1767524054306,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,708,34,34,http://localhost:5000/api/expenses,23,0,2
+1767524054743,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-62,text,true,,210,657,34,34,http://localhost:5000/api/expenses,9,0,1
+1767524054853,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,33,33,http://localhost:5000/api/expenses,19,0,1
+1767524055466,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-92,text,true,,216,661,33,33,http://localhost:5000/api/expenses,9,0,3
+1767524055686,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,33,33,http://localhost:5000/api/expenses,17,0,2
+1767524055701,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,708,33,33,http://localhost:5000/api/expenses,20,0,2
+1767524055905,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,686,33,33,http://localhost:5000/api/expenses,21,0,1
+1767524056546,25,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,708,33,33,http://localhost:5000/api/expenses,24,0,2
+1767524057031,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,33,33,http://localhost:5000/api/expenses,22,0,1
+1767524057109,23,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,708,33,33,http://localhost:5000/api/expenses,23,0,3
+1767524057528,3,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-58,text,true,,210,657,33,33,http://localhost:5000/api/expenses,3,0,0
+1767524058417,11,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,686,32,32,http://localhost:5000/api/expenses,11,0,1
+1767524058606,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-72,text,true,,338,686,32,32,http://localhost:5000/api/expenses,23,0,3
+1767524058870,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,686,31,31,http://localhost:5000/api/expenses,24,0,2
+1767524059469,6,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-88,text,true,,210,657,31,31,http://localhost:5000/api/expenses,6,0,1
+1767524059705,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,708,30,30,http://localhost:5000/api/expenses,17,0,1
+1767524059814,19,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-7,text,true,,338,686,30,30,http://localhost:5000/api/expenses,19,0,1
+1767524060052,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-18,text,true,,338,708,29,29,http://localhost:5000/api/expenses,21,0,1
+1767524060273,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,686,28,28,http://localhost:5000/api/expenses,22,0,2
+1767524061074,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,708,28,28,http://localhost:5000/api/expenses,24,0,1
+1767524061872,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-84,text,true,,338,708,28,28,http://localhost:5000/api/expenses,20,0,1
+1767524061886,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,708,27,27,http://localhost:5000/api/expenses,24,0,2
+1767524063256,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-78,text,true,,338,708,27,27,http://localhost:5000/api/expenses,16,0,1
+1767524063449,13,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,686,26,26,http://localhost:5000/api/expenses,13,0,1
+1767524063903,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,686,26,26,http://localhost:5000/api/expenses,12,0,1
+1767524063996,13,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,26,26,http://localhost:5000/api/expenses,13,0,2
+1767524064650,17,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-48,text,true,,216,661,26,26,http://localhost:5000/api/expenses,16,0,5
+1767524064698,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,708,25,25,http://localhost:5000/api/expenses,14,0,3
+1767524064761,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,708,25,25,http://localhost:5000/api/expenses,18,0,2
+1767524064994,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-33,text,true,,338,708,25,25,http://localhost:5000/api/expenses,14,0,2
+1767524065010,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,686,24,24,http://localhost:5000/api/expenses,15,0,1
+1767524065075,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-56,text,true,,338,708,24,24,http://localhost:5000/api/expenses,14,0,1
+1767524065092,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-74,text,true,,338,708,23,23,http://localhost:5000/api/expenses,17,0,0
+1767524065216,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,22,22,http://localhost:5000/api/expenses,17,0,2
+1767524066210,21,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,686,22,22,http://localhost:5000/api/expenses,21,0,2
+1767524066775,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,210,657,22,22,http://localhost:5000/api/expenses,5,0,1
+1767524066966,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,22,22,http://localhost:5000/api/expenses,15,0,1
+1767524067373,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-69,text,true,,338,686,22,22,http://localhost:5000/api/expenses,12,0,1
+1767524069233,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,21,21,http://localhost:5000/api/expenses,21,0,3
+1767524070245,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-81,text,true,,338,686,21,21,http://localhost:5000/api/expenses,18,0,2
+1767524071241,46,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,708,20,20,http://localhost:5000/api/expenses,46,0,19
+1767524071504,102,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,686,20,20,http://localhost:5000/api/expenses,102,0,1
+1767524071779,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-38,text,true,,338,708,20,20,http://localhost:5000/api/expenses,22,0,5
+1767524071998,5,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-92,text,true,,210,657,19,19,http://localhost:5000/api/expenses,5,0,1
+1767524072525,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,19,19,http://localhost:5000/api/expenses,14,0,1
+1767524072994,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-83,text,true,,338,686,19,19,http://localhost:5000/api/expenses,14,0,2
+1767524073305,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,19,19,http://localhost:5000/api/expenses,17,0,2
+1767524074192,26,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,686,19,19,http://localhost:5000/api/expenses,25,0,1
+1767524074429,33,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-99,text,true,,338,708,19,19,http://localhost:5000/api/expenses,32,0,10
+1767524074988,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,708,19,19,http://localhost:5000/api/expenses,21,0,2
+1767524076041,26,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-98,text,true,,338,708,19,19,http://localhost:5000/api/expenses,26,0,1
+1767524076786,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,19,19,http://localhost:5000/api/expenses,11,0,1
+1767524078218,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-66,text,true,,338,708,19,19,http://localhost:5000/api/expenses,19,0,1
+1767524078716,17,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-82,text,true,,338,708,18,18,http://localhost:5000/api/expenses,17,0,1
+1767524078748,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-55,text,true,,338,708,17,17,http://localhost:5000/api/expenses,16,0,2
+1767524079423,24,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-90,text,true,,338,708,17,17,http://localhost:5000/api/expenses,23,0,2
+1767524080682,14,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-71,text,true,,338,708,17,17,http://localhost:5000/api/expenses,14,0,1
+1767524081057,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-93,text,true,,338,686,16,16,http://localhost:5000/api/expenses,14,0,1
+1767524081944,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-86,text,true,,338,686,15,15,http://localhost:5000/api/expenses,12,0,1
+1767524082006,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-83,text,true,,210,657,14,14,http://localhost:5000/api/expenses,9,0,2
+1767524082304,23,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,686,13,13,http://localhost:5000/api/expenses,22,0,2
+1767524083477,12,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,686,13,13,http://localhost:5000/api/expenses,12,0,1
+1767524083603,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,686,13,13,http://localhost:5000/api/expenses,18,0,1
+1767524083744,11,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,13,13,http://localhost:5000/api/expenses,11,0,1
+1767524084758,15,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,686,13,13,http://localhost:5000/api/expenses,15,0,2
+1767524084837,10,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-92,text,true,,338,686,13,13,http://localhost:5000/api/expenses,10,0,0
+1767524087291,9,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-47,text,true,,216,661,12,12,http://localhost:5000/api/expenses,9,0,2
+1767524088879,27,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-50,text,true,,338,708,12,12,http://localhost:5000/api/expenses,27,0,2
+1767524089192,6,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-99,text,true,,216,661,12,12,http://localhost:5000/api/expenses,6,0,0
+1767524089977,3,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-98,text,true,,216,661,12,12,http://localhost:5000/api/expenses,3,0,0
+1767524090855,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-55,text,true,,210,657,11,11,http://localhost:5000/api/expenses,9,0,2
+1767524090918,22,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,10,10,http://localhost:5000/api/expenses,22,0,2
+1767524094582,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,10,10,http://localhost:5000/api/expenses,21,0,2
+1767524095876,14,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,10,10,http://localhost:5000/api/expenses,14,0,1
+1767524096265,16,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,686,10,10,http://localhost:5000/api/expenses,16,0,1
+1767524096343,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-50,text,true,,216,661,10,10,http://localhost:5000/api/expenses,6,0,1
+1767524098645,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-94,text,true,,338,708,10,10,http://localhost:5000/api/expenses,20,0,1
+1767524100836,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-90,text,true,,216,661,9,9,http://localhost:5000/api/expenses,7,0,2
+1767524102255,19,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,9,9,http://localhost:5000/api/expenses,19,0,1
+1767524102715,10,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-47,text,true,,210,657,9,9,http://localhost:5000/api/expenses,10,0,1
+1767524103184,20,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-97,text,true,,338,708,9,9,http://localhost:5000/api/expenses,20,0,1
+1767524103184,42,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-89,text,true,,338,708,9,9,http://localhost:5000/api/expenses,41,0,1
+1767524103697,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-99,text,true,,210,657,8,8,http://localhost:5000/api/expenses,9,0,1
+1767524106325,15,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-32,text,true,,338,708,7,7,http://localhost:5000/api/expenses,14,0,1
+1767524106885,7,Employee submits negative expense,400,BAD REQUEST,ExepenseSubmissionScenarios 1-85,text,true,,216,661,6,6,http://localhost:5000/api/expenses,7,0,2
+1767524111534,9,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-90,text,true,,210,657,6,6,http://localhost:5000/api/expenses,8,0,3
+1767524111708,7,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-50,text,true,,210,657,5,5,http://localhost:5000/api/expenses,7,0,1
+1767524115532,16,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,708,4,4,http://localhost:5000/api/expenses,16,0,1
+1767524116177,31,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,4,4,http://localhost:5000/api/expenses,31,0,1
+1767524117573,11,Employee submits invalid description,400,BAD REQUEST,ExepenseSubmissionScenarios 1-97,text,true,,210,657,4,4,http://localhost:5000/api/expenses,10,0,4
+1767524120903,21,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,708,3,3,http://localhost:5000/api/expenses,21,0,2
+1767524121231,18,Submits Expense With Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,708,3,3,http://localhost:5000/api/expenses,18,0,2
+1767524121279,18,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-49,text,true,,338,686,3,3,http://localhost:5000/api/expenses,17,0,3
+1767524126416,25,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-85,text,true,,338,686,2,2,http://localhost:5000/api/expenses,25,0,1
+1767524129326,24,Submits Expense Without Date,201,CREATED,ExepenseSubmissionScenarios 1-47,text,true,,338,686,1,1,http://localhost:5000/api/expenses,24,0,1
