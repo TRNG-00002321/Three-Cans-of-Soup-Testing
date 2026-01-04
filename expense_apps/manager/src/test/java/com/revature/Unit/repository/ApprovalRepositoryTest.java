@@ -16,11 +16,23 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
+import org.junit.jupiter.api.Tag;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.repository.ApprovalRepository;
 import com.revature.repository.DatabaseConnection;
 
+@Epic("Manager App")
+@Feature("Expense Management")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class ApprovalRepositoryTest {
 
@@ -38,12 +50,16 @@ public class ApprovalRepositoryTest {
 
     @BeforeEach
     void setUp() throws SQLException {
+        Allure.label("suite", "Unit Tests");
         approvalRepository = new ApprovalRepository(databaseConnection);
         when(databaseConnection.getConnection()).thenReturn(connection);
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify that update fails gracefully when no rows are affected")
+    @Severity(SeverityLevel.NORMAL)
     public void updateApprovalStatus_NoUpdate_ReturnsFalse() throws SQLException {
         when(preparedStatement.executeUpdate()).thenReturn(0);
         boolean result = approvalRepository.updateApprovalStatus(999, "denied", 1, "No");
@@ -58,6 +74,9 @@ public class ApprovalRepositoryTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify handling of SQL exceptions during approval update")
+    @Severity(SeverityLevel.CRITICAL)
     void updateApprovalStatus_SQLException_ThrowsRuntimeException() throws SQLException {
         when(preparedStatement.executeUpdate()).thenThrow(new SQLException("DB error"));
         RuntimeException exception = assertThrows(RuntimeException.class,
@@ -73,6 +92,9 @@ public class ApprovalRepositoryTest {
     }
 
     @Test
+    @Story("Approve/Deny Expenses")
+    @Description("Verify successful approval status update")
+    @Severity(SeverityLevel.CRITICAL)
     void updateApprovalStatus_SuccessfulUpdate_ReturnsTrue() throws SQLException {
         when(preparedStatement.executeUpdate()).thenReturn(1);
 

@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
+import io.qameta.allure.Allure;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,7 +26,14 @@ import io.javalin.http.Context;
 import io.javalin.http.ForbiddenResponse;
 import io.javalin.http.Handler;
 import io.javalin.http.UnauthorizedResponse;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 
+@Epic("Manager App")
+@Feature("Manager Authentication")
+
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 class AuthenticationMiddlewareTest {
 
@@ -41,6 +50,7 @@ class AuthenticationMiddlewareTest {
 
     @BeforeEach
     void setUp() {
+        Allure.label("suite", "Unit Tests");
         authenticationMiddleware = new AuthenticationMiddleware(authenticationService);
     }
 

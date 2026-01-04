@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
@@ -24,6 +25,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.api.AuthenticationMiddleware;
+import io.qameta.allure.Allure;
 import com.revature.api.ExpenseController;
 import com.revature.repository.Approval;
 import com.revature.repository.Expense;
@@ -36,6 +38,12 @@ import io.javalin.http.Context;
 import io.javalin.http.InternalServerErrorResponse;
 import io.javalin.http.NotFoundResponse;
 import io.javalin.validation.Validator;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 
 /* 
 TODO: Implement ArgumentCaptor for Map Objects:
@@ -45,6 +53,10 @@ TODO: Implement ArgumentCaptor for Map Objects:
                 "count", expenses.size()
         ));
  */
+@Epic("Manager App")
+@Feature("Expense Management")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class ExpenseControllerTest {
 
@@ -61,6 +73,7 @@ public class ExpenseControllerTest {
 
     @BeforeEach
     public void setup() {
+        Allure.label("suite", "Unit Tests");
         ctxMock = mock(Context.class, Mockito.RETURNS_DEEP_STUBS);
         validatorMock = mock(Validator.class);
 
