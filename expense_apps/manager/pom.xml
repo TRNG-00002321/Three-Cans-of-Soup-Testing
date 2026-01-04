@@ -150,31 +150,6 @@
             <version>3.1.0</version>
         </dependency>
 
-<<<<<<< HEAD
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.6</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JSON Schema Validation (optional but recommended) -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>5.4.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JSON Path (included with rest-assured, but useful standalone) -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>5.4.0</version>
-            <scope>test</scope>
-        </dependency>
-=======
         <!-- Cucumber Core -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -211,7 +186,6 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.6.2</version>
         </dependency>
->>>>>>> 15beac0 (feat(EMS-81) e2e testing functionality that allows managers to review expenses)
 
     </dependencies>
 
