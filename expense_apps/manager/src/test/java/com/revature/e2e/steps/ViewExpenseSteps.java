@@ -1,21 +1,23 @@
+package com.revature.e2e.steps;
 
-package com.revature.steps;
-
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebElement;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import com.revature.utils.TestContext;
+
+import com.revature.e2e.utils.TestContext;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class ViewExpenseSteps {
-    
+
     private TestContext context;
 
-    public ViewExpenseSteps(){
+    public ViewExpenseSteps() {
         this.context = TestContext.getInstance();
     }
     // public ViewExpenseSteps(TestContext context) {
@@ -24,12 +26,13 @@ public class ViewExpenseSteps {
 
     @Given("the manager is logged in")
     public void the_manager_is_logged_in() {
-        context.getDriver().get(context.getBaseUrl() + "/login.html"); 
+        context.getDriver().get(context.getBaseUrl() + "/login.html");
         context.getDriver().findElement(By.id("username")).sendKeys("manager1");
         context.getDriver().findElement(By.id("password")).sendKeys("password123");
         context.getDriver().findElement(By.cssSelector("button[type='submit']")).click();
 
     }
+
     @Given("the manager is on the dashboard")
     public void the_manager_is_on_the_dashboard() {
         context.getWait().until(ExpectedConditions.urlContains("/manager"));
@@ -55,6 +58,7 @@ public class ViewExpenseSteps {
         assertTrue(columns.get(2).getText().contains("Amount"));
         assertTrue(columns.get(3).getText().contains("Description"));
     }
+
     @When("the manager clicks on the all expenses button")
     public void the_manager_clicks_on_the_all_expenses_button() {
         context.getDriver().findElement(By.id("show-all-expenses")).click();

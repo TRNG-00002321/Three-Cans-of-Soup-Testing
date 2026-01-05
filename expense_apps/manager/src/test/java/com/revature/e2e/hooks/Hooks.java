@@ -1,21 +1,27 @@
-package com.revature.hooks;
+package com.revature.e2e.hooks;
 
-import io.cucumber.java.Before;
-import io.cucumber.java.After;
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.AfterAll;
-import io.cucumber.java.Scenario;
+import java.sql.SQLException;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import com.revature.utils.TestContext;
+import com.revature.Api.DummyDataLoader;
+import com.revature.e2e.utils.TestContext;
+
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
 
 public class Hooks {
 
     private TestContext context;
+    private DummyDataLoader dataLoader;
 
     public Hooks() {
         this.context = TestContext.getInstance();
+        this.dataLoader = new DummyDataLoader();
     }
 
     @BeforeAll
@@ -27,6 +33,12 @@ public class Hooks {
     public void beforeScenario(Scenario scenario) {
         System.out.println("Starting scenario: " + scenario.getName());
         context.initializeDriver(false);
+        try {
+            dataLoader.restoreDatabase();
+        } catch (SQLException e) {
+
+        }
+
     }
 
     @After

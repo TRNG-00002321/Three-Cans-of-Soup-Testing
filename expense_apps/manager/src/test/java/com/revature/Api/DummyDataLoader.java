@@ -42,7 +42,6 @@ public class DummyDataLoader {
                     }
                 }
             }
-            System.out.println("SQL file executed successfully: " + sqlFilePath);
 
         } catch (IOException e) {
             throw new SQLException("Failed to copy database file: " + e.getMessage(), e);
