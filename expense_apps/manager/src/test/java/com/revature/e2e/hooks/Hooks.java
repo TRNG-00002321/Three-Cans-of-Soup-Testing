@@ -1,5 +1,6 @@
 package com.revature.e2e.hooks;
 
+import java.io.File;
 import java.sql.SQLException;
 
 import org.openqa.selenium.OutputType;
@@ -26,8 +27,21 @@ public class Hooks {
 
     @BeforeAll
     public static void globalSetup() {
+        //path to the downloads folder for the reports
+        //works best with the absolute path
+        String DOWNLOAD_PATH ="/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager/src/test/resources/downloads";
+        File downloadDir = new File(DOWNLOAD_PATH);
+        File[] files = downloadDir.listFiles();
+        if(files!=null) {
+            for (File file : files) {
+                if(file.getName().endsWith(".csv")) {
+                    file.delete();
+                }
+            }
+        }
         System.out.println("Starting test execution...");
     }
+
 
     @Before
     public void beforeScenario(Scenario scenario) {

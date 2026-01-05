@@ -1,6 +1,8 @@
 package com.revature.e2e.utils;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -52,6 +54,10 @@ public class TestContext {
             options.addArguments("--disable-gpu");
         }
         options.addArguments("--window-size=1920,1080");
+        Map<String, Object> prefs = new HashMap<>();
+        String DOWNLOAD_PATH ="/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager/src/test/resources/downloads";
+        prefs.put("download.default_directory", DOWNLOAD_PATH);
+        options.setExperimentalOption("prefs", prefs);
 
         this.driver = new ChromeDriver(options);
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

@@ -1,0 +1,8 @@
+Expense ID,Employee,Amount,Description,Date,Status,Reviewer,Comment,Review Date
+7,testuser,80.0,Parking fees,2024-12-20,approved,4,Approved by manager2,2024-12-21
+6,testuser,200.0,Team dinner,2024-12-15,pending,,,
+3,employee1,75.0,Office supplies,2024-12-10,denied,3,Exceeds budget limit,2024-12-11
+5,employee2,500.0,Conference registration,2024-12-08,approved,3,Conference approved,2024-12-09
+2,employee1,250.5,Travel expense,2024-12-05,approved,3,Approved for travel,2024-12-06
+4,employee2,120.0,Client meeting,2024-12-03,pending,,,
+1,employee1,150.0,Business lunch,2024-12-01,pending,,,
