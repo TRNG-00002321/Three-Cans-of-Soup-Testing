@@ -29,7 +29,7 @@ public class Hooks {
     public static void globalSetup() {
         //path to the downloads folder for the reports
         //works best with the absolute path
-        String DOWNLOAD_PATH ="/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager/src/test/resources/downloads";
+        String DOWNLOAD_PATH ="/home/user/rev/Three-Cans-of-Soup-Testing/expense_apps/manager/src/test/resources/downloads";
         File downloadDir = new File(DOWNLOAD_PATH);
         File[] files = downloadDir.listFiles();
         if(files!=null) {

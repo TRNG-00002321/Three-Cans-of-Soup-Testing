@@ -1,31 +1,21 @@
 package com.revature.e2e.steps;
 
+import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.revature.e2e.utils.TestContext;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.File;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GenerateReportSteps {
-    private static final String DOWNLOAD_PATH ="/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager/src/test/resources/downloads";
+    private static final String DOWNLOAD_PATH ="/home/user/rev/Three-Cans-of-Soup-Testing/expense_apps/manager/src/test/resources/downloads";
     //private WebDriver driver;
     private final String BASE_URL = "http://localhost:5001";
     //WebDriverWait wait;

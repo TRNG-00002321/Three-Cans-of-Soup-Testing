@@ -55,7 +55,7 @@ public class TestContext {
         }
         options.addArguments("--window-size=1920,1080");
         Map<String, Object> prefs = new HashMap<>();
-        String DOWNLOAD_PATH ="/Users/andrew/Desktop/Revature/Project_1/expense_apps/manager/src/test/resources/downloads";
+        String DOWNLOAD_PATH ="/home/user/rev/Three-Cans-of-Soup-Testing/expense_apps/manager/src/test/resources/downloads";
         prefs.put("download.default_directory", DOWNLOAD_PATH);
         options.setExperimentalOption("prefs", prefs);
 
