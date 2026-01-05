@@ -1,0 +1,103 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1767534578192,85,Manager Logs In,200,OK,ManagerLogin 1-2,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,80,0,53
+1767534578316,8,Manager Logs In,200,OK,ManagerLogin 1-4,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,7,0,2
+1767534579104,11,Manager Logs In,200,OK,ManagerLogin 1-5,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,11,0,1
+1767534579393,8,Manager Logs In,200,OK,ManagerLogin 1-3,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,8,0,1
+1767534579607,11,Manager Logs In,200,OK,ManagerLogin 1-6,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,1
+1767534579739,13,Manager Logs In,200,OK,ManagerLogin 1-7,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,13,0,2
+1767534581049,6,Manager Logs In,200,OK,ManagerLogin 1-8,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,6,0,1
+1767534581270,11,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-5,text,true,,190,693,4,4,http://localhost:5001/api/auth/login,11,0,0
+1767534581564,8,Manager Logs In,200,OK,ManagerLogin 1-11,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,8,0,1
+1767534582240,8,Manager Logs In,200,OK,ManagerLogin 1-10,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,8,0,1
+1767534582524,12,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-7,text,true,,190,693,3,3,http://localhost:5001/api/auth/login,11,0,0
+1767534583146,6,Manager Logs In,200,OK,ManagerLogin 1-12,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,6,0,1
+1767534583222,6,Manager Logs In,200,OK,ManagerLogin 1-13,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,6,0,1
+1767534584768,10,Manager Logs In,200,OK,ManagerLogin 1-15,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534586341,10,Manager Logs In,200,OK,ManagerLogin 1-16,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,10,0,1
+1767534586835,6,Manager Logs In,200,OK,ManagerLogin 1-14,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,6,0,1
+1767534586996,10,Manager Logs In,200,OK,ManagerLogin 1-19,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534587634,10,Manager Logs In,200,OK,ManagerLogin 1-18,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,1
+1767534587790,12,Manager Logs In,200,OK,ManagerLogin 1-22,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,12,0,1
+1767534588485,7,Manager Logs In,200,OK,ManagerLogin 1-21,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,7,0,1
+1767534588779,7,Manager Logs In,200,OK,ManagerLogin 1-17,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,7,0,1
+1767534590590,10,Manager Logs In,200,OK,ManagerLogin 1-23,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534590916,5,Manager Logs In,200,OK,ManagerLogin 1-24,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,5,0,0
+1767534591802,12,Manager Logs In,200,OK,ManagerLogin 1-25,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,12,0,3
+1767534592509,11,Manager Logs In,200,OK,ManagerLogin 1-28,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,2
+1767534592651,13,Manager Logs In,200,OK,ManagerLogin 1-29,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,12,0,3
+1767534593588,16,Manager Logs In,200,OK,ManagerLogin 1-31,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,16,0,2
+1767534593994,12,Manager Logs In,200,OK,ManagerLogin 1-26,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,12,0,3
+1767534594600,12,Manager Logs In,200,OK,ManagerLogin 1-32,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,12,0,2
+1767534594710,13,Manager Logs In,200,OK,ManagerLogin 1-30,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,12,0,1
+1767534595756,9,Manager Logs In,200,OK,ManagerLogin 1-33,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,9,0,2
+1767534596129,8,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-30,text,true,,190,693,5,5,http://localhost:5001/api/auth/login,8,0,0
+1767534596368,11,Manager Logs In,200,OK,ManagerLogin 1-34,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,2
+1767534596537,10,Manager Logs In,200,OK,ManagerLogin 1-36,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534596804,7,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-32,text,true,,190,693,3,3,http://localhost:5001/api/auth/login,7,0,0
+1767534596821,10,Manager Logs In,200,OK,ManagerLogin 1-37,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,10,0,1
+1767534599029,12,Manager Logs In,200,OK,ManagerLogin 1-38,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,12,0,2
+1767534599090,10,Manager Logs In,200,OK,ManagerLogin 1-35,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534599958,9,Manager Logs In,200,OK,ManagerLogin 1-40,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,9,0,3
+1767534600097,10,Manager Logs In,200,OK,ManagerLogin 1-42,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,9,0,2
+1767534600285,7,Manager Logs In,200,OK,ManagerLogin 1-39,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,7,0,2
+1767534600682,7,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-35,text,true,,190,693,4,4,http://localhost:5001/api/auth/login,7,0,0
+1767534600825,9,Manager Logs In,200,OK,ManagerLogin 1-41,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,8,0,2
+1767534601155,8,Manager Logs In,200,OK,ManagerLogin 1-43,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,8,0,2
+1767534602427,7,Manager Logs In,200,OK,ManagerLogin 1-44,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,7,0,1
+1767534603608,8,Manager Logs In,200,OK,ManagerLogin 1-45,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,8,0,2
+1767534604187,8,Manager Logs In,200,OK,ManagerLogin 1-49,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,8,0,2
+1767534604519,12,Manager Logs In,200,OK,ManagerLogin 1-47,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,2
+1767534605128,6,Manager Logs In,200,OK,ManagerLogin 1-46,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,6,0,2
+1767534605270,10,Manager Logs In,200,OK,ManagerLogin 1-48,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,10,0,2
+1767534606631,11,Manager Logs In,200,OK,ManagerLogin 1-51,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,11,0,3
+1767534607194,6,Manager Logs In,200,OK,ManagerLogin 1-52,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,6,0,1
+1767534607924,11,Manager Logs In,200,OK,ManagerLogin 1-50,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,11,0,2
+1767534608288,11,Manager Logs In,200,OK,ManagerLogin 1-53,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,4
+1767534608867,21,Manager Logs In,200,OK,ManagerLogin 1-54,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,21,0,3
+1767534610108,10,Manager Logs In,200,OK,ManagerLogin 1-56,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534610340,10,Manager Logs In,200,OK,ManagerLogin 1-57,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,4
+1767534611364,10,Manager Logs In,200,OK,ManagerLogin 1-55,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,1
+1767534611464,7,Manager Logs In,200,OK,ManagerLogin 1-60,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,7,0,1
+1767534613028,13,Manager Logs In,200,OK,ManagerLogin 1-59,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,12,0,2
+1767534613623,12,Manager Logs In,200,OK,ManagerLogin 1-65,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,11,0,2
+1767534613958,31,Manager Logs In,200,OK,ManagerLogin 1-62,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,31,0,2
+1767534614005,10,Manager Logs In,200,OK,ManagerLogin 1-61,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,10,0,2
+1767534614174,9,Manager Logs In,200,OK,ManagerLogin 1-63,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,9,0,2
+1767534615487,9,Manager Logs In,200,OK,ManagerLogin 1-64,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,9,0,1
+1767534615706,10,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-61,text,true,,190,693,6,6,http://localhost:5001/api/auth/login,10,0,0
+1767534615707,12,Manager Logs In,200,OK,ManagerLogin 1-66,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,12,0,3
+1767534615711,16,Manager Logs In,200,OK,ManagerLogin 1-69,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,16,0,3
+1767534616854,8,Manager Logs In,200,OK,ManagerLogin 1-67,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,8,0,2
+1767534616940,10,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-68,text,true,,190,454,4,4,http://localhost:5001/api/auth/login,10,0,3
+1767534618590,12,Manager Logs In,200,OK,ManagerLogin 1-70,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,12,0,2
+1767534618864,7,Manager Logs In,200,OK,ManagerLogin 1-71,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,7,0,2
+1767534619134,11,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-64,text,true,,190,693,4,4,http://localhost:5001/api/auth/login,11,0,0
+1767534619276,6,Manager Logs In,200,OK,ManagerLogin 1-73,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,6,0,1
+1767534620934,10,Manager Logs In,200,OK,ManagerLogin 1-74,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,10,0,2
+1767534621041,8,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-71,text,true,,190,693,5,5,http://localhost:5001/api/auth/login,8,0,0
+1767534621151,13,Manager Logs In,200,OK,ManagerLogin 1-75,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,13,0,3
+1767534622222,7,Manager Logs In,200,OK,ManagerLogin 1-77,text,true,,554,452,6,6,http://localhost:5001/api/auth/login,7,0,2
+1767534622628,9,Manager Logs In,200,OK,ManagerLogin 1-76,text,true,,554,452,5,5,http://localhost:5001/api/auth/login,8,0,2
+1767534622735,6,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-75,text,true,,190,693,4,4,http://localhost:5001/api/auth/login,6,0,0
+1767534622987,9,Manager Logs In,200,OK,ManagerLogin 1-78,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,9,0,2
+1767534623241,9,Manager Logs In,200,OK,ManagerLogin 1-80,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,9,0,2
+1767534623999,9,Manager Logs In,200,OK,ManagerLogin 1-79,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,9,0,2
+1767534624833,9,Manager Logs In,200,OK,ManagerLogin 1-82,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,9,0,2
+1767534625176,7,Manager Logs In,200,OK,ManagerLogin 1-81,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,7,0,2
+1767534625901,11,Manager Logs In,200,OK,ManagerLogin 1-86,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,11,0,3
+1767534626073,9,Manager Logs In,200,OK,ManagerLogin 1-83,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,9,0,2
+1767534627241,11,Manager Logs In,200,OK,ManagerLogin 1-87,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,2
+1767534627872,9,Manager Logs In,200,OK,ManagerLogin 1-85,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,9,0,2
+1767534628789,9,Manager Fails to Login,401,Unauthorized,ManagerLogin 1-86,text,true,,190,693,4,4,http://localhost:5001/api/auth/login,9,0,0
+1767534629292,11,Manager Logs In,200,OK,ManagerLogin 1-88,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,2
+1767534629449,6,Manager Logs In,200,OK,ManagerLogin 1-90,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,6,0,1
+1767534629498,6,Manager Logs In,200,OK,ManagerLogin 1-89,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,6,0,1
+1767534631320,14,Manager Logs In,200,OK,ManagerLogin 1-92,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,14,0,2
+1767534631911,11,Manager Logs In,200,OK,ManagerLogin 1-96,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,11,0,3
+1767534632094,10,Manager Logs In,200,OK,ManagerLogin 1-91,text,true,,554,452,3,3,http://localhost:5001/api/auth/login,10,0,3
+1767534632282,10,Manager Logs In,200,OK,ManagerLogin 1-93,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,10,0,2
+1767534633903,20,Manager Logs In,200,OK,ManagerLogin 1-97,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,19,0,3
+1767534633903,20,Manager Logs In,200,OK,ManagerLogin 1-94,text,true,,554,452,4,4,http://localhost:5001/api/auth/login,19,0,3
+1767534634068,7,Manager Logs In,200,OK,ManagerLogin 1-98,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,7,0,2
+1767534635372,6,Manager Logs In,200,OK,ManagerLogin 1-99,text,true,,554,452,2,2,http://localhost:5001/api/auth/login,6,0,2
+1767534635894,6,Manager Logs In,200,OK,ManagerLogin 1-100,text,true,,554,452,1,1,http://localhost:5001/api/auth/login,6,0,1
