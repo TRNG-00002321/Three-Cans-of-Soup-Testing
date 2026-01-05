@@ -1,35 +1,21 @@
+from datetime import datetime
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from behave import  given, when, then
 from behave.api.pending_step import StepNotImplementedError
 
-BASE_URL = "http://127.0.0.1:5000"
-
 @given("the employee is logged in")
 def step_login(context):
-    username = context.wait.until(
-        EC.visibility_of_element_located((By.ID, "username"))
-    )
-    username.clear()
-    username.send_keys("employee1")
-
-    password = context.wait.until(
-        EC.visibility_of_element_located((By.ID, "password"))
-    )
-    password.clear()
-    password.send_keys("password123")
-
-    login_button = context.wait.until(
-        EC.visibility_of_element_located((By.TAG_NAME, "button"))
-    )
-    login_button.click()
-
     context.wait.until(
         EC.url_contains("/app")
     )
 
-    assert "app" in context.driver.current_url
+    header = context.wait.until(
+        EC.visibility_of_element_located((By.ID, "header"))
+    )
+    assert "Dashboard" in header.text
 
 @given(u'the employee has click on Submit New Expense')
 def step_click_new_expense(context):
@@ -56,7 +42,6 @@ def step_add_description(context, description):
     text_box = context.wait.until(
         EC.visibility_of_element_located((By.ID, "description"))
     )
-
     text_box.send_keys(description)
 
 
@@ -65,7 +50,6 @@ def step_submit_expense(context):
     submit = context.wait.until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "form[id='expense-form'] button[type='submit']"))
     )
-
     submit.click()
 
 
@@ -74,29 +58,77 @@ def step_redirect_to_expenses(context):
     context.wait.until(
         EC.url_contains("/app")
     )
+    expenses = context.wait.until(
+        EC.visibility_of_element_located((By.ID, "expenses-list"))
+    )
+    rows = expenses.find_elements(By.TAG_NAME, "tr")
 
-    assert context.driver.current_url == BASE_URL+"/app"
+    assert "/app" in context.driver.current_url
+    assert len(rows) > 1 #includes the column names and rows
 
 @then(u'the submitted expense with {amount} and {description} is shown with a pending status')
 def step_check_is_pending(context, amount, description):
     expenses = context.wait.until(
         EC.visibility_of_element_located((By.ID, "expenses-list"))
     )
+    rows = expenses.find_elements(By.TAG_NAME, "tr")
 
-    for expense in expenses:
+    #skip column names
+    passed = False
+    for expense in rows[1::]:
         amount_found = False
         description_found = False
-        expense_labels = expense.find_elements_by_tag_name("td")
-        for texts in expense_labels:
-            if texts.text == description:
+        pending = False
+        words = expense.find_elements(By.TAG_NAME, "td")
+        for word in words:
+            if description in word.text:
                 description_found = True
-            if texts.text == amount:
+            if amount in word.text:
                 amount_found = True
+            if "PENDING" in word.text:
+                pending = True
+        if pending:
+            if amount_found and description_found:
+                passed = True
+                context.current_expense = expense
+                break
+
+    if not passed:
+        raise(AssertionError("Expense not in table"))
 
 
 @then(u'the submitted expense has the date the expense is submitted')
 def step_check_today_date(context):
-    raise StepNotImplementedError(u'Then the submitted expense has the date the expense is submitted')
+    passed = False
+
+    today = datetime.now().strftime('%Y-%m-%d')
+    words = context.current_expense.find_elements(By.TAG_NAME, "td")
+
+    for word in words:
+        if today == word.text:
+            passed = True
+            break
+
+    context.current_expense = None
+    if not passed:
+        raise (AssertionError("Expense not in table"))
+
+@then(u'the submitted date is {date}')
+def step_check_date(context, date):
+    passed = False
+    words = context.current_expense.find_elements(By.TAG_NAME, "td")
+
+    dt = datetime.strptime(date.strip('"'), "%m/%d/%Y")
+    formatted = dt.strftime("%Y-%m-%d")
+
+    for word in words:
+        if formatted == word.text:
+            passed = True
+            break
+
+    context.current_expense = None
+    if not passed:
+        raise (AssertionError("Expense not in table"))
 
 
 @given(u'the employee selects a {date}')
@@ -104,45 +136,33 @@ def step_add_date(context, date):
     text_box = context.wait.until(
         EC.visibility_of_element_located((By.ID, "date"))
     )
-
     text_box.send_keys(date)
 
+@given(u'the {field} is missing')
+def step_no_amount(context, field):
+    text_box = context.wait.until(
+        EC.visibility_of_element_located((By.ID, field))
+    )
+    text_box.clear()
 
-@given(u'the amount is missing')
-def step_no_amount(context):
-    raise StepNotImplementedError(u'Given the amount is missing')
+@then(u'the missing {field} is not valid')
+def step_check_pop_up(context, field):
+    input_field = context.driver.find_element(By.ID, field)
+    valid = context.driver.execute_script("return arguments[0].checkValidity();", input_field)
+    assert not valid
 
+@given(u'the employee enters {invalid_expense}')
+def step_invalid_amount(context, invalid_expense):
+    amount_box = context.wait.until(
+        EC.visibility_of_element_located((By.ID, "amount"))
+    )
+    amount_box.send_keys(invalid_expense)
 
-@then(u'a message to fill in the missing field pops up')
-def step_check_pop_up(context):
-    raise StepNotImplementedError(u'Then a message to fill in the missing field pops up')
-
-
-@given(u'the description is missing')
-def step_no_description(context):
-    raise StepNotImplementedError(u'Given the desciption is missing')
-
-
-@given(u'the default date is deleted')
-def step_no_date(context):
-    raise StepNotImplementedError(u'Given the default date is deleted')
-
-
-@given(u'the employee enters blank spaces')
-def step_blank_description(context):
-    raise StepNotImplementedError(u'Given the employee enters blank spaces')
-
-
-@then(u'a error message pops up')
-def step_check_error(context):
-    raise StepNotImplementedError(u'Then a error message pops up')
-
-
-@given(u'the employee enters {invalid expense}')
-def step_invalid_amount(context, negative_amount):
-    raise StepNotImplementedError(u'Given the employee enters <invalid expense>')
-
-
+@then(u'a message pops up due to invalid amount')
+def step_minimum_value(context):
+    input_field = context.driver.find_element(By.ID, "amount")
+    valid = context.driver.execute_script("return arguments[0].checkValidity();", input_field)
+    assert not valid
 
 
 
