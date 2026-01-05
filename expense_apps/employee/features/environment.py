@@ -53,17 +53,31 @@ def before_all(context):
     context.server_thread.start()
   
 
+# def before_scenario(context, scenario):
+#     """Scenario setup: Browser initialization."""
+#     options = FirefoxOptions()
+#     if 'headless' in scenario.effective_tags:
+#         options.add_argument('--headless')
+#     # options.add_experimental_option('excludeSwitches', ['disable-popup-blocking'])
+    
+#     options.add_argument('--window-size=1920,1080')
+#     service = FirefoxService(GeckoDriverManager().install())
+    
+#     context.driver = webdriver.Firefox(service=service, options=options)
+#     context.driver.implicitly_wait(10)
+#     context.wait = WebDriverWait(context.driver, 10)
 def before_scenario(context, scenario):
     """Scenario setup: Browser initialization."""
-    options = FirefoxOptions()
+    options = ChromeOptions()
     if 'headless' in scenario.effective_tags:
         options.add_argument('--headless')
-    # options.add_experimental_option('excludeSwitches', ['disable-popup-blocking'])
+    options.add_experimental_option('excludeSwitches', ['disable-popup-blocking'])
     
     options.add_argument('--window-size=1920,1080')
-    service = FirefoxService(GeckoDriverManager().install())
+    options.add_argument('--guest')
+    service = ChromeService(ChromeDriverManager().install())
     
-    context.driver = webdriver.Firefox(service=service, options=options)
+    context.driver = webdriver.Chrome(service=service, options=options)
     context.driver.implicitly_wait(10)
     context.wait = WebDriverWait(context.driver, 10)
 
