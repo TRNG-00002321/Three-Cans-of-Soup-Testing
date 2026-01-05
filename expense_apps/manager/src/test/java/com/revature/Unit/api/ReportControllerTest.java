@@ -24,7 +24,19 @@ import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.InternalServerErrorResponse;
 import io.javalin.validation.Validator;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
+import org.junit.jupiter.api.Tag;
 
+@Epic("Manager App")
+@Feature("Expense Reporting")
+@Tag("Unit")
+@Tag("Sprint-2")
 @ExtendWith(MockitoExtension.class)
 public class ReportControllerTest {
 
@@ -42,6 +54,7 @@ public class ReportControllerTest {
 
     @BeforeEach
     public void setup() {
+        Allure.label("suite", "Unit Tests");
         mockExpenses = List.of(
                 new ExpenseWithUser(),
                 new ExpenseWithUser()
@@ -52,6 +65,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate All Expenses Report Success")
+    @Story("Generate Reports")
+    @Description("Verify that the all expenses report is generated successfully")
+    @Severity(SeverityLevel.NORMAL)
     public void generateAllExpensesReportTestHappy() {
 
         when(expenseService.getAllExpenses()).thenReturn(mockExpenses);
@@ -74,6 +90,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate All Expenses Report Exception")
+    @Story("Generate Reports")
+    @Description("Verify handling of internal server error during report generation")
+    @Severity(SeverityLevel.CRITICAL)
     public void generateAllExpensesReportTestException() {
         when(expenseService.getAllExpenses()).thenThrow(new InternalServerErrorResponse());
 
@@ -85,6 +104,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Employee Expenses Report Success")
+    @Story("Generate Reports")
+    @Description("Verify that the employee expenses report is generated successfully")
+    @Severity(SeverityLevel.NORMAL)
     public void generateEmployeeExpensesReportTestHappy() {
         int employeeId = 1;
 
@@ -113,6 +135,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Employee Expenses Report Bad Request Exception")
+    @Story("Generate Reports")
+    @Description("Verify handling of invalid employee ID format")
+    @Severity(SeverityLevel.NORMAL)
     public void generateEmployeeExpensesReportTestBadRequestException() {
         when(ctx.pathParamAsClass("employeeId", Integer.class))
                 .thenThrow(new NumberFormatException("Invalid number"));
@@ -129,6 +154,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Employee Expenses Report Internal Server Error")
+    @Story("Generate Reports")
+    @Description("Verify handling of internal server error during employee report generation")
+    @Severity(SeverityLevel.CRITICAL)
     public void generateEmployeeExpensesReportTestInternalServerErrorException() {
         int employeeId = 10;
 
@@ -148,6 +176,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Success")
+    @Story("Generate Reports")
+    @Description("Verify that the category expenses report is generated successfully")
+    @Severity(SeverityLevel.NORMAL)
     public void generateCategoryExpensesReportTestHappy() {
         String category = "food";
 
@@ -174,6 +205,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Clean Name")
+    @Story("Generate Reports")
+    @Description("Verify that category names are sanitized for filenames")
+    @Severity(SeverityLevel.NORMAL)
     void generateCategoryExpensesReportTestCleanFilename() {
         // Arrange
         String category = "food & drinks!";
@@ -197,6 +231,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Bad Request Exception")
+    @Story("Generate Reports")
+    @Description("Verify handling of invalid category input")
+    @Severity(SeverityLevel.NORMAL)
     public void generateCategoryExpensesReportTestBadRequestException() {
         when(ctx.pathParam("category")).thenReturn("   ");
         // Act + Assert
@@ -211,6 +248,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Category Expenses Report Internal Server Error")
+    @Story("Generate Reports")
+    @Description("Verify handling of internal server error during category report generation")
+    @Severity(SeverityLevel.CRITICAL)
     public void generateCategoryExpensesReportTestInternalServerErrorException() {
         String category = "bad category";
 
@@ -227,6 +267,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate By Date Expenses Report Success")
+    @Story("Generate Reports")
+    @Description("Verify that the date range expenses report is generated successfully")
+    @Severity(SeverityLevel.NORMAL)
     void generateDateRangeExpensesReport_success() {
         // Arrange
         String startDate = "2024-01-01";
@@ -257,6 +300,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate By Date Expenses Report Bad Request (Empty)")
+    @Story("Generate Reports")
+    @Description("Verify handling of empty date parameters")
+    @Severity(SeverityLevel.NORMAL)
     void generateDateRangeExpensesReportEmptyDateFormatThrowsBadRequest() {
         // Arrange
         when(ctx.queryParam("startDate")).thenReturn(null);
@@ -273,6 +319,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate By Date Expenses Report Bad Request (Invalid Format)")
+    @Story("Generate Reports")
+    @Description("Verify handling of invalid date format")
+    @Severity(SeverityLevel.NORMAL)
     void generateDateRangeExpensesReportInvalidDateFormatThrowsBadRequest() {
         // Arrange
         when(ctx.queryParam("startDate")).thenReturn("01-01-2024");
@@ -289,6 +338,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate By Date Expenses Report Internal Server Error")
+    @Story("Generate Reports")
+    @Description("Verify handling of internal server error during date range report generation")
+    @Severity(SeverityLevel.CRITICAL)
     void generateDateRangeExpensesReportThrowsInternalServerError() {
         // Arrange
         String startDate = "2024-02-01";
@@ -309,6 +361,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Pending Expenses Report Success")
+    @Story("Generate Reports")
+    @Description("Verify that the pending expenses report is generated successfully")
+    @Severity(SeverityLevel.NORMAL)
     void generatePendingExpensesReport_success() {
         // Arrange
         List<ExpenseWithUser> mockExpenses = List.of(
@@ -338,6 +393,9 @@ public class ReportControllerTest {
 
     @Test
     @DisplayName("Generate Pending Expenses Report Internal Server Error")
+    @Story("Generate Reports")
+    @Description("Verify handling of internal server error during pending report generation")
+    @Severity(SeverityLevel.CRITICAL)
     void generatePendingExpensesReportThrowsInternalServerError() {
         // Arrange
         when(expenseService.getPendingExpenses())
