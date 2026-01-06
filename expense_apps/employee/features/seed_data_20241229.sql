@@ -9,6 +9,9 @@ INSERT INTO users (id, username, password, role) VALUES
     (3, 'manager1', 'admin123', 'Manager'),
     (4, 'testuser', 'testpass', 'Employee');
 
+-- clear expenses
+DELETE FROM expenses;
+
 -- Insert test expenses
 INSERT INTO expenses (id, user_id, amount, description, date) VALUES 
     (1, 1, 150.00, 'Business lunch', '2024-12-01'),
@@ -16,6 +19,9 @@ INSERT INTO expenses (id, user_id, amount, description, date) VALUES
     (3, 1, 75.00, 'Office supplies', '2024-12-10'),
     (4, 2, 120.00, 'Client meeting', '2024-12-03'),
     (5, 2, 500.00, 'Conference registration', '2024-12-08');
+
+-- clear approvals
+DELETE FROM approvals;
 
 -- Insert test approvals (matching expense IDs)
 INSERT INTO approvals (id, expense_id, status, reviewer, comment, review_date) VALUES 

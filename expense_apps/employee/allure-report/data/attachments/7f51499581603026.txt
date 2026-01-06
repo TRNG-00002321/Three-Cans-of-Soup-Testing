@@ -1,0 +1,1 @@
+{'expense': {'amount': 120.99, 'date': '2024-12-03', 'description': 'new description', 'id': 1}, 'message': 'Expense updated successfully'}

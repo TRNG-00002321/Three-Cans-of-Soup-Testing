@@ -40,6 +40,8 @@ def before_all(context):
     with db_conn.get_connection() as conn:
         conn.executescript(seed_sql)
         conn.commit()
+    
+    context.db_conn = db_conn
 
     # 2. Environment Configuration
     os.environ['DATABASE_PATH'] = TEST_DB_PATH
@@ -67,6 +69,22 @@ def before_all(context):
 #     context.driver.implicitly_wait(10)
 #     context.wait = WebDriverWait(context.driver, 10)
 def before_scenario(context, scenario):
+    # 1. Database Setup
+    if os.path.exists(TEST_DB_PATH):
+        os.remove(TEST_DB_PATH)
+    
+    db_conn = DatabaseConnection(TEST_DB_PATH)
+    db_conn.initialize_database()
+    
+    with open(SEED_SQL_PATH, 'r') as f:
+        seed_sql = f.read()
+    
+    with db_conn.get_connection() as conn:
+        conn.executescript(seed_sql)
+        conn.commit()
+    
+    context.db_conn = db_conn
+    
     """Scenario setup: Browser initialization."""
     options = ChromeOptions()
     if 'headless' in scenario.effective_tags:
@@ -75,7 +93,9 @@ def before_scenario(context, scenario):
     
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--guest')
-    service = ChromeService(ChromeDriverManager().install())
+    
+    #service = ChromeService(ChromeDriverManager(chrome_type='chromium').install())
+    service = ChromeService('/usr/bin/chromedriver')
     
     context.driver = webdriver.Chrome(service=service, options=options)
     context.driver.implicitly_wait(10)
@@ -89,6 +109,13 @@ def after_scenario(context, scenario):
     
     if hasattr(context, 'driver'):
         context.driver.quit()
+
+    with open(SEED_SQL_PATH, 'r') as f:
+        seed_sql = f.read()
+    
+    with context.db_conn.get_connection() as conn:
+        conn.executescript(seed_sql)
+        conn.commit()
 
 def after_all(context):
     """Global cleanup: Shutdown server."""

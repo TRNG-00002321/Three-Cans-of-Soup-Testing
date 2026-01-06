@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+manager,com.revature.repository,Approval,43,42,0,0,11,18,4,12,4,12
+manager,com.revature.repository,User,8,51,0,0,1,20,1,11,1,11
+manager,com.revature.repository,ExpenseRepository,167,212,10,6,43,55,9,8,4,5
+manager,com.revature.repository,ApprovalRepository,152,63,10,2,38,17,8,4,3,3
+manager,com.revature.repository,ExpenseWithUser,23,24,0,0,7,9,4,5,4,5
+manager,com.revature.repository,UserRepository,16,126,4,8,2,33,4,5,0,3
+manager,com.revature.repository,DatabaseConnection,28,44,3,3,8,10,6,3,3,3
+manager,com.revature.repository,Expense,30,38,0,0,8,16,2,11,2,11
+manager,com.revature,Main,477,0,8,0,112,0,16,0,12,0
+manager,com.revature.service,AuthenticationService,0,185,2,26,0,50,2,22,0,10
+manager,com.revature.service,ExpenseService,19,175,4,12,4,35,6,12,2,8
+manager,com.revature.api,AuthenticationMiddleware,0,50,0,4,0,14,0,6,0,4
+manager,com.revature.api,ReportController,0,254,2,10,0,69,2,11,0,7
+manager,com.revature.api,ExpenseController,0,247,0,8,0,71,0,10,0,6

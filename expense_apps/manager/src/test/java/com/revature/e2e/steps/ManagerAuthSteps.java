@@ -1,7 +1,5 @@
 package com.revature.e2e.steps;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
