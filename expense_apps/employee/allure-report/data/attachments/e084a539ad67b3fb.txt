@@ -1,0 +1,1 @@
+[32mINFO    [0m werkzeug:_internal.py:97 127.0.0.1 - - [06/Jan/2026 01:09:20] "GET /api/auth/status HTTP/1.1" 200 -
