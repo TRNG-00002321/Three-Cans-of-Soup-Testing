@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DatabaseConnection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">manager</a> &gt; <a href="index.source.html" class="el_package">com.revature.repository</a> &gt; <span class="el_source">DatabaseConnection.java</span></div><h1>DatabaseConnection.java</h1><pre class="source lang-java linenums">package com.revature.repository;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import io.github.cdimascio.dotenv.Dotenv;
+
+/**
+ * Database connection utility for SQLite database. Handles connection
+ * management for the shared expense manager database.
+ */
+public class DatabaseConnection {
+
+    private final String databasePath;
+    private boolean testMode;
+    private final String testDatabasePath;
+
+<span class="fc" id="L19">    public DatabaseConnection() {</span>
+        //for local testing
+<span class="fc" id="L21">        Dotenv dotenv = Dotenv.load();</span>
+<span class="fc" id="L22">        testMode = dotenv.get(&quot;TEST_MODE&quot;, &quot;false&quot;).equals(&quot;true&quot;);</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        databasePath = System.getenv(&quot;DATABASE_PATH&quot;) != null ? System.getenv(&quot;DATABASE_PATH&quot;) : dotenv.get(&quot;DATABASE_PATH&quot;, &quot;./expense_manager.db&quot;);</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        testDatabasePath = System.getenv(&quot;TEST_DATABASE_PATH&quot;) != null ? System.getenv(&quot;TEST_DATABASE_PATH&quot;) : dotenv.get(&quot;TEST_DATABASE_PATH&quot;, &quot;./test.db&quot;);</span>
+<span class="fc" id="L25">    }</span>
+
+<span class="nc" id="L27">    public DatabaseConnection(String databasePath, String testDatabasePath) {</span>
+<span class="nc" id="L28">        this.databasePath = databasePath;</span>
+<span class="nc" id="L29">        this.testDatabasePath = testDatabasePath;</span>
+<span class="nc" id="L30">    }</span>
+
+    /**
+     * Get a database connection.
+     *
+     * @return SQLite database connection
+     * @throws SQLException if connection fails
+     */
+    public Connection getConnection() throws SQLException {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (testMode) {</span>
+            // Use file-based test database instead of in-memory
+<span class="fc" id="L41">            String testDbPath = &quot;jdbc:sqlite:&quot; + testDatabasePath;</span>
+<span class="fc" id="L42">            return DriverManager.getConnection(testDbPath);</span>
+        } else {
+<span class="nc" id="L44">            String url = &quot;jdbc:sqlite:&quot; + databasePath;</span>
+<span class="nc" id="L45">            return DriverManager.getConnection(url);</span>
+        }
+    }
+
+    public String getDatabasePath() {
+<span class="nc" id="L50">        return databasePath;</span>
+    }
+
+    public String getTestDatabasePath() {
+<span class="nc" id="L54">        return testDatabasePath;</span>
+    }
+
+    public boolean isTestMode() {
+<span class="fc" id="L58">        return testMode;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
