@@ -5,6 +5,7 @@ myenv/
 **/__pycache__/
 **/.env
 .env
-**/allure-results
-**/allure-report
+.allure
 **/.idea
+**/allure-results
+# **/allure-report
