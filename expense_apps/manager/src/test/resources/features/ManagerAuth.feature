@@ -12,3 +12,8 @@ Feature: Manager can login and logout
     Given the application is running and manager is on the login page
     When the user inputs incorrect credentials
     Then they should see and invalid credentials message
+
+  Scenario: Manager logs out
+    Given the manager is already logged in
+    When the manager logs out
+    Then they should be redirected to login page

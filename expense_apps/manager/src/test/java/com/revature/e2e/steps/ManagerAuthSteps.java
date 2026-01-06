@@ -1,18 +1,20 @@
-package com.revature.steps;
+package com.revature.e2e.steps;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import com.revature.e2e.utils.TestContext;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import com.revature.utils.TestContext;
+import io.cucumber.java.en.When;
 
 public class ManagerAuthSteps {
 
@@ -70,8 +72,24 @@ public class ManagerAuthSteps {
         WebElement message = context.getWait().until(
                 ExpectedConditions.visibilityOf(message_location.findElement(By.tagName("p")))
         );
-
         assertTrue(message.getText().contains("Invalid credentials"));
     }
 
+    @Given("the manager is already logged in")
+    public void the_manager_is_already_logged_in() {
+        context.getDriver().get(context.getBaseUrl() + "/login.html");
+        context.getDriver().findElement(By.id("username")).sendKeys("manager1");
+        context.getDriver().findElement(By.id("password")).sendKeys("password123");
+        context.getDriver().findElement(By.cssSelector("button[type='submit']")).click();
+    }
+
+    @When("the manager logs out")
+    public void the_manager_logs_out() {
+        context.getDriver().findElement(By.id("logout-btn")).click();
+    }
+
+    @Then("they should be redirected to login page")
+    public void they_should_be_redirected_to_login_page() {
+        assertTrue(context.getDriver().getCurrentUrl().contains("login.html"));
+    }
 }
