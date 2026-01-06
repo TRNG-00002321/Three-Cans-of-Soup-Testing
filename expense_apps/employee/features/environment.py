@@ -40,6 +40,8 @@ def before_all(context):
     with db_conn.get_connection() as conn:
         conn.executescript(seed_sql)
         conn.commit()
+    
+    context.db_conn = db_conn
 
     # 2. Environment Configuration
     os.environ['DATABASE_PATH'] = TEST_DB_PATH
@@ -89,6 +91,13 @@ def after_scenario(context, scenario):
     
     if hasattr(context, 'driver'):
         context.driver.quit()
+
+    with open(SEED_SQL_PATH, 'r') as f:
+        seed_sql = f.read()
+    
+    with context.db_conn.get_connection() as conn:
+        conn.executescript(seed_sql)
+        conn.commit()
 
 def after_all(context):
     """Global cleanup: Shutdown server."""
