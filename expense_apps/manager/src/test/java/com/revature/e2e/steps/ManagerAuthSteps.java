@@ -1,18 +1,18 @@
-package com.revature.steps;
-
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+package com.revature.e2e.steps;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import com.revature.utils.TestContext;
+
+import com.revature.e2e.utils.TestContext;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class ManagerAuthSteps {
 
@@ -70,7 +70,6 @@ public class ManagerAuthSteps {
         WebElement message = context.getWait().until(
                 ExpectedConditions.visibilityOf(message_location.findElement(By.tagName("p")))
         );
-
         assertTrue(message.getText().contains("Invalid credentials"));
     }
 
