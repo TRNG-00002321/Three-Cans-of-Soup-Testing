@@ -143,6 +143,11 @@
             <artifactId>allure-junit5</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>io.github.cdimascio</groupId>
