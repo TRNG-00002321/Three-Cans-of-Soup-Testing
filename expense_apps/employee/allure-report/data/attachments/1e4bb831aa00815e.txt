@@ -1,0 +1,1 @@
+{'count': 1, 'expenses': [{'amount': 250.5, 'comment': 'Approved for travel', 'date': '2024-12-05', 'description': 'Travel expense', 'id': 2, 'review_date': '2024-12-06', 'status': 'approved'}]}
