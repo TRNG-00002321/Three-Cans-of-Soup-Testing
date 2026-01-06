@@ -73,4 +73,21 @@ public class ManagerAuthSteps {
         assertTrue(message.getText().contains("Invalid credentials"));
     }
 
+    @Given("the manager is already logged in")
+    public void the_manager_is_already_logged_in() {
+        context.getDriver().get(context.getBaseUrl() + "/login.html");
+        context.getDriver().findElement(By.id("username")).sendKeys("manager1");
+        context.getDriver().findElement(By.id("password")).sendKeys("password123");
+        context.getDriver().findElement(By.cssSelector("button[type='submit']")).click();
+    }
+
+    @When("the manager logs out")
+    public void the_manager_logs_out() {
+        context.getDriver().findElement(By.id("logout-btn")).click();
+    }
+
+    @Then("they should be redirected to login page")
+    public void they_should_be_redirected_to_login_page() {
+        assertTrue(context.getDriver().getCurrentUrl().contains("login.html"));
+    }
 }
