@@ -8,3 +8,4 @@ myenv/
 **/allure-results
 **/allure-report
 **/.idea
+**/*.jtl
