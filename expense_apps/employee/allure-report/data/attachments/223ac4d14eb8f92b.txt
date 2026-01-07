@@ -1,0 +1,2 @@
+[32mINFO    [0m werkzeug:_internal.py:97 127.0.0.1 - - [06/Jan/2026 01:09:22] "POST /api/auth/login HTTP/1.1" 200 -
+[32mINFO    [0m werkzeug:_internal.py:97 127.0.0.1 - - [06/Jan/2026 01:09:22] "[31m[1mDELETE /api/expenses/2 HTTP/1.1[0m" 400 -

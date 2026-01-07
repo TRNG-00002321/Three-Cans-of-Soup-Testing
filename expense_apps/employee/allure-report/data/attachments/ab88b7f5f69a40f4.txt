@@ -1,0 +1,1 @@
+{'count': 1, 'expenses': [{'amount': 150.0, 'comment': None, 'date': '2024-12-01', 'description': 'Business lunch', 'id': 1, 'review_date': None, 'status': 'pending'}]}

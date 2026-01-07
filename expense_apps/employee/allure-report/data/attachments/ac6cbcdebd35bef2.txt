@@ -1,0 +1,1 @@
+[32mINFO    [0m werkzeug:_internal.py:97 127.0.0.1 - - [06/Jan/2026 01:09:20] "[35m[1mPOST /api/auth/login HTTP/1.1[0m" 500 -
