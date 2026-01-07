@@ -1,11 +1,18 @@
-target/
-myenv/
+# Environments
+**/myenv/
 **/.venv/
-**/.vscode
-**/__pycache__/
 **/.env
-.env
-.allure
+
+# IDEs
 **/.idea
+**/.vscode
+
+# Compilation Artifacts
+**/__pycache__/
+target/
+
+# Reports
 **/allure-results
-# **/allure-report
+**/.allure
+**/*.jtl
+
